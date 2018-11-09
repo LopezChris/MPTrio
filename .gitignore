@@ -1,4 +1,3 @@
-firmware/*
 firmware/**/bin
 firmware/**/obj
 firmware/**/makefile

@@ -2,6 +2,8 @@
 
 Folder structure for applications, we'll be pulling the drivers from `/firmware/lib/L2_Drivers`.
 
+Application folder for project [/firmware/mp3_player](https://github.com/LopezChris/MPTrio/tree/master/firmware/mp3_player)
+
 ~~~bash
 firmware/mp3_player
 ├── controls

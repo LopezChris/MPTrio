@@ -124,6 +124,11 @@ int main(void)
         scheduler_add_task(new wifiTask(Uart3::getInstance(), PRIORITY_LOW));
     #endif
 
+    #if 1
+        mp3_player = new mp3PlayerTask(PRIORITY_HIGH);
+        scheduler_add_task(mp3_player);
+    #endif
+
     scheduler_start(); ///< This shouldn't return
     return -1;
 }

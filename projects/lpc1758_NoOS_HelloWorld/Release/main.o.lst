@@ -1,0 +1,160 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.section	.text.delay,"ax",%progbits
+  16              		.align	1
+  17              		.global	delay
+  18              		.thumb
+  19              		.thumb_func
+  21              	delay:
+  22              		@ args = 0, pretend = 0, frame = 8
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24              		@ link register save eliminated.
+  25 0000 044B     		ldr	r3, .L5
+  26 0002 82B0     		sub	sp, sp, #8
+  27 0004 0193     		str	r3, [sp, #4]
+  28              	.L2:
+  29 0006 0198     		ldr	r0, [sp, #4]
+  30 0008 411E     		subs	r1, r0, #1
+  31 000a 0191     		str	r1, [sp, #4]
+  32 000c 0029     		cmp	r1, #0
+  33 000e FAD1     		bne	.L2
+  34 0010 02B0     		add	sp, sp, #8
+  35 0012 7047     		bx	lr
+  36              	.L6:
+  37              		.align	2
+  38              	.L5:
+  39 0014 404B4C00 		.word	5000000
+  41              		.section	.text.uartInit,"ax",%progbits
+  42              		.align	1
+  43              		.global	uartInit
+  44              		.thumb
+  45              		.thumb_func
+  47              	uartInit:
+  48              		@ args = 0, pretend = 0, frame = 0
+  49              		@ frame_needed = 0, uses_anonymous_args = 0
+  50              		@ link register save eliminated.
+  51 0000 134B     		ldr	r3, .L8
+  52 0002 0001     		lsls	r0, r0, #4
+  53 0004 D3F8C420 		ldr	r2, [r3, #196]
+  54 0008 42F00801 		orr	r1, r2, #8
+  55 000c 114A     		ldr	r2, .L8+4
+  56 000e C3F8C410 		str	r1, [r3, #196]
+  57 0012 1168     		ldr	r1, [r2, #0]
+  58 0014 21F0F001 		bic	r1, r1, #240
+  59 0018 1160     		str	r1, [r2, #0]
+  60 001a 1168     		ldr	r1, [r2, #0]
+  61 001c 41F05001 		orr	r1, r1, #80
+  62 0020 1160     		str	r1, [r2, #0]
+  63 0022 D3F8A821 		ldr	r2, [r3, #424]
+  64 0026 22F0C001 		bic	r1, r2, #192
+  65 002a C3F8A811 		str	r1, [r3, #424]
+  66 002e 8022     		movs	r2, #128
+  67 0030 A3F57023 		sub	r3, r3, #983040
+  68 0034 1A73     		strb	r2, [r3, #12]
+  69 0036 0021     		movs	r1, #0
+  70 0038 074A     		ldr	r2, .L8+8
+  71 003a 1971     		strb	r1, [r3, #4]
+  72 003c 1168     		ldr	r1, [r2, #0]
+  73 003e 8A08     		lsrs	r2, r1, #2
+  74 0040 B2FBF0F1 		udiv	r1, r2, r0
+  75 0044 CAB2     		uxtb	r2, r1
+  76 0046 0320     		movs	r0, #3
+  77 0048 1A70     		strb	r2, [r3, #0]
+  78 004a 1873     		strb	r0, [r3, #12]
+  79 004c 7047     		bx	lr
+  80              	.L9:
+  81 004e 00BF     		.align	2
+  82              	.L8:
+  83 0050 00C00F40 		.word	1074774016
+  84 0054 00C00240 		.word	1073922048
+  85 0058 00000000 		.word	SystemCoreClock
+  87              		.section	.text.uart0Putchar,"ax",%progbits
+  88              		.align	1
+  89              		.global	uart0Putchar
+  90              		.thumb
+  91              		.thumb_func
+  93              	uart0Putchar:
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96              		@ link register save eliminated.
+  97              	.L11:
+  98 0000 044B     		ldr	r3, .L16
+  99 0002 1A7D     		ldrb	r2, [r3, #20]	@ zero_extendqisi2
+ 100 0004 02F04001 		and	r1, r2, #64
+ 101 0008 CAB2     		uxtb	r2, r1
+ 102 000a 002A     		cmp	r2, #0
+ 103 000c F8D0     		beq	.L11
+ 104 000e 1870     		strb	r0, [r3, #0]
+ 105 0010 7047     		bx	lr
+ 106              	.L17:
+ 107 0012 00BF     		.align	2
+ 108              	.L16:
+ 109 0014 00C00040 		.word	1073790976
+ 111              		.section	.text.uart0Puts,"ax",%progbits
+ 112              		.align	1
+ 113              		.global	uart0Puts
+ 114              		.thumb
+ 115              		.thumb_func
+ 117              	uart0Puts:
+ 118              		@ args = 0, pretend = 0, frame = 0
+ 119              		@ frame_needed = 0, uses_anonymous_args = 0
+ 120 0000 10B5     		push	{r4, lr}
+ 121 0002 441E     		subs	r4, r0, #1
+ 122              	.L19:
+ 123 0004 14F8010F 		ldrb	r0, [r4, #1]!	@ zero_extendqisi2
+ 124 0008 10B1     		cbz	r0, .L21
+ 125              	.L20:
+ 126 000a FFF7FEFF 		bl	uart0Putchar
+ 127 000e F9E7     		b	.L19
+ 128              	.L21:
+ 129 0010 10BD     		pop	{r4, pc}
+ 131              		.section	.text.startup.main,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	main
+ 134              		.thumb
+ 135              		.thumb_func
+ 137              	main:
+ 138              		@ Volatile: function does not return.
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141 0000 08B5     		push	{r3, lr}
+ 142 0002 FFF7FEFF 		bl	SystemInit
+ 143 0006 4FF41640 		mov	r0, #38400
+ 144 000a FFF7FEFF 		bl	uartInit
+ 145              	.L23:
+ 146 000e 2D20     		movs	r0, #45
+ 147 0010 FFF7FEFF 		bl	uart0Putchar
+ 148 0014 FFF7FEFF 		bl	delay
+ 149 0018 F9E7     		b	.L23
+ 151              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.4 20130913 (release) [ARM/embedded-4_7-br
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:16     .text.delay:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:21     .text.delay:00000000 delay
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:39     .text.delay:00000014 $d
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:42     .text.uartInit:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:47     .text.uartInit:00000000 uartInit
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:83     .text.uartInit:00000050 $d
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:88     .text.uart0Putchar:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:93     .text.uart0Putchar:00000000 uart0Putchar
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:109    .text.uart0Putchar:00000014 $d
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:112    .text.uart0Puts:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:117    .text.uart0Puts:00000000 uart0Puts
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:132    .text.startup.main:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccou8HaT.s:137    .text.startup.main:00000000 main
+
+UNDEFINED SYMBOLS
+SystemCoreClock
+SystemInit

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;freertos_mingw/dbc_test/test.h&apos; to &apos;test_dbc.c&apos;" description="Rename resource &apos;test.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="dbc_test/test.h" name="test_dbc.c" stamp="1472758247192" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;freertos_mingw/dbc_test/test_dbc.c&apos; to &apos;test_dbc.cpp&apos;" description="Rename resource &apos;test_dbc.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="dbc_test/test_dbc.c" name="test_dbc.cpp" stamp="1472758626506" updateReferences="true"/>
+</session>

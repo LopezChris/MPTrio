@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.nodeclipse.enide.editors.proto.feature"
+      label="Minimalist .proto files Editor (for Protocol Buffers and gRPC)"
+      version="0.1.0.201611011520"
+      provider-name="Nodeclipse/Enide">
+
+   <description url="http://www.nodeclipse.org/">
+      Minimalist .proto files Editor (for Protocol Buffers and gRPC).
+See https://github.com/Nodeclipse/polyglot-maven-editors
+   </description>
+
+   <copyright url="http://www.nodeclipse.org/">
+      Copyright (c) 2012 - 2016 The Nodeclipse Authors. All rights reserved.
+   </copyright>
+
+   <license url="www.nodeclipse.org/licenses/LICENSE-1.0">
+      Copyright (c) 2012 - 2016 The Nodeclipse Authors. All rights reserved.
+   </license>
+
+   <url>
+      <update label="Nodeclipse Updates" url="http://www.nodeclipse/updates/"/>
+      <discovery label="Nodeclipse Updates" url="http://www.nodeclipse.org/updates"/>
+   </url>
+
+   <plugin
+         id="org.nodeclipse.enide.editors.proto"
+         download-size="21"
+         install-size="32"
+         version="0.1.0.201611011520"
+         unpack="false"/>
+
+</feature>

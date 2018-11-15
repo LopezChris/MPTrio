@@ -1,0 +1,53 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+ELF_SRCS := 
+C_UPPER_SRCS := 
+CXX_SRCS := 
+C++_SRCS := 
+OBJ_SRCS := 
+CC_SRCS := 
+ASM_SRCS := 
+C_SRCS := 
+CPP_SRCS := 
+S_UPPER_SRCS := 
+O_SRCS := 
+CC_DEPS := 
+C++_DEPS := 
+OBJS := 
+C_UPPER_DEPS := 
+CXX_DEPS := 
+SECONDARY_FLASH := 
+SECONDARY_LIST := 
+SECONDARY_SIZE := 
+ASM_DEPS := 
+S_UPPER_DEPS := 
+C_DEPS := 
+CPP_DEPS := 
+
+# Every subdirectory with source files must be described here
+SUBDIRS := \
+L0_LowLevel/source \
+L1_FreeRTOS/MemMang \
+L1_FreeRTOS/hooks \
+L1_FreeRTOS/portable/no_mpu \
+L1_FreeRTOS/portable \
+L1_FreeRTOS/src \
+L1_FreeRTOS/trace \
+L2_Drivers/base \
+L2_Drivers/src \
+L3_Utils/src \
+L3_Utils/tlm/src \
+L4_IO/fat/disk \
+L4_IO/fat \
+L4_IO/fat/option \
+L4_IO/src \
+L4_IO/wireless/src \
+L5_Application/examples \
+L5_Application \
+L5_Application/periodic_scheduler \
+L5_Application/source/cmd_handlers \
+L5_Application/source \
+newlib \
+

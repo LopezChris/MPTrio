@@ -1,0 +1,198 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"system_LPC17xx.c"
+  15              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+  16              		.align	1
+  17              		.global	SystemCoreClockUpdate
+  18              		.thumb
+  19              		.thumb_func
+  21              	SystemCoreClockUpdate:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 224B     		ldr	r3, .L14
+  25 0002 10B5     		push	{r4, lr}
+  26 0004 D3F88820 		ldr	r2, [r3, #136]
+  27 0008 D3F80C11 		ldr	r1, [r3, #268]
+  28 000c C2F30160 		ubfx	r0, r2, #24, #2
+  29 0010 0328     		cmp	r0, #3
+  30 0012 01F00301 		and	r1, r1, #3
+  31 0016 1E4A     		ldr	r2, .L14+4
+  32 0018 25D1     		bne	.L2
+  33 001a 0129     		cmp	r1, #1
+  34 001c D3F88840 		ldr	r4, [r3, #136]
+  35 0020 D3F88800 		ldr	r0, [r3, #136]
+  36 0024 0BD0     		beq	.L4
+  37 0026 0229     		cmp	r1, #2
+  38 0028 D3F80411 		ldr	r1, [r3, #260]
+  39 002c 4FEA4443 		lsl	r3, r4, #17
+  40 0030 4FEA5343 		lsr	r3, r3, #17
+  41 0034 03F10103 		add	r3, r3, #1
+  42 0038 08D0     		beq	.L5
+  43 003a 164C     		ldr	r4, .L14+8
+  44 003c 08E0     		b	.L12
+  45              	.L4:
+  46 003e 6404     		lsls	r4, r4, #17
+  47 0040 D3F80411 		ldr	r1, [r3, #260]
+  48 0044 630C     		lsrs	r3, r4, #17
+  49 0046 0133     		adds	r3, r3, #1
+  50 0048 134C     		ldr	r4, .L14+12
+  51 004a 01E0     		b	.L12
+  52              	.L5:
+  53 004c 4FF47A44 		mov	r4, #64000
+  54              	.L12:
+  55 0050 6343     		muls	r3, r4, r3
+  56 0052 C0F30740 		ubfx	r0, r0, #16, #8
+  57 0056 0130     		adds	r0, r0, #1
+  58 0058 C9B2     		uxtb	r1, r1
+  59 005a B3FBF0F3 		udiv	r3, r3, r0
+  60 005e 481C     		adds	r0, r1, #1
+  61 0060 B3FBF0F0 		udiv	r0, r3, r0
+  62 0064 0FE0     		b	.L11
+  63              	.L2:
+  64 0066 D3F80431 		ldr	r3, [r3, #260]
+  65 006a D8B2     		uxtb	r0, r3
+  66 006c 431C     		adds	r3, r0, #1
+  67 006e 0129     		cmp	r1, #1
+  68 0070 03D0     		beq	.L8
+  69 0072 0229     		cmp	r1, #2
+  70 0074 03D0     		beq	.L9
+  71 0076 0949     		ldr	r1, .L14+16
+  72 0078 03E0     		b	.L10
+  73              	.L8:
+  74 007a 0949     		ldr	r1, .L14+20
+  75 007c 01E0     		b	.L10
+  76              	.L9:
+  77 007e 4FF4FA41 		mov	r1, #32000
+  78              	.L10:
+  79 0082 B1FBF3F0 		udiv	r0, r1, r3
+  80              	.L11:
+  81 0086 1060     		str	r0, [r2, #0]
+  82 0088 10BD     		pop	{r4, pc}
+  83              	.L15:
+  84 008a 00BF     		.align	2
+  85              	.L14:
+  86 008c 00C00F40 		.word	1074774016
+  87 0090 00000000 		.word	.LANCHOR0
+  88 0094 00127A00 		.word	8000000
+  89 0098 00366E01 		.word	24000000
+  90 009c 00093D00 		.word	4000000
+  91 00a0 001BB700 		.word	12000000
+  93              		.section	.text.SystemInit,"ax",%progbits
+  94              		.align	1
+  95              		.global	SystemInit
+  96              		.thumb
+  97              		.thumb_func
+  99              	SystemInit:
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              		@ link register save eliminated.
+ 103 0000 324B     		ldr	r3, .L42
+ 104 0002 2022     		movs	r2, #32
+ 105 0004 C3F8A021 		str	r2, [r3, #416]
+ 106 0008 1946     		mov	r1, r3
+ 107              	.L17:
+ 108 000a D1F8A001 		ldr	r0, [r1, #416]
+ 109 000e 2F4B     		ldr	r3, .L42
+ 110 0010 4006     		lsls	r0, r0, #25
+ 111 0012 FAD5     		bpl	.L17
+ 112 0014 0322     		movs	r2, #3
+ 113 0016 C3F80421 		str	r2, [r3, #260]
+ 114 001a 2D4A     		ldr	r2, .L42+4
+ 115 001c 0021     		movs	r1, #0
+ 116 001e 0120     		movs	r0, #1
+ 117 0020 C3F8A811 		str	r1, [r3, #424]
+ 118 0024 C3F8AC11 		str	r1, [r3, #428]
+ 119 0028 C3F80C01 		str	r0, [r3, #268]
+ 120 002c AA21     		movs	r1, #170
+ 121 002e C3F88420 		str	r2, [r3, #132]
+ 122 0032 5522     		movs	r2, #85
+ 123 0034 C3F88C10 		str	r1, [r3, #140]
+ 124 0038 C3F88C20 		str	r2, [r3, #140]
+ 125 003c C3F88000 		str	r0, [r3, #128]
+ 126 0040 C3F88C10 		str	r1, [r3, #140]
+ 127 0044 C3F88C20 		str	r2, [r3, #140]
+ 128              	.L18:
+ 129 0048 2048     		ldr	r0, .L42
+ 130 004a D0F88830 		ldr	r3, [r0, #136]
+ 131 004e 5901     		lsls	r1, r3, #5
+ 132 0050 FAD5     		bpl	.L18
+ 133 0052 0321     		movs	r1, #3
+ 134 0054 AA22     		movs	r2, #170
+ 135 0056 5523     		movs	r3, #85
+ 136 0058 C0F88010 		str	r1, [r0, #128]
+ 137 005c C0F88C20 		str	r2, [r0, #140]
+ 138 0060 C0F88C30 		str	r3, [r0, #140]
+ 139              	.L19:
+ 140 0064 D0F88810 		ldr	r1, [r0, #136]
+ 141 0068 184B     		ldr	r3, .L42
+ 142 006a 11F0407F 		tst	r1, #50331648
+ 143 006e F9D0     		beq	.L19
+ 144 0070 2320     		movs	r0, #35
+ 145 0072 C3F8A400 		str	r0, [r3, #164]
+ 146 0076 AA21     		movs	r1, #170
+ 147 0078 5522     		movs	r2, #85
+ 148 007a 0120     		movs	r0, #1
+ 149 007c C3F8AC10 		str	r1, [r3, #172]
+ 150 0080 C3F8AC20 		str	r2, [r3, #172]
+ 151 0084 C3F8A000 		str	r0, [r3, #160]
+ 152 0088 C3F8AC10 		str	r1, [r3, #172]
+ 153 008c C3F8AC20 		str	r2, [r3, #172]
+ 154              	.L20:
+ 155 0090 0E4B     		ldr	r3, .L42
+ 156 0092 D3F8A810 		ldr	r1, [r3, #168]
+ 157 0096 4A05     		lsls	r2, r1, #21
+ 158 0098 FAD5     		bpl	.L20
+ 159 009a 0322     		movs	r2, #3
+ 160 009c AA20     		movs	r0, #170
+ 161 009e 5521     		movs	r1, #85
+ 162 00a0 C3F8A020 		str	r2, [r3, #160]
+ 163 00a4 C3F8AC00 		str	r0, [r3, #172]
+ 164 00a8 C3F8AC10 		str	r1, [r3, #172]
+ 165              	.L21:
+ 166 00ac D3F8A800 		ldr	r0, [r3, #168]
+ 167 00b0 064A     		ldr	r2, .L42
+ 168 00b2 10F4407F 		tst	r0, #768
+ 169 00b6 F9D0     		beq	.L21
+ 170 00b8 064B     		ldr	r3, .L42+8
+ 171 00ba 0021     		movs	r1, #0
+ 172 00bc 43F23A00 		movw	r0, #12346
+ 173 00c0 C2F8C430 		str	r3, [r2, #196]
+ 174 00c4 C2F8C811 		str	r1, [r2, #456]
+ 175 00c8 1060     		str	r0, [r2, #0]
+ 176 00ca 7047     		bx	lr
+ 177              	.L43:
+ 178              		.align	2
+ 179              	.L42:
+ 180 00cc 00C00F40 		.word	1074774016
+ 181 00d0 63000500 		.word	327779
+ 182 00d4 DE872804 		.word	69765086
+ 184              		.global	SystemCoreClock
+ 185              		.section	.data.SystemCoreClock,"aw",%progbits
+ 186              		.align	2
+ 187              		.set	.LANCHOR0,. + 0
+ 190              	SystemCoreClock:
+ 191 0000 00E1F505 		.word	100000000
+ 192              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.4 20130913 (release) [ARM/embedded-4_7-br
+DEFINED SYMBOLS
+                            *ABS*:00000000 system_LPC17xx.c
+C:\Users\kang\AppData\Local\Temp\ccSxJEgb.s:16     .text.SystemCoreClockUpdate:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccSxJEgb.s:21     .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+C:\Users\kang\AppData\Local\Temp\ccSxJEgb.s:86     .text.SystemCoreClockUpdate:0000008c $d
+C:\Users\kang\AppData\Local\Temp\ccSxJEgb.s:94     .text.SystemInit:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccSxJEgb.s:99     .text.SystemInit:00000000 SystemInit
+C:\Users\kang\AppData\Local\Temp\ccSxJEgb.s:180    .text.SystemInit:000000cc $d
+C:\Users\kang\AppData\Local\Temp\ccSxJEgb.s:190    .data.SystemCoreClock:00000000 SystemCoreClock
+C:\Users\kang\AppData\Local\Temp\ccSxJEgb.s:186    .data.SystemCoreClock:00000000 $d
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,71 @@
+== Hyperload ==
+Hyperload is a program based off of UART to program a CPU at a 
+very high speed. Typically, this is 10-20 times faster than using
+other flash programming programs such as FlashMagic.  This is a 
+good way to write your own bootloader for your own CPU.  It is 
+recommended to test your bootloader by not doing any real programming
+and once you are past the protocol, then add your code to perform
+real flash programming within your CPU.
+
+=== Hyperload Protocol ===
+The Hyperload protocol is derived from the original "Megaload" program 
+
+==== Protocol Phase 1 : Handshake ====
+#  Upon bootup, initialize your UART at either 4800, 9600, 19200 or 38400bps
+#  Send 0xFF over UART
+#:  Regardless of your speed, Hyperload will detect your baud rate and send 0x55 back to you.
+#:  When you receive 0x55, it is an indication that Hyperload is present
+#  Send 0xAA back over UART
+#  Hyperload will now send a baud rate control word to switch over to high speed mode.
+#:  This control word is based on the following formula and the speed of CPU set @ Hyperload itself:
+#:  Baud Rate = (CPU Speed / (Control Word + 1)) / 16
+#:  Note that this control word dictates future speed, so if you want to continue at
+     your original baud rate, be sure to choose that speed @ Hyperload COM Port speed.
+#  Echo back the Control Word Hyperload sent while maintaining original baud rate
+#  Switch over to the new baud rate or optionally if Hyperload COM Port speed is chosen as your
+   original baud rate, disregard this control word.
+
+==== Protocol Phase 2 : Block size Setup & Bootloader Blocks ====
+#  Send a CPU description string to Hyperload:
+#:  $CPU Name:Block Size:Boot Size in Words:Flash Size in Kilobytes
+#:  Example: "$LPC1758:4096:2048:512\n"
+#:  This means your block(chunk) size is 4096 bytes, your bootloader size is 2048*2 bytes, and your flash size is 512Kbytes
+#:  The block size is the chunks Hyperload will now send out of the HEX Programming file in "One shot"
+#  Send Hyperload "OK" Character: "!" to continue
+#  Hyperload will now send you empty blocks which span the size of your bootloader
+#: Each block will contain 2 byte block number, and also contain 1 byte checksum (see Phase 3 below)
+#: Send Hyperload_OK for each block for this dummy bootloader blocks
+
+==== Protocol Phase 3 : The Flash Program Blocks ====
+# Based on your block size, hyperload will now send you block numbers followed by programming file contents (.Hex file)
+#* Hyperload will send you 16-bit block number, MSB first
+#: Hyperload will now send you the chunk of programming data, 4096 bytes according to the CPU description string above.
+#: Hyperload will now send you 1 byte checksum of the programming chunk:
+#:: Checksum is simply all the programming bytes added up
+# Send back your status after you program this chunk in your processor:
+#* ! for OK when checksum passes and you program and verify your flash correctly.
+#* @ for checksum validation failure
+#: ^ for any other error you experience during programming
+# If ! was received, Hyperload will send you the rest of the chunks
+# When no more chunks remain in your .Hex file, Hyperload will send you 0xFFFF for block number
+#: At this point, send back "*" finish character and jump to your application code.
+
+
+
+=== Hints ===
+==== Uart Get Char Delay ====
+Implement a getchar() that times out after 300-1000 milliseconds, if you don't receive anything
+when you expect, start your application code or restart the entire bootloader process.
+
+==== High Speed Mode ====
+High Speed Mode and baud rate switch is present to start handshake at a default rate and switch to 
+an optional high speed COM port rate if the device supports it.  Since this is configurable in
+Hyperload, you can OPTIONALLY take advantage of this.
+
+==== Why send dummy bootloader blocks? ====
+In a CPU like NXP, your bootloader lives at first 4K or so, and the programming .Hex file you want to
+program lives at an offset of 4K from the flash location 0x000.0000   Taking this in account, Hyperload
+sends the first 4K of data regardless and this leaves the protocol with more flexibility.  Since it is
+hard to change this standard without breaking the protocol and existing compiled program, the best option
+is simply to ignore this first chunk of data.
+

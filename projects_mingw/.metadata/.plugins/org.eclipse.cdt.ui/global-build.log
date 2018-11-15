@@ -1,0 +1,1304 @@
+19:06:12 **** Rebuild of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+19:06:24 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+16:46:46 **** Rebuild of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+16:50:46 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+..\src\hello_world.cpp:2:27: fatal error: generated_can.h: No such file or directory
+ #include "generated_can.h"
+                           ^
+compilation terminated.
+16:51:44 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+..\src\hello_world.cpp:2:27: fatal error: generated_can.h: No such file or directory
+ #include "generated_can.h"
+                           ^
+compilation terminated.
+16:53:26 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+In file included from ..\src\hello_world.cpp:2:0:
+..\src\generated_can.h:12:48: error: expected ',' or '...' before 'mid'
+ extern bool dbc_app_send_can_msg(void uint32_t mid, uint8_t dlc, uint8_t bytes[8]);
+                                                ^
+..\src\generated_can.h:12:39: error: 'uint32_t' has incomplete type
+ extern bool dbc_app_send_can_msg(void uint32_t mid, uint8_t dlc, uint8_t bytes[8]);
+                                       ^
+..\src\generated_can.h:12:82: error: invalid use of 'void'
+ extern bool dbc_app_send_can_msg(void uint32_t mid, uint8_t dlc, uint8_t bytes[8]);
+                                                                                  ^
+..\src\generated_can.h: In function 'dbc_msg_hdr_t dbc_encode_MOTOR_CMD(uint8_t*, const MOTOR_CMD_t*)':
+..\src\generated_can.h:194:60: error: assignment of member 'MOTOR_CMD_t::MOTOR_CMD_steer' in read-only object
+     if(from->MOTOR_CMD_steer < -5) { from->MOTOR_CMD_steer = -5; } // Min value: -5
+                                                            ^
+..\src\generated_can.h:195:59: error: assignment of member 'MOTOR_CMD_t::MOTOR_CMD_steer' in read-only object
+     if(from->MOTOR_CMD_steer > 5) { from->MOTOR_CMD_steer = 5; } // Max value: 5
+                                                           ^
+..\src\generated_can.h:200:59: error: assignment of member 'MOTOR_CMD_t::MOTOR_CMD_drive' in read-only object
+     if(from->MOTOR_CMD_drive > 9) { from->MOTOR_CMD_drive = 9; } // Max value: 9
+                                                           ^
+..\src\generated_can.h: In function 'bool dbc_encode_and_send_SENSOR_SONARS_m0(const SENSOR_SONARS_m0_t*)':
+..\src\generated_can.h:281:70: error: invalid conversion from 'const SENSOR_SONARS_m0_t*' to 'SENSOR_SONARS_m0_t*' [-fpermissive]
+     const dbc_msg_hdr_t hdr = dbc_encode_SENSOR_SONARS_m0(bytes, from);
+                                                                      ^
+..\src\generated_can.h:246:22: error:   initializing argument 2 of 'dbc_msg_hdr_t dbc_encode_SENSOR_SONARS_m0(uint8_t*, SENSOR_SONARS_m0_t*)' [-fpermissive]
+ static dbc_msg_hdr_t dbc_encode_SENSOR_SONARS_m0(uint8_t bytes[8], SENSOR_SONARS_m0_t *from)
+                      ^
+..\src\generated_can.h: In function 'bool dbc_encode_and_send_SENSOR_SONARS_m1(const SENSOR_SONARS_m1_t*)':
+..\src\generated_can.h:323:70: error: invalid conversion from 'const SENSOR_SONARS_m1_t*' to 'SENSOR_SONARS_m1_t*' [-fpermissive]
+     const dbc_msg_hdr_t hdr = dbc_encode_SENSOR_SONARS_m1(bytes, from);
+                                                                      ^
+..\src\generated_can.h:288:22: error:   initializing argument 2 of 'dbc_msg_hdr_t dbc_encode_SENSOR_SONARS_m1(uint8_t*, SENSOR_SONARS_m1_t*)' [-fpermissive]
+ static dbc_msg_hdr_t dbc_encode_SENSOR_SONARS_m1(uint8_t bytes[8], SENSOR_SONARS_m1_t *from)
+                      ^
+..\src\generated_can.h: In function 'bool dbc_encode_and_send_DRIVER_HEARTBEAT(const DRIVER_HEARTBEAT_t*)':
+..\src\generated_can.h:151:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+..\src\generated_can.h: In function 'bool dbc_encode_and_send_IO_DEBUG(const IO_DEBUG_t*)':
+..\src\generated_can.h:183:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+..\src\generated_can.h: In function 'bool dbc_encode_and_send_MOTOR_CMD(const MOTOR_CMD_t*)':
+..\src\generated_can.h:213:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+..\src\generated_can.h: In function 'bool dbc_encode_and_send_MOTOR_STATUS(const MOTOR_STATUS_t*)':
+..\src\generated_can.h:240:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+..\src\generated_can.h: In function 'bool dbc_encode_and_send_SENSOR_SONARS_m0(const SENSOR_SONARS_m0_t*)':
+..\src\generated_can.h:283:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+..\src\generated_can.h: In function 'bool dbc_encode_and_send_SENSOR_SONARS_m1(const SENSOR_SONARS_m1_t*)':
+..\src\generated_can.h:325:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+..\src\generated_can.h: At global scope:
+..\src\generated_can.h:146:13: warning: 'bool dbc_encode_and_send_DRIVER_HEARTBEAT(const DRIVER_HEARTBEAT_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_DRIVER_HEARTBEAT(const DRIVER_HEARTBEAT_t *from)
+             ^
+..\src\generated_can.h:178:13: warning: 'bool dbc_encode_and_send_IO_DEBUG(const IO_DEBUG_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_IO_DEBUG(const IO_DEBUG_t *from)
+             ^
+..\src\generated_can.h:208:13: warning: 'bool dbc_encode_and_send_MOTOR_CMD(const MOTOR_CMD_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_MOTOR_CMD(const MOTOR_CMD_t *from)
+             ^
+..\src\generated_can.h:235:13: warning: 'bool dbc_encode_and_send_MOTOR_STATUS(const MOTOR_STATUS_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_MOTOR_STATUS(const MOTOR_STATUS_t *from)
+             ^
+..\src\generated_can.h:278:13: warning: 'bool dbc_encode_and_send_SENSOR_SONARS_m0(const SENSOR_SONARS_m0_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_SENSOR_SONARS_m0(const SENSOR_SONARS_m0_t *from)
+             ^
+..\src\generated_can.h:320:13: warning: 'bool dbc_encode_and_send_SENSOR_SONARS_m1(const SENSOR_SONARS_m1_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_SENSOR_SONARS_m1(const SENSOR_SONARS_m1_t *from)
+             ^
+16:54:13 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+In file included from ..\src\hello_world.cpp:2:0:
+..\src\generated_can.h: In function 'dbc_msg_hdr_t dbc_encode_MOTOR_CMD(uint8_t*, const MOTOR_CMD_t*)':
+..\src\generated_can.h:194:60: error: assignment of member 'MOTOR_CMD_t::MOTOR_CMD_steer' in read-only object
+     if(from->MOTOR_CMD_steer < -5) { from->MOTOR_CMD_steer = -5; } // Min value: -5
+                                                            ^
+..\src\generated_can.h:195:59: error: assignment of member 'MOTOR_CMD_t::MOTOR_CMD_steer' in read-only object
+     if(from->MOTOR_CMD_steer > 5) { from->MOTOR_CMD_steer = 5; } // Max value: 5
+                                                           ^
+..\src\generated_can.h:200:59: error: assignment of member 'MOTOR_CMD_t::MOTOR_CMD_drive' in read-only object
+     if(from->MOTOR_CMD_drive > 9) { from->MOTOR_CMD_drive = 9; } // Max value: 9
+                                                           ^
+..\src\generated_can.h: In function 'bool dbc_encode_and_send_SENSOR_SONARS_m0(const SENSOR_SONARS_m0_t*)':
+..\src\generated_can.h:281:70: error: invalid conversion from 'const SENSOR_SONARS_m0_t*' to 'SENSOR_SONARS_m0_t*' [-fpermissive]
+     const dbc_msg_hdr_t hdr = dbc_encode_SENSOR_SONARS_m0(bytes, from);
+                                                                      ^
+..\src\generated_can.h:246:22: error:   initializing argument 2 of 'dbc_msg_hdr_t dbc_encode_SENSOR_SONARS_m0(uint8_t*, SENSOR_SONARS_m0_t*)' [-fpermissive]
+ static dbc_msg_hdr_t dbc_encode_SENSOR_SONARS_m0(uint8_t bytes[8], SENSOR_SONARS_m0_t *from)
+                      ^
+..\src\generated_can.h: In function 'bool dbc_encode_and_send_SENSOR_SONARS_m1(const SENSOR_SONARS_m1_t*)':
+..\src\generated_can.h:323:70: error: invalid conversion from 'const SENSOR_SONARS_m1_t*' to 'SENSOR_SONARS_m1_t*' [-fpermissive]
+     const dbc_msg_hdr_t hdr = dbc_encode_SENSOR_SONARS_m1(bytes, from);
+                                                                      ^
+..\src\generated_can.h:288:22: error:   initializing argument 2 of 'dbc_msg_hdr_t dbc_encode_SENSOR_SONARS_m1(uint8_t*, SENSOR_SONARS_m1_t*)' [-fpermissive]
+ static dbc_msg_hdr_t dbc_encode_SENSOR_SONARS_m1(uint8_t bytes[8], SENSOR_SONARS_m1_t *from)
+                      ^
+..\src\generated_can.h: At global scope:
+..\src\generated_can.h:146:13: warning: 'bool dbc_encode_and_send_DRIVER_HEARTBEAT(const DRIVER_HEARTBEAT_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_DRIVER_HEARTBEAT(const DRIVER_HEARTBEAT_t *from)
+             ^
+..\src\generated_can.h:178:13: warning: 'bool dbc_encode_and_send_IO_DEBUG(const IO_DEBUG_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_IO_DEBUG(const IO_DEBUG_t *from)
+             ^
+..\src\generated_can.h:208:13: warning: 'bool dbc_encode_and_send_MOTOR_CMD(const MOTOR_CMD_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_MOTOR_CMD(const MOTOR_CMD_t *from)
+             ^
+..\src\generated_can.h:235:13: warning: 'bool dbc_encode_and_send_MOTOR_STATUS(const MOTOR_STATUS_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_MOTOR_STATUS(const MOTOR_STATUS_t *from)
+             ^
+..\src\generated_can.h:278:13: warning: 'bool dbc_encode_and_send_SENSOR_SONARS_m0(const SENSOR_SONARS_m0_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_SENSOR_SONARS_m0(const SENSOR_SONARS_m0_t *from)
+             ^
+..\src\generated_can.h:320:13: warning: 'bool dbc_encode_and_send_SENSOR_SONARS_m1(const SENSOR_SONARS_m1_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_SENSOR_SONARS_m1(const SENSOR_SONARS_m1_t *from)
+             ^
+16:55:31 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+In file included from ..\src\hello_world.cpp:2:0:
+..\src\generated_can.h:146:13: warning: 'bool dbc_encode_and_send_DRIVER_HEARTBEAT(DRIVER_HEARTBEAT_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_DRIVER_HEARTBEAT(DRIVER_HEARTBEAT_t *from)
+             ^
+..\src\generated_can.h:178:13: warning: 'bool dbc_encode_and_send_IO_DEBUG(IO_DEBUG_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_IO_DEBUG(IO_DEBUG_t *from)
+             ^
+..\src\generated_can.h:208:13: warning: 'bool dbc_encode_and_send_MOTOR_CMD(MOTOR_CMD_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_MOTOR_CMD(MOTOR_CMD_t *from)
+             ^
+..\src\generated_can.h:235:13: warning: 'bool dbc_encode_and_send_MOTOR_STATUS(MOTOR_STATUS_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_MOTOR_STATUS(MOTOR_STATUS_t *from)
+             ^
+..\src\generated_can.h:278:13: warning: 'bool dbc_encode_and_send_SENSOR_SONARS_m0(SENSOR_SONARS_m0_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_SENSOR_SONARS_m0(SENSOR_SONARS_m0_t *from)
+             ^
+..\src\generated_can.h:320:13: warning: 'bool dbc_encode_and_send_SENSOR_SONARS_m1(SENSOR_SONARS_m1_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_SENSOR_SONARS_m1(SENSOR_SONARS_m1_t *from)
+             ^
+g++ -o hello_world.exe "src\\hello_world.o" 
+src\hello_world.o: In function `dbc_encode_and_send_DRIVER_HEARTBEAT':
+C:\SJSU_Dev\projects_mingw\hello_world\Debug/../src/generated_can.h:150: undefined reference to `dbc_app_send_can_msg(unsigned int, unsigned char, unsigned char*)'
+src\hello_world.o: In function `dbc_encode_and_send_IO_DEBUG':
+C:\SJSU_Dev\projects_mingw\hello_world\Debug/../src/generated_can.h:182: undefined reference to `dbc_app_send_can_msg(unsigned int, unsigned char, unsigned char*)'
+src\hello_world.o: In function `dbc_encode_and_send_MOTOR_CMD':
+C:\SJSU_Dev\projects_mingw\hello_world\Debug/../src/generated_can.h:212: undefined reference to `dbc_app_send_can_msg(unsigned int, unsigned char, unsigned char*)'
+src\hello_world.o: In function `dbc_encode_and_send_MOTOR_STATUS':
+C:\SJSU_Dev\projects_mingw\hello_world\Debug/../src/generated_can.h:239: undefined reference to `dbc_app_send_can_msg(unsigned int, unsigned char, unsigned char*)'
+src\hello_world.o: In function `dbc_encode_and_send_SENSOR_SONARS_m0':
+C:\SJSU_Dev\projects_mingw\hello_world\Debug/../src/generated_can.h:282: undefined reference to `dbc_app_send_can_msg(unsigned int, unsigned char, unsigned char*)'
+src\hello_world.o:C:\SJSU_Dev\projects_mingw\hello_world\Debug/../src/generated_can.h:324: more undefined references to `dbc_app_send_can_msg(unsigned int, unsigned char, unsigned char*)' follow
+collect2.exe: error: ld returned 1 exit status
+16:55:52 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+In file included from ..\src\hello_world.cpp:2:0:
+..\src\generated_can.h:146:13: warning: 'bool dbc_encode_and_send_DRIVER_HEARTBEAT(DRIVER_HEARTBEAT_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_DRIVER_HEARTBEAT(DRIVER_HEARTBEAT_t *from)
+             ^
+..\src\generated_can.h:178:13: warning: 'bool dbc_encode_and_send_IO_DEBUG(IO_DEBUG_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_IO_DEBUG(IO_DEBUG_t *from)
+             ^
+..\src\generated_can.h:208:13: warning: 'bool dbc_encode_and_send_MOTOR_CMD(MOTOR_CMD_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_MOTOR_CMD(MOTOR_CMD_t *from)
+             ^
+..\src\generated_can.h:235:13: warning: 'bool dbc_encode_and_send_MOTOR_STATUS(MOTOR_STATUS_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_MOTOR_STATUS(MOTOR_STATUS_t *from)
+             ^
+..\src\generated_can.h:278:13: warning: 'bool dbc_encode_and_send_SENSOR_SONARS_m0(SENSOR_SONARS_m0_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_SENSOR_SONARS_m0(SENSOR_SONARS_m0_t *from)
+             ^
+..\src\generated_can.h:320:13: warning: 'bool dbc_encode_and_send_SENSOR_SONARS_m1(SENSOR_SONARS_m1_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_SENSOR_SONARS_m1(SENSOR_SONARS_m1_t *from)
+             ^
+g++ -o hello_world.exe "src\\hello_world.o" 
+Info: Nothing to build for hello_world
+16:57:47 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+In file included from ..\src\hello_world.cpp:2:0:
+..\src\generated_can.h:146:13: warning: 'bool dbc_encode_and_send_DRIVER_HEARTBEAT(DRIVER_HEARTBEAT_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_DRIVER_HEARTBEAT(DRIVER_HEARTBEAT_t *from)
+             ^
+..\src\generated_can.h:178:13: warning: 'bool dbc_encode_and_send_IO_DEBUG(IO_DEBUG_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_IO_DEBUG(IO_DEBUG_t *from)
+             ^
+..\src\generated_can.h:208:13: warning: 'bool dbc_encode_and_send_MOTOR_CMD(MOTOR_CMD_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_MOTOR_CMD(MOTOR_CMD_t *from)
+             ^
+..\src\generated_can.h:235:13: warning: 'bool dbc_encode_and_send_MOTOR_STATUS(MOTOR_STATUS_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_MOTOR_STATUS(MOTOR_STATUS_t *from)
+             ^
+..\src\generated_can.h:278:13: warning: 'bool dbc_encode_and_send_SENSOR_SONARS_m0(SENSOR_SONARS_m0_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_SENSOR_SONARS_m0(SENSOR_SONARS_m0_t *from)
+             ^
+..\src\generated_can.h:320:13: warning: 'bool dbc_encode_and_send_SENSOR_SONARS_m1(SENSOR_SONARS_m1_t*)' defined but not used [-Wunused-function]
+ static bool dbc_encode_and_send_SENSOR_SONARS_m1(SENSOR_SONARS_m1_t *from)
+             ^
+g++ -o hello_world.exe "src\\hello_world.o" 
+16:57:55 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+In file included from ..\src\hello_world.cpp:2:0:
+..\src\generated_can.h:26:35: error: 'DRIVER_HEARTBEAT_HDR' declared as an 'inline' variable
+ static inline const dbc_msg_hdr_t DRIVER_HEARTBEAT_HDR =                 {  100, 1 };
+                                   ^
+..\src\generated_can.h:27:35: error: 'IO_DEBUG_HDR' declared as an 'inline' variable
+ static inline const dbc_msg_hdr_t IO_DEBUG_HDR =                         {  500, 4 };
+                                   ^
+..\src\generated_can.h:28:35: error: 'MOTOR_CMD_HDR' declared as an 'inline' variable
+ static inline const dbc_msg_hdr_t MOTOR_CMD_HDR =                        {  101, 1 };
+                                   ^
+..\src\generated_can.h:29:35: error: 'MOTOR_STATUS_HDR' declared as an 'inline' variable
+ static inline const dbc_msg_hdr_t MOTOR_STATUS_HDR =                     {  400, 3 };
+                                   ^
+..\src\generated_can.h:30:35: error: 'SENSOR_SONARS_HDR' declared as an 'inline' variable
+ static inline const dbc_msg_hdr_t SENSOR_SONARS_HDR =                    {  200, 8 };
+                                   ^
+16:58:14 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:08:24 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+..\src\hello_world.cpp: In function 'int main()':
+..\src\hello_world.cpp:34:48: warning: format '%f' expects argument of type 'double', but argument 2 has type 'int' [-Wformat=]
+  printf("signed: %f\n", to.IO_DEBUG_test_signed);
+                                                ^
+..\src\hello_world.cpp:35:52: warning: format '%f' expects argument of type 'double', but argument 2 has type 'int' [-Wformat=]
+  printf("unsigned: %f\n", to.IO_DEBUG_test_unsigned);
+                                                    ^
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:08:44 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+Info: Nothing to build for hello_world
+17:11:48 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:12:07 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:12:17 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:12:24 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:12:29 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+Info: Nothing to build for hello_world
+17:12:56 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:21:46 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:28:11 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+..\src\hello_world.cpp: In function 'int main()':
+..\src\hello_world.cpp:32:37: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+  from.IO_DEBUG_test_unsigned_minmax = 400;
+                                     ^
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:28:37 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+..\src\hello_world.cpp: In function 'int main()':
+..\src\hello_world.cpp:32:37: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+  from.IO_DEBUG_test_unsigned_minmax = 400;
+                                     ^
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:29:20 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:30:14 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:31:01 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+Info: Nothing to build for hello_world
+17:31:24 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:32:07 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+..\src\hello_world.cpp: In function 'int main()':
+..\src\hello_world.cpp:47:11: warning: unused variable 'expect_f1' [-Wunused-variable]
+     float expect_f1 = 1.5;
+           ^
+..\src\hello_world.cpp:48:11: warning: unused variable 'expect_f2' [-Wunused-variable]
+     float expect_f2 = 123.6;
+           ^
+g++ -o hello_world.exe "src\\hello_world.o" 
+Info: Nothing to build for hello_world
+17:32:35 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+..\src\hello_world.cpp: In function 'int main()':
+..\src\hello_world.cpp:47:11: warning: unused variable 'expect_f1' [-Wunused-variable]
+     float expect_f1 = 1.5;
+           ^
+..\src\hello_world.cpp:48:11: warning: unused variable 'expect_f2' [-Wunused-variable]
+     float expect_f2 = 123.6;
+           ^
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:33:34 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:35:14 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+Info: Nothing to build for hello_world
+17:36:30 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:36:59 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:38:40 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:38:50 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:45:09 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+17:46:45 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+10:32:28 **** Rebuild of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "util\\scheduler_task.o" "..\\util\\scheduler_task.cpp" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "FreeRTOS\\event_groups.o" "..\\FreeRTOS\\event_groups.c" 
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main_trace.o "..\\main_trace.cpp" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "trace\\trcHardwarePort.o" "..\\trace\\trcHardwarePort.c" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "FreeRTOS\\list.o" "..\\FreeRTOS\\list.c" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "trace\\trcKernel.o" "..\\trace\\trcKernel.c" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "trace\\trcUser.o" "..\\trace\\trcUser.c" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "trace\\trcBase.o" "..\\trace\\trcBase.c" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "FreeRTOS\\timers.o" "..\\FreeRTOS\\timers.c" 
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "util\\str.o" "..\\util\\str.cpp" 
+..\util\str.cpp: In member function 'int str::tokenize(const char*, int, ...)':
+..\util\str.cpp:159:11: warning: unused variable 'it' [-Wunused-variable]
+     char *it = NULL;
+           ^
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "trace\\Run-time-stats-utils.o" "..\\trace\\Run-time-stats-utils.c" 
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main_queueset.o "..\\main_queueset.cpp" 
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "network\\tcp.o" "..\\network\\tcp.cpp" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "FreeRTOS\\port.o" "..\\FreeRTOS\\port.c" 
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "network\\udp.o" "..\\network\\udp.cpp" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "FreeRTOS\\queue.o" "..\\FreeRTOS\\queue.c" 
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.cpp" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "FreeRTOS\\tasks.o" "..\\FreeRTOS\\tasks.c" 
+..\FreeRTOS\tasks.c: In function 'vTaskStartScheduler':
+..\FreeRTOS\tasks.c:1905:3: warning: implicit declaration of function 'vConfigureTimerForRunTimeStats' [-Wimplicit-function-declaration]
+   portCONFIGURE_TIMER_FOR_RUN_TIME_STATS();
+   ^
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "trace\\trcKernelPort.o" "..\\trace\\trcKernelPort.c" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "FreeRTOS\\MemMang\\freertos_mem_man.o" "..\\FreeRTOS\\MemMang\\freertos_mem_man.c" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o hooks.o "..\\hooks.c" 
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main_eventgroup.o "..\\main_eventgroup.cpp" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "FreeRTOS\\croutine.o" "..\\FreeRTOS\\croutine.c" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+12:31:58 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.cpp" 
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.c" 
+In file included from ..\dbc_test\test_dbc.c:2:0:
+..\dbc_test\generated_can.h: In function 'dbc_encode_DBC_TEST2':
+..\dbc_test\generated_can.h:213:62: error: expected ';' before '}' token
+     if (from->DBC_TEST2_real_signed1 < 0) { raw |= (1 << 15) };
+                                                              ^
+..\dbc_test\generated_can.h:219:62: error: expected ';' before '}' token
+     if (from->DBC_TEST2_real_signed2 < 0) { raw |= (1 << 17) };
+                                                              ^
+..\dbc_test\generated_can.h: At top level:
+..\dbc_test\generated_can.h:753:1: error: unknown type name 'Process'
+ Process finished with exit code 0
+ ^
+..\dbc_test\generated_can.h:753:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'with'
+ Process finished with exit code 0
+                  ^
+..\dbc_test\generated_can.h:753:18: error: unknown type name 'with'
+..\dbc_test\test_dbc.c: In function 'main_test_dbc':
+..\dbc_test\test_dbc.c:20:5: warning: implicit declaration of function 'enableFlushAfterPrintf' [-Wimplicit-function-declaration]
+     enableFlushAfterPrintf();
+     ^
+..\dbc_test\test_dbc.c:23:5: error: unknown type name 'IO_DEBUG_t'
+     IO_DEBUG_t to;
+     ^
+..\dbc_test\test_dbc.c:24:5: error: unknown type name 'IO_DEBUG_t'
+     IO_DEBUG_t from = { 0 };
+     ^
+..\dbc_test\test_dbc.c:25:9: error: request for member 'IO_DEBUG_test_enum' in something not a structure or union
+     from.IO_DEBUG_test_enum            = IO_DEBUG_test2_enum_one;
+         ^
+..\dbc_test\test_dbc.c:25:42: error: 'IO_DEBUG_test2_enum_one' undeclared (first use in this function)
+     from.IO_DEBUG_test_enum            = IO_DEBUG_test2_enum_one;
+                                          ^
+..\dbc_test\test_dbc.c:25:42: note: each undeclared identifier is reported only once for each function it appears in
+..\dbc_test\test_dbc.c:26:9: error: request for member 'IO_DEBUG_test_float' in something not a structure or union
+     from.IO_DEBUG_test_float           = 1.3;
+         ^
+..\dbc_test\test_dbc.c:27:9: error: request for member 'IO_DEBUG_test_float_signed' in something not a structure or union
+     from.IO_DEBUG_test_float_signed    = -123.6;
+         ^
+..\dbc_test\test_dbc.c:28:9: error: request for member 'IO_DEBUG_test_signed' in something not a structure or union
+     from.IO_DEBUG_test_signed          = -123;
+         ^
+..\dbc_test\test_dbc.c:29:9: error: request for member 'IO_DEBUG_test_signed_minmax' in something not a structure or union
+     from.IO_DEBUG_test_signed_minmax   = 120;
+         ^
+..\dbc_test\test_dbc.c:30:9: error: request for member 'IO_DEBUG_test_unsigned1' in something not a structure or union
+     from.IO_DEBUG_test_unsigned1       = 200;
+         ^
+..\dbc_test\test_dbc.c:31:9: error: request for member 'IO_DEBUG_test_unsigned_minmax' in something not a structure or union
+     from.IO_DEBUG_test_unsigned_minmax = 50;
+         ^
+..\dbc_test\test_dbc.c:33:5: warning: implicit declaration of function 'dbc_encode_and_send_IO_DEBUG' [-Wimplicit-function-declaration]
+     dbc_encode_and_send_IO_DEBUG(&from);
+     ^
+..\dbc_test\test_dbc.c:34:5: warning: implicit declaration of function 'dbc_encode_IO_DEBUG' [-Wimplicit-function-declaration]
+     dbc_encode_IO_DEBUG(bytes, &from);
+     ^
+..\dbc_test\test_dbc.c:35:5: warning: implicit declaration of function 'dbc_decode_IO_DEBUG' [-Wimplicit-function-declaration]
+     dbc_decode_IO_DEBUG(&to, bytes, NULL);
+     ^
+..\dbc_test\test_dbc.c:36:5: warning: implicit declaration of function '_assert' [-Wimplicit-function-declaration]
+     assert(0 == memcmp(bytes, bytes_sent, 8));
+     ^
+..\dbc_test\test_dbc.c:38:22: error: request for member 'IO_DEBUG_test_enum' in something not a structure or union
+     printf("%u\n", to.IO_DEBUG_test_enum           );
+                      ^
+..\dbc_test\test_dbc.c:39:22: error: request for member 'IO_DEBUG_test_float' in something not a structure or union
+     printf("%f\n", to.IO_DEBUG_test_float          );
+                      ^
+..\dbc_test\test_dbc.c:40:22: error: request for member 'IO_DEBUG_test_float_signed' in something not a structure or union
+     printf("%f\n", to.IO_DEBUG_test_float_signed   );
+                      ^
+..\dbc_test\test_dbc.c:41:22: error: request for member 'IO_DEBUG_test_signed' in something not a structure or union
+     printf("%i\n", to.IO_DEBUG_test_signed         );
+                      ^
+..\dbc_test\test_dbc.c:42:22: error: request for member 'IO_DEBUG_test_signed_minmax' in something not a structure or union
+     printf("%i\n", to.IO_DEBUG_test_signed_minmax  );
+                      ^
+..\dbc_test\test_dbc.c:43:22: error: request for member 'IO_DEBUG_test_unsigned1' in something not a structure or union
+     printf("%u\n", to.IO_DEBUG_test_unsigned1      );
+                      ^
+..\dbc_test\test_dbc.c:44:22: error: request for member 'IO_DEBUG_test_unsigned_minmax' in something not a structure or union
+     printf("%u\n", to.IO_DEBUG_test_unsigned_minmax);
+                      ^
+In file included from ..\dbc_test\test_dbc.c:3:0:
+..\dbc_test\test_dbc.c:46:14: error: request for member 'IO_DEBUG_test_enum' in something not a structure or union
+     assert(to.IO_DEBUG_test_enum             == IO_DEBUG_test2_enum_one);
+              ^
+..\dbc_test\test_dbc.c:49:14: error: request for member 'IO_DEBUG_test_signed' in something not a structure or union
+     assert(to.IO_DEBUG_test_signed           == -123);
+              ^
+..\dbc_test\test_dbc.c:50:14: error: request for member 'IO_DEBUG_test_signed_minmax' in something not a structure or union
+     assert(to.IO_DEBUG_test_signed_minmax    == 120);
+              ^
+..\dbc_test\test_dbc.c:51:14: error: request for member 'IO_DEBUG_test_unsigned1' in something not a structure or union
+     assert(to.IO_DEBUG_test_unsigned1        == 200);
+              ^
+..\dbc_test\test_dbc.c:52:14: error: request for member 'IO_DEBUG_test_unsigned_minmax' in something not a structure or union
+     assert(to.IO_DEBUG_test_unsigned_minmax  == 50);
+              ^
+..\dbc_test\test_dbc.c:55:9: error: request for member 'IO_DEBUG_test_enum' in something not a structure or union
+     from.IO_DEBUG_test_enum            = IO_DEBUG_test2_enum_two;
+         ^
+..\dbc_test\test_dbc.c:55:42: error: 'IO_DEBUG_test2_enum_two' undeclared (first use in this function)
+     from.IO_DEBUG_test_enum            = IO_DEBUG_test2_enum_two;
+                                          ^
+..\dbc_test\test_dbc.c:56:9: error: request for member 'IO_DEBUG_test_float' in something not a structure or union
+     from.IO_DEBUG_test_float           = 1.6;
+         ^
+..\dbc_test\test_dbc.c:57:9: error: request for member 'IO_DEBUG_test_float_signed' in something not a structure or union
+     from.IO_DEBUG_test_float_signed    = 123.4;
+         ^
+..\dbc_test\test_dbc.c:58:9: error: request for member 'IO_DEBUG_test_signed' in something not a structure or union
+     from.IO_DEBUG_test_signed          = 123;
+         ^
+..\dbc_test\test_dbc.c:59:9: error: request for member 'IO_DEBUG_test_signed_minmax' in something not a structure or union
+     from.IO_DEBUG_test_signed_minmax   = -120;
+         ^
+..\dbc_test\test_dbc.c:60:9: error: request for member 'IO_DEBUG_test_unsigned1' in something not a structure or union
+     from.IO_DEBUG_test_unsigned1       = 103;
+         ^
+..\dbc_test\test_dbc.c:61:9: error: request for member 'IO_DEBUG_test_unsigned_minmax' in something not a structure or union
+     from.IO_DEBUG_test_unsigned_minmax = 123; // Over the max
+         ^
+..\dbc_test\test_dbc.c:67:22: error: request for member 'IO_DEBUG_test_enum' in something not a structure or union
+     printf("%u\n", to.IO_DEBUG_test_enum           );
+                      ^
+..\dbc_test\test_dbc.c:68:22: error: request for member 'IO_DEBUG_test_float' in something not a structure or union
+     printf("%f\n", to.IO_DEBUG_test_float          );
+                      ^
+..\dbc_test\test_dbc.c:69:22: error: request for member 'IO_DEBUG_test_float_signed' in something not a structure or union
+     printf("%f\n", to.IO_DEBUG_test_float_signed   );
+                      ^
+..\dbc_test\test_dbc.c:70:22: error: request for member 'IO_DEBUG_test_signed' in something not a structure or union
+     printf("%i\n", to.IO_DEBUG_test_signed         );
+                      ^
+..\dbc_test\test_dbc.c:71:22: error: request for member 'IO_DEBUG_test_signed_minmax' in something not a structure or union
+     printf("%i\n", to.IO_DEBUG_test_signed_minmax  );
+                      ^
+..\dbc_test\test_dbc.c:72:22: error: request for member 'IO_DEBUG_test_unsigned1' in something not a structure or union
+     printf("%u\n", to.IO_DEBUG_test_unsigned1      );
+                      ^
+..\dbc_test\test_dbc.c:73:22: error: request for member 'IO_DEBUG_test_unsigned_minmax' in something not a structure or union
+     printf("%u\n", to.IO_DEBUG_test_unsigned_minmax);
+                      ^
+In file included from ..\dbc_test\test_dbc.c:3:0:
+..\dbc_test\test_dbc.c:75:14: error: request for member 'IO_DEBUG_test_enum' in something not a structure or union
+     assert(to.IO_DEBUG_test_enum             == IO_DEBUG_test2_enum_two);
+              ^
+..\dbc_test\test_dbc.c:78:14: error: request for member 'IO_DEBUG_test_signed' in something not a structure or union
+     assert(to.IO_DEBUG_test_signed           == 123);
+              ^
+..\dbc_test\test_dbc.c:79:14: error: request for member 'IO_DEBUG_test_signed_minmax' in something not a structure or union
+     assert(to.IO_DEBUG_test_signed_minmax    == -120);
+              ^
+..\dbc_test\test_dbc.c:80:14: error: request for member 'IO_DEBUG_test_unsigned1' in something not a structure or union
+     assert(to.IO_DEBUG_test_unsigned1        == 103);
+              ^
+..\dbc_test\test_dbc.c:81:14: error: request for member 'IO_DEBUG_test_unsigned_minmax' in something not a structure or union
+     assert(to.IO_DEBUG_test_unsigned_minmax  == 100);
+              ^
+12:32:42 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.c" 
+In file included from ..\dbc_test\test_dbc.c:2:0:
+..\dbc_test\generated_can.h: In function 'dbc_encode_DBC_TEST2':
+..\dbc_test\generated_can.h:213:62: error: expected ';' before '}' token
+     if (from->DBC_TEST2_real_signed1 < 0) { raw |= (1 << 15) };
+                                                              ^
+..\dbc_test\generated_can.h:219:62: error: expected ';' before '}' token
+     if (from->DBC_TEST2_real_signed2 < 0) { raw |= (1 << 17) };
+                                                              ^
+..\dbc_test\generated_can.h: At top level:
+..\dbc_test\generated_can.h:753:1: error: unknown type name 'Process'
+ Process finished with exit code 0
+ ^
+..\dbc_test\generated_can.h:753:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'with'
+ Process finished with exit code 0
+                  ^
+..\dbc_test\generated_can.h:753:18: error: unknown type name 'with'
+..\dbc_test\test_dbc.c: In function 'main_test_dbc':
+..\dbc_test\test_dbc.c:23:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_enum'
+     from.DBC_TEST1_test_enum            = DBC_TEST1_test2_enum_one;
+         ^
+..\dbc_test\test_dbc.c:23:43: error: 'DBC_TEST1_test2_enum_one' undeclared (first use in this function)
+     from.DBC_TEST1_test_enum            = DBC_TEST1_test2_enum_one;
+                                           ^
+..\dbc_test\test_dbc.c:23:43: note: each undeclared identifier is reported only once for each function it appears in
+..\dbc_test\test_dbc.c:24:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_float'
+     from.DBC_TEST1_test_float           = 1.3;
+         ^
+..\dbc_test\test_dbc.c:25:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_float_signed'
+     from.DBC_TEST1_test_float_signed    = -123.6;
+         ^
+..\dbc_test\test_dbc.c:26:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_signed'
+     from.DBC_TEST1_test_signed          = -123;
+         ^
+..\dbc_test\test_dbc.c:27:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_signed_minmax'
+     from.DBC_TEST1_test_signed_minmax   = 120;
+         ^
+..\dbc_test\test_dbc.c:28:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_unsigned1'
+     from.DBC_TEST1_test_unsigned1       = 200;
+         ^
+..\dbc_test\test_dbc.c:29:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_unsigned_minmax'
+     from.DBC_TEST1_test_unsigned_minmax = 50;
+         ^
+..\dbc_test\test_dbc.c:34:5: warning: implicit declaration of function '_assert' [-Wimplicit-function-declaration]
+     assert(0 == memcmp(bytes, bytes_sent, 8));
+     ^
+..\dbc_test\test_dbc.c:36:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_enum'
+     printf("%u\n", to.DBC_TEST1_test_enum           );
+                      ^
+..\dbc_test\test_dbc.c:37:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_float'
+     printf("%f\n", to.DBC_TEST1_test_float          );
+                      ^
+..\dbc_test\test_dbc.c:38:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_float_signed'
+     printf("%f\n", to.DBC_TEST1_test_float_signed   );
+                      ^
+..\dbc_test\test_dbc.c:39:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_signed'
+     printf("%i\n", to.DBC_TEST1_test_signed         );
+                      ^
+..\dbc_test\test_dbc.c:40:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_signed_minmax'
+     printf("%i\n", to.DBC_TEST1_test_signed_minmax  );
+                      ^
+..\dbc_test\test_dbc.c:41:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_unsigned1'
+     printf("%u\n", to.DBC_TEST1_test_unsigned1      );
+                      ^
+..\dbc_test\test_dbc.c:42:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_unsigned_minmax'
+     printf("%u\n", to.DBC_TEST1_test_unsigned_minmax);
+                      ^
+In file included from ..\dbc_test\test_dbc.c:3:0:
+..\dbc_test\test_dbc.c:44:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_enum'
+     assert(to.DBC_TEST1_test_enum             == DBC_TEST1_test2_enum_one);
+              ^
+..\dbc_test\test_dbc.c:47:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_signed'
+     assert(to.DBC_TEST1_test_signed           == -123);
+              ^
+..\dbc_test\test_dbc.c:48:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_signed_minmax'
+     assert(to.DBC_TEST1_test_signed_minmax    == 120);
+              ^
+..\dbc_test\test_dbc.c:49:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_unsigned1'
+     assert(to.DBC_TEST1_test_unsigned1        == 200);
+              ^
+..\dbc_test\test_dbc.c:50:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_unsigned_minmax'
+     assert(to.DBC_TEST1_test_unsigned_minmax  == 50);
+              ^
+..\dbc_test\test_dbc.c:53:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_enum'
+     from.DBC_TEST1_test_enum            = DBC_TEST1_test2_enum_two;
+         ^
+..\dbc_test\test_dbc.c:53:43: error: 'DBC_TEST1_test2_enum_two' undeclared (first use in this function)
+     from.DBC_TEST1_test_enum            = DBC_TEST1_test2_enum_two;
+                                           ^
+..\dbc_test\test_dbc.c:54:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_float'
+     from.DBC_TEST1_test_float           = 1.6;
+         ^
+..\dbc_test\test_dbc.c:55:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_float_signed'
+     from.DBC_TEST1_test_float_signed    = 123.4;
+         ^
+..\dbc_test\test_dbc.c:56:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_signed'
+     from.DBC_TEST1_test_signed          = 123;
+         ^
+..\dbc_test\test_dbc.c:57:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_signed_minmax'
+     from.DBC_TEST1_test_signed_minmax   = -120;
+         ^
+..\dbc_test\test_dbc.c:58:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_unsigned1'
+     from.DBC_TEST1_test_unsigned1       = 103;
+         ^
+..\dbc_test\test_dbc.c:59:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_unsigned_minmax'
+     from.DBC_TEST1_test_unsigned_minmax = 123; // Over the max
+         ^
+..\dbc_test\test_dbc.c:65:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_enum'
+     printf("%u\n", to.DBC_TEST1_test_enum           );
+                      ^
+..\dbc_test\test_dbc.c:66:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_float'
+     printf("%f\n", to.DBC_TEST1_test_float          );
+                      ^
+..\dbc_test\test_dbc.c:67:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_float_signed'
+     printf("%f\n", to.DBC_TEST1_test_float_signed   );
+                      ^
+..\dbc_test\test_dbc.c:68:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_signed'
+     printf("%i\n", to.DBC_TEST1_test_signed         );
+                      ^
+..\dbc_test\test_dbc.c:69:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_signed_minmax'
+     printf("%i\n", to.DBC_TEST1_test_signed_minmax  );
+                      ^
+..\dbc_test\test_dbc.c:70:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_unsigned1'
+     printf("%u\n", to.DBC_TEST1_test_unsigned1      );
+                      ^
+..\dbc_test\test_dbc.c:71:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_unsigned_minmax'
+     printf("%u\n", to.DBC_TEST1_test_unsigned_minmax);
+                      ^
+In file included from ..\dbc_test\test_dbc.c:3:0:
+..\dbc_test\test_dbc.c:73:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_enum'
+     assert(to.DBC_TEST1_test_enum             == DBC_TEST1_test2_enum_two);
+              ^
+..\dbc_test\test_dbc.c:76:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_signed'
+     assert(to.DBC_TEST1_test_signed           == 123);
+              ^
+..\dbc_test\test_dbc.c:77:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_signed_minmax'
+     assert(to.DBC_TEST1_test_signed_minmax    == -120);
+              ^
+..\dbc_test\test_dbc.c:78:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_unsigned1'
+     assert(to.DBC_TEST1_test_unsigned1        == 103);
+              ^
+..\dbc_test\test_dbc.c:79:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_test_unsigned_minmax'
+     assert(to.DBC_TEST1_test_unsigned_minmax  == 100);
+              ^
+12:33:36 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.c" 
+In file included from ..\dbc_test\test_dbc.c:2:0:
+..\dbc_test\generated_can.h: In function 'dbc_encode_DBC_TEST2':
+..\dbc_test\generated_can.h:213:62: error: expected ';' before '}' token
+     if (from->DBC_TEST2_real_signed1 < 0) { raw |= (1 << 15) };
+                                                              ^
+..\dbc_test\generated_can.h:219:62: error: expected ';' before '}' token
+     if (from->DBC_TEST2_real_signed2 < 0) { raw |= (1 << 17) };
+                                                              ^
+..\dbc_test\generated_can.h: At top level:
+..\dbc_test\generated_can.h:753:1: error: unknown type name 'Process'
+ Process finished with exit code 0
+ ^
+..\dbc_test\generated_can.h:753:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'with'
+ Process finished with exit code 0
+                  ^
+..\dbc_test\generated_can.h:753:18: error: unknown type name 'with'
+..\dbc_test\test_dbc.c: In function 'main_dbc':
+..\dbc_test\test_dbc.c:23:38: error: 'DBC_TEST1_test2_enum_one' undeclared (first use in this function)
+     from.DBC_TEST1_enum            = DBC_TEST1_test2_enum_one;
+                                      ^
+..\dbc_test\test_dbc.c:23:38: note: each undeclared identifier is reported only once for each function it appears in
+..\dbc_test\test_dbc.c:26:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed'
+     from.DBC_TEST1_signed          = -123;
+         ^
+..\dbc_test\test_dbc.c:27:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed_minmax'
+     from.DBC_TEST1_signed_minmax   = 120;
+         ^
+..\dbc_test\test_dbc.c:34:5: warning: implicit declaration of function '_assert' [-Wimplicit-function-declaration]
+     assert(0 == memcmp(bytes, bytes_sent, 8));
+     ^
+..\dbc_test\test_dbc.c:39:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed'
+     printf("%i\n", to.DBC_TEST1_signed         );
+                      ^
+..\dbc_test\test_dbc.c:40:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed_minmax'
+     printf("%i\n", to.DBC_TEST1_signed_minmax  );
+                      ^
+In file included from ..\dbc_test\test_dbc.c:3:0:
+..\dbc_test\test_dbc.c:47:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed'
+     assert(to.DBC_TEST1_signed           == -123);
+              ^
+..\dbc_test\test_dbc.c:48:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed_minmax'
+     assert(to.DBC_TEST1_signed_minmax    == 120);
+              ^
+..\dbc_test\test_dbc.c:53:38: error: 'DBC_TEST1_test2_enum_two' undeclared (first use in this function)
+     from.DBC_TEST1_enum            = DBC_TEST1_test2_enum_two;
+                                      ^
+..\dbc_test\test_dbc.c:56:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed'
+     from.DBC_TEST1_signed          = 123;
+         ^
+..\dbc_test\test_dbc.c:57:9: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed_minmax'
+     from.DBC_TEST1_signed_minmax   = -120;
+         ^
+..\dbc_test\test_dbc.c:68:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed'
+     printf("%i\n", to.DBC_TEST1_signed         );
+                      ^
+..\dbc_test\test_dbc.c:69:22: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed_minmax'
+     printf("%i\n", to.DBC_TEST1_signed_minmax  );
+                      ^
+In file included from ..\dbc_test\test_dbc.c:3:0:
+..\dbc_test\test_dbc.c:76:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed'
+     assert(to.DBC_TEST1_signed           == 123);
+              ^
+..\dbc_test\test_dbc.c:77:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed_minmax'
+     assert(to.DBC_TEST1_signed_minmax    == -120);
+              ^
+12:34:41 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.c" 
+In file included from ..\dbc_test\test_dbc.c:2:0:
+..\dbc_test\generated_can.h: In function 'dbc_encode_DBC_TEST2':
+..\dbc_test\generated_can.h:213:62: error: expected ';' before '}' token
+     if (from->DBC_TEST2_real_signed1 < 0) { raw |= (1 << 15) };
+                                                              ^
+..\dbc_test\generated_can.h:219:62: error: expected ';' before '}' token
+     if (from->DBC_TEST2_real_signed2 < 0) { raw |= (1 << 17) };
+                                                              ^
+..\dbc_test\generated_can.h: At top level:
+..\dbc_test\generated_can.h:753:1: error: unknown type name 'Process'
+ Process finished with exit code 0
+ ^
+..\dbc_test\generated_can.h:753:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'with'
+ Process finished with exit code 0
+                  ^
+..\dbc_test\generated_can.h:753:18: error: unknown type name 'with'
+..\dbc_test\test_dbc.c: In function 'main_dbc':
+..\dbc_test\test_dbc.c:31:5: warning: implicit declaration of function '_assert' [-Wimplicit-function-declaration]
+     assert(0 == memcmp(bytes, bytes_sent, 8));
+     ^
+In file included from ..\dbc_test\test_dbc.c:3:0:
+..\dbc_test\test_dbc.c:42:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed'
+     assert(to.DBC_TEST1_signed           == -123);
+              ^
+..\dbc_test\test_dbc.c:43:14: error: 'DBC_TEST1_t' has no member named 'DBC_TEST1_signed_minmax'
+     assert(to.DBC_TEST1_signed_minmax    == 120);
+              ^
+12:34:50 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.c" 
+In file included from ..\dbc_test\test_dbc.c:2:0:
+..\dbc_test\generated_can.h: In function 'dbc_encode_DBC_TEST2':
+..\dbc_test\generated_can.h:213:62: error: expected ';' before '}' token
+     if (from->DBC_TEST2_real_signed1 < 0) { raw |= (1 << 15) };
+                                                              ^
+..\dbc_test\generated_can.h:219:62: error: expected ';' before '}' token
+     if (from->DBC_TEST2_real_signed2 < 0) { raw |= (1 << 17) };
+                                                              ^
+..\dbc_test\generated_can.h: At top level:
+..\dbc_test\generated_can.h:753:1: error: unknown type name 'Process'
+ Process finished with exit code 0
+ ^
+..\dbc_test\generated_can.h:753:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'with'
+ Process finished with exit code 0
+                  ^
+..\dbc_test\generated_can.h:753:18: error: unknown type name 'with'
+..\dbc_test\test_dbc.c: In function 'main_dbc':
+..\dbc_test\test_dbc.c:31:5: warning: implicit declaration of function '_assert' [-Wimplicit-function-declaration]
+     assert(0 == memcmp(bytes, bytes_sent, 8));
+     ^
+12:35:58 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.c" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+main_eventgroup.o: In function `Z22enableFlushAfterPrintfv':
+C:\SJSU_Dev\projects_mingw\freertos_mingw\Debug/../main_eventgroup.cpp:19: multiple definition of `enableFlushAfterPrintf()'
+main.o:C:\SJSU_Dev\projects_mingw\freertos_mingw\Debug/../main.cpp:11: first defined here
+main.o:main.cpp:(.text+0x66): undefined reference to `main_test_dbc()'
+collect2.exe: error: ld returned 1 exit status
+12:36:43 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main_eventgroup.o "..\\main_eventgroup.cpp" 
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main_queueset.o "..\\main_queueset.cpp" 
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main_trace.o "..\\main_trace.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+main.o: In function `main':
+C:\SJSU_Dev\projects_mingw\freertos_mingw\Debug/../main.cpp:19: undefined reference to `main_test_dbc()'
+collect2.exe: error: ld returned 1 exit status
+12:36:56 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+gcc "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.c" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+main.o: In function `main':
+C:\SJSU_Dev\projects_mingw\freertos_mingw\Debug/../main.cpp:19: undefined reference to `main_test_dbc()'
+collect2.exe: error: ld returned 1 exit status
+12:37:07 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+In file included from ..\dbc_test\test_dbc.cpp:2:0:
+..\dbc_test\generated_can.h: In function 'bool dbc_decode_DBC_TEST2(DBC_TEST2_t*, const uint8_t*, const dbc_msg_hdr_t*)':
+..\dbc_test\generated_can.h:450:73: error: 'INT32_C' was not declared in this scope
+         to->DBC_TEST2_real_signed1 = (((raw & ~(1 << 16)))) * INT32_C(-1);
+                                                                         ^
+..\dbc_test\generated_can.h:458:73: error: 'INT32_C' was not declared in this scope
+         to->DBC_TEST2_real_signed2 = (((raw & ~(1 << 18)))) * INT32_C(-1);
+                                                                         ^
+12:37:47 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+12:39:32 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+In file included from ..\dbc_test\test_dbc.cpp:3:0:
+..\dbc_test\test_dbc.cpp: In function 'int main_test_dbc()':
+..\dbc_test\test_dbc.cpp:39:45: error: 'DBC_TEST1_test2_enum_one' was not declared in this scope
+     assert(to.DBC_TEST1_enum             == DBC_TEST1_test2_enum_one);
+                                             ^
+..\dbc_test\test_dbc.cpp:46:38: error: 'DBC_TEST1_test2_enum_two' was not declared in this scope
+     from.DBC_TEST1_enum            = DBC_TEST1_test2_enum_two;
+                                      ^
+12:40:01 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+12:40:22 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+12:42:23 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+In file included from ..\dbc_test\test_dbc.cpp:3:0:
+..\dbc_test\test_dbc.cpp: In function 'int main_test_dbc()':
+..\dbc_test\test_dbc.cpp:9:34: error: 'fabs' was not declared in this scope
+     assert(fabs(expected - actual) < 0.5)
+                                  ^
+..\dbc_test\test_dbc.cpp:44:5: note: in expansion of macro 'assert_float'
+     assert_float(to.DBC_TEST1_float       , 1.5);
+     ^
+12:42:33 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+12:43:00 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+12:44:33 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+14:09:26 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+14:10:59 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+14:25:40 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+15:25:36 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:25:17 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+17:27:08 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+17:27:45 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+17:27:57 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:30:50 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:31:10 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+In file included from ..\dbc_test\test_dbc.cpp:3:0:
+..\dbc_test\test_dbc.cpp: In function 'void dbc_test2()':
+..\dbc_test\test_dbc.cpp:99:17: warning: suggest parentheses around comparison in operand of '&' [-Wparentheses]
+     assert(0x03 == bytes[2] & 0x03);
+                 ^
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:31:29 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:39:10 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+In file included from ..\dbc_test\test_dbc.cpp:2:0:
+..\dbc_test\generated_can.h: In function 'bool dbc_decode_DBC_TEST2(DBC_TEST2_t*, const uint8_t*, const dbc_msg_hdr_t*)':
+..\dbc_test\generated_can.h:467:39: error: 'UINT32_MAX' was not declared in this scope
+         to->DBC_TEST2_real_signed2 = (UINT32_MAX << 18) | raw;
+                                       ^
+17:39:32 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:40:12 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:40:31 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:41:05 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:42:23 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+17:42:56 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:54:28 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+17:55:45 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:56:00 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:56:32 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:57:21 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:57:33 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+17:57:42 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+18:00:43 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+Info: Nothing to build for freertos_mingw
+18:02:44 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+18:04:08 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+Info: Nothing to build for freertos_mingw
+18:05:08 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+18:05:15 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+18:10:51 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+18:11:07 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+18:12:16 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+18:16:19 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+18:17:22 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+18:17:39 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+In file included from ..\dbc_test\test_dbc.cpp:2:0:
+..\dbc_test\generated_can.h:528:14: error: expected ')' before '*' token
+ (DBC_TEST3_t *to, const uint8_t bytes[8], const dbc_msg_hdr_t *hdr)
+              ^
+18:17:55 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+18:19:18 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+In file included from ..\dbc_test\test_dbc.cpp:2:0:
+..\dbc_test\generated_can.h: In function 'bool dbc_decode_DBC_TEST3(DBC_TEST3_t*, const uint8_t*, const dbc_msg_hdr_t*)':
+..\dbc_test\generated_can.h:544:60: error: 'INT32_C' was not declared in this scope
+         to->DBC_TEST3_real_signed2 = ((((INT32_C(0xFFFFFFFF) << 7) | raw) * 2.0) + (4));
+                                                            ^
+18:19:28 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+18:24:20 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o "dbc_test\\test_dbc.o" "..\\dbc_test\\test_dbc.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+Info: Nothing to build for freertos_mingw
+19:35:21 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.cpp" 
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+19:47:45 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.cpp" 
+..\main.cpp: In function 'int main()':
+..\main.cpp:22:5: error: 'uint8_t' was not declared in this scope
+     uint8_t ip[4];
+     ^
+..\main.cpp:22:13: error: expected ';' before 'ip'
+     uint8_t ip[4];
+             ^
+..\main.cpp:23:13: error: expected ';' before 'msb'
+     uint8_t msb = 0, lsb = 0;
+             ^
+..\main.cpp:24:12: error: 'ip' was not declared in this scope
+     memset(ip, '.', sizeof(ip));
+            ^
+..\main.cpp:24:31: error: 'memset' was not declared in this scope
+     memset(ip, '.', sizeof(ip));
+                               ^
+..\main.cpp:25:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+     char *s = "PORT (192,168,225,12,0,20)";
+               ^
+..\main.cpp:26:65: error: 'msb' was not declared in this scope
+     sscanf(s, "PORT (%i,%i,%i,%i,%i,%i", ip, ip+1, ip+2, ip+3, &msb, &lsb);
+                                                                 ^
+..\main.cpp:26:71: error: 'lsb' was not declared in this scope
+     sscanf(s, "PORT (%i,%i,%i,%i,%i,%i", ip, ip+1, ip+2, ip+3, &msb, &lsb);
+                                                                       ^
+..\main.cpp:21:10: warning: unused variable 'ip_str' [-Wunused-variable]
+     char ip_str[16];
+          ^
+19:47:57 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.cpp" 
+..\main.cpp: In function 'int main()':
+..\main.cpp:24:31: error: 'memset' was not declared in this scope
+     memset(ip, '.', sizeof(ip));
+                               ^
+..\main.cpp:25:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+     char *s = "PORT (192,168,225,12,0,20)";
+               ^
+..\main.cpp:26:74: warning: format '%i' expects argument of type 'int*', but argument 3 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+     sscanf(s, "PORT (%i,%i,%i,%i,%i,%i", ip, ip+1, ip+2, ip+3, &msb, &lsb);
+                                                                          ^
+..\main.cpp:26:74: warning: format '%i' expects argument of type 'int*', but argument 4 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:26:74: warning: format '%i' expects argument of type 'int*', but argument 5 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:26:74: warning: format '%i' expects argument of type 'int*', but argument 6 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:26:74: warning: format '%i' expects argument of type 'int*', but argument 7 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:26:74: warning: format '%i' expects argument of type 'int*', but argument 8 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:28:72: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+     printf("%i.%i.%i.%i : %u\n", ip, ip+1, ip+2, ip+3, (msb << 8) | lsb);
+                                                                        ^
+..\main.cpp:28:72: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:28:72: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:28:72: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:21:10: warning: unused variable 'ip_str' [-Wunused-variable]
+     char ip_str[16];
+          ^
+19:48:11 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.cpp" 
+..\main.cpp: In function 'int main()':
+..\main.cpp:24:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+     char *s = "PORT (192,168,225,12,0,20)";
+               ^
+..\main.cpp:25:74: warning: format '%i' expects argument of type 'int*', but argument 3 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+     sscanf(s, "PORT (%i,%i,%i,%i,%i,%i", ip, ip+1, ip+2, ip+3, &msb, &lsb);
+                                                                          ^
+..\main.cpp:25:74: warning: format '%i' expects argument of type 'int*', but argument 4 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:74: warning: format '%i' expects argument of type 'int*', but argument 5 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:74: warning: format '%i' expects argument of type 'int*', but argument 6 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:74: warning: format '%i' expects argument of type 'int*', but argument 7 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:74: warning: format '%i' expects argument of type 'int*', but argument 8 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:27:72: warning: format '%i' expects argument of type 'int', but argument 2 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+     printf("%i.%i.%i.%i : %u\n", ip, ip+1, ip+2, ip+3, (msb << 8) | lsb);
+                                                                        ^
+..\main.cpp:27:72: warning: format '%i' expects argument of type 'int', but argument 3 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:27:72: warning: format '%i' expects argument of type 'int', but argument 4 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:27:72: warning: format '%i' expects argument of type 'int', but argument 5 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:21:10: warning: unused variable 'ip_str' [-Wunused-variable]
+     char ip_str[16];
+          ^
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+19:48:39 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.cpp" 
+..\main.cpp: In function 'int main()':
+..\main.cpp:24:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+     char *s = "PORT (192,168,225,12,0,20)";
+               ^
+..\main.cpp:25:74: warning: format '%i' expects argument of type 'int*', but argument 3 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+     sscanf(s, "PORT (%i,%i,%i,%i,%i,%i", ip, ip+1, ip+2, ip+3, &msb, &lsb);
+                                                                          ^
+..\main.cpp:25:74: warning: format '%i' expects argument of type 'int*', but argument 4 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:74: warning: format '%i' expects argument of type 'int*', but argument 5 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:74: warning: format '%i' expects argument of type 'int*', but argument 6 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:74: warning: format '%i' expects argument of type 'int*', but argument 7 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:74: warning: format '%i' expects argument of type 'int*', but argument 8 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:21:10: warning: unused variable 'ip_str' [-Wunused-variable]
+     char ip_str[16];
+          ^
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+19:48:58 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.cpp" 
+..\main.cpp: In function 'int main()':
+..\main.cpp:24:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+     char *s = "PORT (192,168,225,12,0,20)";
+               ^
+..\main.cpp:25:82: warning: format '%i' expects argument of type 'int*', but argument 3 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+     int l = sscanf(s, "PORT (%i,%i,%i,%i,%i,%i", ip, ip+1, ip+2, ip+3, &msb, &lsb);
+                                                                                  ^
+..\main.cpp:25:82: warning: format '%i' expects argument of type 'int*', but argument 4 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:82: warning: format '%i' expects argument of type 'int*', but argument 5 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:82: warning: format '%i' expects argument of type 'int*', but argument 6 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:82: warning: format '%i' expects argument of type 'int*', but argument 7 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:82: warning: format '%i' expects argument of type 'int*', but argument 8 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:21:10: warning: unused variable 'ip_str' [-Wunused-variable]
+     char ip_str[16];
+          ^
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+19:49:36 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.cpp" 
+..\main.cpp: In function 'int main()':
+..\main.cpp:24:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+     char *s = "PORT (192,168,225,12,0,20)";
+               ^
+..\main.cpp:25:89: warning: format '%i' expects argument of type 'int*', but argument 3 has type 'int' [-Wformat=]
+     int l = sscanf(s, "PORT (%i,%i,%i,%i,%i,%i)", ip[0], ip[1], ip[2], ip[3], &msb, &lsb);
+                                                                                         ^
+..\main.cpp:25:89: warning: format '%i' expects argument of type 'int*', but argument 4 has type 'int' [-Wformat=]
+..\main.cpp:25:89: warning: format '%i' expects argument of type 'int*', but argument 5 has type 'int' [-Wformat=]
+..\main.cpp:25:89: warning: format '%i' expects argument of type 'int*', but argument 6 has type 'int' [-Wformat=]
+..\main.cpp:25:89: warning: format '%i' expects argument of type 'int*', but argument 7 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:25:89: warning: format '%i' expects argument of type 'int*', but argument 8 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:21:10: warning: unused variable 'ip_str' [-Wunused-variable]
+     char ip_str[16];
+          ^
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+19:49:53 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.cpp" 
+..\main.cpp: In function 'int main()':
+..\main.cpp:24:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+     char *s = "PORT (192,168,225,12,0,20)";
+               ^
+..\main.cpp:25:93: warning: format '%i' expects argument of type 'int*', but argument 7 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+     int l = sscanf(s, "PORT (%i,%i,%i,%i,%i,%i)", &ip[0], &ip[1], &ip[2], &ip[3], &msb, &lsb);
+                                                                                             ^
+..\main.cpp:25:93: warning: format '%i' expects argument of type 'int*', but argument 8 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+..\main.cpp:21:10: warning: unused variable 'ip_str' [-Wunused-variable]
+     char ip_str[16];
+          ^
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+19:50:25 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.cpp" 
+..\main.cpp: In function 'int main()':
+..\main.cpp:24:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+     char *s = "PORT (192,168,225,12,0,20)";
+               ^
+..\main.cpp:21:10: warning: unused variable 'ip_str' [-Wunused-variable]
+     char ip_str[16];
+          ^
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 

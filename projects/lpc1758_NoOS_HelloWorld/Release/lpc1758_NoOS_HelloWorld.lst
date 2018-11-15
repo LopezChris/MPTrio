@@ -1,0 +1,259 @@
+
+lpc1758_NoOS_HelloWorld.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000002d0  00001000  00001000  00001000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000004  10000000  000012d0  00008000  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000070  00000000  00000000  00008004  2**0
+                  CONTENTS, READONLY
+  3 .ARM.attributes 00000029  00000000  00000000  00008074  2**0
+                  CONTENTS, READONLY
+
+Disassembly of section .text:
+
+00001000 <g_pfnVectors>:
+    1000:	00 80 00 10 17 11 00 00 e1 10 00 00 e3 10 00 00     ................
+    1010:	e5 10 00 00 e7 10 00 00 e9 10 00 00 00 00 00 00     ................
+	...
+    102c:	eb 10 00 00 ed 10 00 00 00 00 00 00 ef 10 00 00     ................
+    103c:	f1 10 00 00 f3 10 00 00 f3 10 00 00 f3 10 00 00     ................
+    104c:	f3 10 00 00 f3 10 00 00 f3 10 00 00 f3 10 00 00     ................
+    105c:	f3 10 00 00 f3 10 00 00 f3 10 00 00 f3 10 00 00     ................
+    106c:	f3 10 00 00 f3 10 00 00 f3 10 00 00 f3 10 00 00     ................
+    107c:	f3 10 00 00 f3 10 00 00 f3 10 00 00 f3 10 00 00     ................
+    108c:	f3 10 00 00 f3 10 00 00 f3 10 00 00 f3 10 00 00     ................
+    109c:	f3 10 00 00 f3 10 00 00 f3 10 00 00 f3 10 00 00     ................
+    10ac:	f3 10 00 00 f3 10 00 00 f3 10 00 00 f3 10 00 00     ................
+    10bc:	f3 10 00 00 f3 10 00 00 f3 10 00 00 f3 10 00 00     ................
+
+000010cc <__data_section_table>:
+    10cc:	000012d0 	.word	0x000012d0
+    10d0:	10000000 	.word	0x10000000
+    10d4:	00000004 	.word	0x00000004
+
+000010d8 <__bss_section_table>:
+    10d8:	10000004 	.word	0x10000004
+    10dc:	00000000 	.word	0x00000000
+
+000010e0 <NMI_Handler>:
+    10e0:	e7fe      	b.n	10e0 <NMI_Handler>
+
+000010e2 <HardFault_Handler>:
+    10e2:	e7fe      	b.n	10e2 <HardFault_Handler>
+
+000010e4 <MemManage_Handler>:
+    10e4:	e7fe      	b.n	10e4 <MemManage_Handler>
+
+000010e6 <BusFault_Handler>:
+    10e6:	e7fe      	b.n	10e6 <BusFault_Handler>
+
+000010e8 <UsageFault_Handler>:
+    10e8:	e7fe      	b.n	10e8 <UsageFault_Handler>
+
+000010ea <SVC_Handler>:
+    10ea:	e7fe      	b.n	10ea <SVC_Handler>
+
+000010ec <DebugMon_Handler>:
+    10ec:	e7fe      	b.n	10ec <DebugMon_Handler>
+
+000010ee <PendSV_Handler>:
+    10ee:	e7fe      	b.n	10ee <PendSV_Handler>
+
+000010f0 <SysTick_Handler>:
+    10f0:	e7fe      	b.n	10f0 <SysTick_Handler>
+
+000010f2 <ADC_IRQHandler>:
+    10f2:	e7fe      	b.n	10f2 <ADC_IRQHandler>
+
+000010f4 <data_init>:
+    10f4:	b510      	push	{r4, lr}
+    10f6:	2300      	movs	r3, #0
+    10f8:	4293      	cmp	r3, r2
+    10fa:	d203      	bcs.n	1104 <data_init+0x10>
+    10fc:	581c      	ldr	r4, [r3, r0]
+    10fe:	505c      	str	r4, [r3, r1]
+    1100:	3304      	adds	r3, #4
+    1102:	e7f9      	b.n	10f8 <data_init+0x4>
+    1104:	bd10      	pop	{r4, pc}
+
+00001106 <bss_init>:
+    1106:	2300      	movs	r3, #0
+    1108:	428b      	cmp	r3, r1
+    110a:	d203      	bcs.n	1114 <bss_init+0xe>
+    110c:	2200      	movs	r2, #0
+    110e:	501a      	str	r2, [r3, r0]
+    1110:	3304      	adds	r3, #4
+    1112:	e7f9      	b.n	1108 <bss_init+0x2>
+    1114:	4770      	bx	lr
+
+00001116 <ResetISR>:
+    1116:	b510      	push	{r4, lr}
+    1118:	4c0a      	ldr	r4, [pc, #40]	; (1144 <ResetISR+0x2e>)
+    111a:	4b0b      	ldr	r3, [pc, #44]	; (1148 <ResetISR+0x32>)
+    111c:	429c      	cmp	r4, r3
+    111e:	d205      	bcs.n	112c <ResetISR+0x16>
+    1120:	e894 0007 	ldmia.w	r4, {r0, r1, r2}
+    1124:	340c      	adds	r4, #12
+    1126:	f7ff ffe5 	bl	10f4 <data_init>
+    112a:	e7f6      	b.n	111a <ResetISR+0x4>
+    112c:	4807      	ldr	r0, [pc, #28]	; (114c <ResetISR+0x36>)
+    112e:	4284      	cmp	r4, r0
+    1130:	d205      	bcs.n	113e <ResetISR+0x28>
+    1132:	e894 0003 	ldmia.w	r4, {r0, r1}
+    1136:	3408      	adds	r4, #8
+    1138:	f7ff ffe5 	bl	1106 <bss_init>
+    113c:	e7f6      	b.n	112c <ResetISR+0x16>
+    113e:	f000 f8b9 	bl	12b4 <main>
+    1142:	e7fe      	b.n	1142 <ResetISR+0x2c>
+    1144:	000010cc 	.word	0x000010cc
+    1148:	000010d8 	.word	0x000010d8
+    114c:	000010e0 	.word	0x000010e0
+
+00001150 <SystemInit>:
+    1150:	4b32      	ldr	r3, [pc, #200]	; (121c <SystemInit+0xcc>)
+    1152:	2220      	movs	r2, #32
+    1154:	f8c3 21a0 	str.w	r2, [r3, #416]	; 0x1a0
+    1158:	4619      	mov	r1, r3
+    115a:	f8d1 01a0 	ldr.w	r0, [r1, #416]	; 0x1a0
+    115e:	4b2f      	ldr	r3, [pc, #188]	; (121c <SystemInit+0xcc>)
+    1160:	0640      	lsls	r0, r0, #25
+    1162:	d5fa      	bpl.n	115a <SystemInit+0xa>
+    1164:	2203      	movs	r2, #3
+    1166:	f8c3 2104 	str.w	r2, [r3, #260]	; 0x104
+    116a:	4a2d      	ldr	r2, [pc, #180]	; (1220 <SystemInit+0xd0>)
+    116c:	2100      	movs	r1, #0
+    116e:	2001      	movs	r0, #1
+    1170:	f8c3 11a8 	str.w	r1, [r3, #424]	; 0x1a8
+    1174:	f8c3 11ac 	str.w	r1, [r3, #428]	; 0x1ac
+    1178:	f8c3 010c 	str.w	r0, [r3, #268]	; 0x10c
+    117c:	21aa      	movs	r1, #170	; 0xaa
+    117e:	f8c3 2084 	str.w	r2, [r3, #132]	; 0x84
+    1182:	2255      	movs	r2, #85	; 0x55
+    1184:	f8c3 108c 	str.w	r1, [r3, #140]	; 0x8c
+    1188:	f8c3 208c 	str.w	r2, [r3, #140]	; 0x8c
+    118c:	f8c3 0080 	str.w	r0, [r3, #128]	; 0x80
+    1190:	f8c3 108c 	str.w	r1, [r3, #140]	; 0x8c
+    1194:	f8c3 208c 	str.w	r2, [r3, #140]	; 0x8c
+    1198:	4820      	ldr	r0, [pc, #128]	; (121c <SystemInit+0xcc>)
+    119a:	f8d0 3088 	ldr.w	r3, [r0, #136]	; 0x88
+    119e:	0159      	lsls	r1, r3, #5
+    11a0:	d5fa      	bpl.n	1198 <SystemInit+0x48>
+    11a2:	2103      	movs	r1, #3
+    11a4:	22aa      	movs	r2, #170	; 0xaa
+    11a6:	2355      	movs	r3, #85	; 0x55
+    11a8:	f8c0 1080 	str.w	r1, [r0, #128]	; 0x80
+    11ac:	f8c0 208c 	str.w	r2, [r0, #140]	; 0x8c
+    11b0:	f8c0 308c 	str.w	r3, [r0, #140]	; 0x8c
+    11b4:	f8d0 1088 	ldr.w	r1, [r0, #136]	; 0x88
+    11b8:	4b18      	ldr	r3, [pc, #96]	; (121c <SystemInit+0xcc>)
+    11ba:	f011 7f40 	tst.w	r1, #50331648	; 0x3000000
+    11be:	d0f9      	beq.n	11b4 <SystemInit+0x64>
+    11c0:	2023      	movs	r0, #35	; 0x23
+    11c2:	f8c3 00a4 	str.w	r0, [r3, #164]	; 0xa4
+    11c6:	21aa      	movs	r1, #170	; 0xaa
+    11c8:	2255      	movs	r2, #85	; 0x55
+    11ca:	2001      	movs	r0, #1
+    11cc:	f8c3 10ac 	str.w	r1, [r3, #172]	; 0xac
+    11d0:	f8c3 20ac 	str.w	r2, [r3, #172]	; 0xac
+    11d4:	f8c3 00a0 	str.w	r0, [r3, #160]	; 0xa0
+    11d8:	f8c3 10ac 	str.w	r1, [r3, #172]	; 0xac
+    11dc:	f8c3 20ac 	str.w	r2, [r3, #172]	; 0xac
+    11e0:	4b0e      	ldr	r3, [pc, #56]	; (121c <SystemInit+0xcc>)
+    11e2:	f8d3 10a8 	ldr.w	r1, [r3, #168]	; 0xa8
+    11e6:	054a      	lsls	r2, r1, #21
+    11e8:	d5fa      	bpl.n	11e0 <SystemInit+0x90>
+    11ea:	2203      	movs	r2, #3
+    11ec:	20aa      	movs	r0, #170	; 0xaa
+    11ee:	2155      	movs	r1, #85	; 0x55
+    11f0:	f8c3 20a0 	str.w	r2, [r3, #160]	; 0xa0
+    11f4:	f8c3 00ac 	str.w	r0, [r3, #172]	; 0xac
+    11f8:	f8c3 10ac 	str.w	r1, [r3, #172]	; 0xac
+    11fc:	f8d3 00a8 	ldr.w	r0, [r3, #168]	; 0xa8
+    1200:	4a06      	ldr	r2, [pc, #24]	; (121c <SystemInit+0xcc>)
+    1202:	f410 7f40 	tst.w	r0, #768	; 0x300
+    1206:	d0f9      	beq.n	11fc <SystemInit+0xac>
+    1208:	4b06      	ldr	r3, [pc, #24]	; (1224 <SystemInit+0xd4>)
+    120a:	2100      	movs	r1, #0
+    120c:	f243 003a 	movw	r0, #12346	; 0x303a
+    1210:	f8c2 30c4 	str.w	r3, [r2, #196]	; 0xc4
+    1214:	f8c2 11c8 	str.w	r1, [r2, #456]	; 0x1c8
+    1218:	6010      	str	r0, [r2, #0]
+    121a:	4770      	bx	lr
+    121c:	400fc000 	.word	0x400fc000
+    1220:	00050063 	.word	0x00050063
+    1224:	042887de 	.word	0x042887de
+
+00001228 <delay>:
+    1228:	4b04      	ldr	r3, [pc, #16]	; (123c <delay+0x14>)
+    122a:	b082      	sub	sp, #8
+    122c:	9301      	str	r3, [sp, #4]
+    122e:	9801      	ldr	r0, [sp, #4]
+    1230:	1e41      	subs	r1, r0, #1
+    1232:	9101      	str	r1, [sp, #4]
+    1234:	2900      	cmp	r1, #0
+    1236:	d1fa      	bne.n	122e <delay+0x6>
+    1238:	b002      	add	sp, #8
+    123a:	4770      	bx	lr
+    123c:	004c4b40 	.word	0x004c4b40
+
+00001240 <uartInit>:
+    1240:	4b13      	ldr	r3, [pc, #76]	; (1290 <uartInit+0x50>)
+    1242:	0100      	lsls	r0, r0, #4
+    1244:	f8d3 20c4 	ldr.w	r2, [r3, #196]	; 0xc4
+    1248:	f042 0108 	orr.w	r1, r2, #8
+    124c:	4a11      	ldr	r2, [pc, #68]	; (1294 <uartInit+0x54>)
+    124e:	f8c3 10c4 	str.w	r1, [r3, #196]	; 0xc4
+    1252:	6811      	ldr	r1, [r2, #0]
+    1254:	f021 01f0 	bic.w	r1, r1, #240	; 0xf0
+    1258:	6011      	str	r1, [r2, #0]
+    125a:	6811      	ldr	r1, [r2, #0]
+    125c:	f041 0150 	orr.w	r1, r1, #80	; 0x50
+    1260:	6011      	str	r1, [r2, #0]
+    1262:	f8d3 21a8 	ldr.w	r2, [r3, #424]	; 0x1a8
+    1266:	f022 01c0 	bic.w	r1, r2, #192	; 0xc0
+    126a:	f8c3 11a8 	str.w	r1, [r3, #424]	; 0x1a8
+    126e:	2280      	movs	r2, #128	; 0x80
+    1270:	f5a3 2370 	sub.w	r3, r3, #983040	; 0xf0000
+    1274:	731a      	strb	r2, [r3, #12]
+    1276:	2100      	movs	r1, #0
+    1278:	4a07      	ldr	r2, [pc, #28]	; (1298 <uartInit+0x58>)
+    127a:	7119      	strb	r1, [r3, #4]
+    127c:	6811      	ldr	r1, [r2, #0]
+    127e:	088a      	lsrs	r2, r1, #2
+    1280:	fbb2 f1f0 	udiv	r1, r2, r0
+    1284:	b2ca      	uxtb	r2, r1
+    1286:	2003      	movs	r0, #3
+    1288:	701a      	strb	r2, [r3, #0]
+    128a:	7318      	strb	r0, [r3, #12]
+    128c:	4770      	bx	lr
+    128e:	bf00      	nop
+    1290:	400fc000 	.word	0x400fc000
+    1294:	4002c000 	.word	0x4002c000
+    1298:	10000000 	.word	0x10000000
+
+0000129c <uart0Putchar>:
+    129c:	4b04      	ldr	r3, [pc, #16]	; (12b0 <uart0Putchar+0x14>)
+    129e:	7d1a      	ldrb	r2, [r3, #20]
+    12a0:	f002 0140 	and.w	r1, r2, #64	; 0x40
+    12a4:	b2ca      	uxtb	r2, r1
+    12a6:	2a00      	cmp	r2, #0
+    12a8:	d0f8      	beq.n	129c <uart0Putchar>
+    12aa:	7018      	strb	r0, [r3, #0]
+    12ac:	4770      	bx	lr
+    12ae:	bf00      	nop
+    12b0:	4000c000 	.word	0x4000c000
+
+000012b4 <main>:
+    12b4:	b508      	push	{r3, lr}
+    12b6:	f7ff ff4b 	bl	1150 <SystemInit>
+    12ba:	f44f 4016 	mov.w	r0, #38400	; 0x9600
+    12be:	f7ff ffbf 	bl	1240 <uartInit>
+    12c2:	202d      	movs	r0, #45	; 0x2d
+    12c4:	f7ff ffea 	bl	129c <uart0Putchar>
+    12c8:	f7ff ffae 	bl	1228 <delay>
+    12cc:	e7f9      	b.n	12c2 <main+0xe>
+    12ce:	Address 0x000012ce is out of bounds.
+

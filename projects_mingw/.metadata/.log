@@ -1,0 +1,157 @@
+!SESSION 2015-11-28 19:03:56.163 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -clean -data projects_mingw
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-11-28 19:04:28.561
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\kang'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-11-28 19:04:55.304
+!MESSAGE Indexed 'hello_world' (1 sources, 7 headers) in 1.24 sec: 506 declarations; 997 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+!SESSION 2015-11-28 19:06:43.335 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -clean -data projects_mingw
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-11-28 19:07:11.092
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\kang'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-11-28 19:07:37.165
+!MESSAGE Indexed 'hello_world' (1 sources, 7 headers) in 0.53 sec: 504 declarations; 1,007 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+!SESSION 2016-08-16 16:46:27.097 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+
+!ENTRY org.eclipse.osgi 4 0 2016-08-16 16:46:27.421
+!MESSAGE The -clean (osgi.clean) option was not successful. Unable to clean the storage area: C:\SJSU_Dev\eclipse32\configuration\org.eclipse.osgi
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-08-16 16:46:37.604
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'H:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY ilg.gnuarmeclipse.packs.data 4 1 2016-08-16 16:51:03.665
+!MESSAGE File .repos.xml does not exist, using defaults.
+!SESSION 2016-08-24 15:56:45.995 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+
+!ENTRY org.eclipse.osgi 4 0 2016-08-24 15:56:46.199
+!MESSAGE The -clean (osgi.clean) option was not successful. Unable to clean the storage area: C:\SJSU_Dev\eclipse32\configuration\org.eclipse.osgi
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-08-24 15:57:00.846
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'H:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2016-08-29 10:26:08.413 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+
+!ENTRY org.eclipse.osgi 4 0 2016-08-29 10:26:08.806
+!MESSAGE The -clean (osgi.clean) option was not successful. Unable to clean the storage area: C:\SJSU_Dev\eclipse32\configuration\org.eclipse.osgi
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-08-29 10:26:22.928
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'H:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-08-29 10:30:19.786
+!MESSAGE Indexed 'Win32_MinGW_FreeRTOS_Tlm' (22 sources, 216 headers) in 5.45 sec: 66,606 declarations; 98,128 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-08-29 10:32:26.937
+!MESSAGE Indexed 'freertos_mingw' (23 sources, 229 headers) in 5.05 sec: 70,121 declarations; 108,331 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+!SESSION 2016-09-01 12:28:37.667 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+
+!ENTRY org.eclipse.osgi 4 0 2016-09-01 12:28:37.962
+!MESSAGE The -clean (osgi.clean) option was not successful. Unable to clean the storage area: C:\SJSU_Dev\eclipse32\configuration\org.eclipse.osgi
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-09-01 12:28:47.929
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'H:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-09-01 12:33:40.932
+!MESSAGE Indexed 'freertos_mingw' (24 sources, 232 headers) in 5.47 sec: 70,348 declarations; 109,618 references; 0 unresolved inclusions; 3 syntax errors; 16 unresolved names (0.0089%)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2016-09-01 14:29:26.511
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@1775145): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2016-09-01 14:29:26.511
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2016-09-01 18:06:25.833
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@df2fa1): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2016-09-01 18:06:25.833
+!MESSAGE Connection is shut down
+!SESSION 2017-07-09 19:34:50.694 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -clean -data projects_mingw
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-07-09 19:35:09.164
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'H:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.cdt.codan.core 4 1 2017-07-09 19:44:22.757
+!MESSAGE Internal Error
+!STACK 0
+java.lang.ArrayIndexOutOfBoundsException: 1
+	at org.eclipse.cdt.codan.internal.checkers.fs.ScanfFormatStringSecurityChecker$FormatStringVisitor.detectFaulyArguments(ScanfFormatStringSecurityChecker.java:142)
+	at org.eclipse.cdt.codan.internal.checkers.fs.ScanfFormatStringSecurityChecker$FormatStringVisitor.visit(ScanfFormatStringSecurityChecker.java:125)
+	at org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTFunctionCallExpression.accept(CPPASTFunctionCallExpression.java:195)
+	at org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTExpressionStatement.accept(CPPASTExpressionStatement.java:73)
+	at org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTCompoundStatement.accept(CPPASTCompoundStatement.java:97)
+	at org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTFunctionDefinition.accept(CPPASTFunctionDefinition.java:202)
+	at org.eclipse.cdt.internal.core.dom.parser.ASTTranslationUnit.accept(ASTTranslationUnit.java:266)
+	at org.eclipse.cdt.codan.internal.checkers.fs.ScanfFormatStringSecurityChecker.processAst(ScanfFormatStringSecurityChecker.java:83)
+	at org.eclipse.cdt.codan.core.cxx.model.AbstractIndexAstChecker.processModel(AbstractIndexAstChecker.java:111)
+	at org.eclipse.cdt.codan.internal.core.CodanRunner.processResource(CodanRunner.java:91)
+	at org.eclipse.cdt.codan.internal.core.CodanRunner.runInEditor(CodanRunner.java:46)
+	at org.eclipse.cdt.codan.internal.core.CodanBuilder.processResource(CodanBuilder.java:126)
+	at org.eclipse.cdt.codan.core.cxx.internal.model.CxxCodanReconciler.reconciledAst(CxxCodanReconciler.java:37)
+	at org.eclipse.cdt.codan.internal.ui.cxx.CodanCReconciler.reconciled(CodanCReconciler.java:57)
+	at org.eclipse.cdt.internal.ui.editor.CEditor.reconciled(CEditor.java:3086)
+	at org.eclipse.cdt.internal.ui.text.CReconcilingStrategy.reconcile(CReconcilingStrategy.java:99)
+	at org.eclipse.cdt.internal.ui.text.CReconcilingStrategy.reconcile(CReconcilingStrategy.java:63)
+	at org.eclipse.cdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:87)
+	at org.eclipse.cdt.internal.ui.text.CCompositeReconcilingStrategy.reconcile(CCompositeReconcilingStrategy.java:90)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.cdt.internal.ui.text.CReconciler.process(CReconciler.java:349)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)

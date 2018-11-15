@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdint.h>
+
+
+int main_event_group(void);
+int main_queueset(void);
+int main_trace(void);
+int main_test_dbc(void);
+
+void enableFlushAfterPrintf()
+{
+    setvbuf(stdout, 0, _IONBF, 0);
+    setvbuf(stdin, 0, _IONBF, 0);
+}
+
+int main(void)
+{
+    enableFlushAfterPrintf();
+    //main_test_dbc();
+
+    char ip_str[16];
+    uint8_t ip[4];
+    uint8_t msb = 0, lsb = 0;
+    char *s = "PORT (192,168,225,12,0,20)";
+    sscanf(s, "PORT (%i,%i,%i,%i,%i,%i", ip, ip+1, ip+2, ip+3, &msb, &lsb);
+
+    printf("%i.%i.%i.%i : %u\n", ip, ip+1, ip+2, ip+3, (msb << 8) | lsb);
+    return 0;
+}

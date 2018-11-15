@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.release.1790984162">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.release.1790984162" moduleId="org.eclipse.cdt.core.settings" name="_build">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.MakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application" description="" id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.release.1790984162" name="_build" parent="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.release">
+					<folderInfo id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.release.1790984162." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.toolchain.release.65512594" name="ARM Windows GCC (Yagarto)" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.toolchain.release">
+							<option id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.option.debugging.level.174521740" name="Debug level" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.option.debugging.level" value="org.eclipse.cdt.cross.arm.gnu.base.option.debugging.level.none" valueType="enumerated"/>
+							<option id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.option.target.processor.2073439853" name="Processor" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.option.target.processor" value="org.eclipse.cdt.cross.arm.gnu.base.option.mcpu.cortex-m3" valueType="enumerated"/>
+							<targetPlatform id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.platform.release.2146541477" isAbstract="false" name="Windows Platform" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.platform.release"/>
+							<builder buildPath="${workspace_loc:/lpc1758_NoOS/Release}" id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.builder.release.2057337980" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="ARM Windows GNU Make builder (Yagarto)" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.builder.release"/>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.assembler.release.68333932" name="ARM Yagarto Windows GCC Assembler" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.assembler.release">
+								<option id="org.eclipse.cdt.cross.arm.gnu.assembler.option.include.paths.509591265" name="Include paths (-I)" superClass="org.eclipse.cdt.cross.arm.gnu.assembler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/zCpu}&quot;"/>
+								</option>
+								<inputType id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.assembler.base.input.946675869" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.assembler.base.input"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.c.compiler.release.730702111" name="ARM Yagarto Windows GCC C Compiler" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.c.compiler.release">
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level.1848482269" name="Optimization level" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level" value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.size" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.include.paths.1216493824" name="Include paths (-I)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/zCpu}&quot;"/>
+								</option>
+								<inputType id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.c.compiler.base.input.469100620" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.c.compiler.base.input"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.cpp.compiler.release.1545038286" name="ARM Yagarto Windows GCC C++ Compiler" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.cpp.compiler.release">
+								<option id="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level.1101678062" name="Optimization level" superClass="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level" value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.size" valueType="enumerated"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.c.linker.release.1159564330" name="ARM Yagarto Windows GCC C Linker" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.c.linker.release">
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.link.option.scriptfile.2092782260" name="Script file (-T)" superClass="org.eclipse.cdt.cross.arm.gnu.c.link.option.scriptfile" value="..\startup\loader.ld" valueType="string"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.link.option.nostdlibs.1457586327" name="No startup or default libs (-nostdlib)" superClass="org.eclipse.cdt.cross.arm.gnu.c.link.option.nostdlibs" value="true" valueType="boolean"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.link.option.gcsections.61302974" name="Remove unused sections (-Xlinker --gc-sections)" superClass="org.eclipse.cdt.cross.arm.gnu.c.link.option.gcsections" value="true" valueType="boolean"/>
+								<inputType id="org.eclipse.cdt.cross.arm.gnu.c.linker.input.1451874917" superClass="org.eclipse.cdt.cross.arm.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.cpp.linker.release.767825071" name="ARM Yagarto Windows GCC C++ Linker" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.cpp.linker.release"/>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.archiver.base.779264819" name="ARM Yagarto Windows GCC Archiver" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.archiver.base"/>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.createflash.release.483320991" name="ARM Yagarto Windows GNU Create Flash Image" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.createflash.release"/>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.createlisting.release.639189394" name="ARM Yagarto Windows GNU Create Listing" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.createlisting.release"/>
+							<tool id="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.printsize.release.1669907635" name="ARM Yagarto Windows GNU Print Size" superClass="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.printsize.release">
+								<option id="org.eclipse.cdt.cross.arm.gnu.printsize.general.totals.1188939208" name="Show Totals" superClass="org.eclipse.cdt.cross.arm.gnu.printsize.general.totals" value="true" valueType="boolean"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.printsize.general.hex.855417904" name="Hex" superClass="org.eclipse.cdt.cross.arm.gnu.printsize.general.hex" value="true" valueType="boolean"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="IAP|zCpu/NXP" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="lpc1758_NoOS.org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.117648742" name="ARM Cross Target Application" projectType="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.release.1790984162;org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.release.1790984162.;org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.assembler.release.68333932;org.eclipse.cdt.cross.arm.gnu.yagarto.windows.assembler.base.input.946675869">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_YG_GCCWinManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.release.1790984162;org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.release.1790984162.;org.eclipse.cdt.cross.arm.gnu.yagarto.windows.elf.c.compiler.release.730702111;org.eclipse.cdt.cross.arm.gnu.yagarto.windows.c.compiler.base.input.469100620">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_YG_GCCWinManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="refreshScope" versionNumber="1">
+		<resource resourceType="PROJECT" workspacePath="/lpc1758_Hyperload_Bootloader"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+</cproject>

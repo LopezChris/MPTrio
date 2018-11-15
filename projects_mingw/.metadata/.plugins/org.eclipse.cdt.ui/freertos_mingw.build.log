@@ -1,0 +1,14 @@
+19:50:25 **** Incremental Build of configuration Debug for project freertos_mingw ****
+Info: Internal Builder is used for build
+g++ "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\FreeRTOS" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\trace" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw\\util" "-IC:\\SJSU_Dev\\projects_mingw\\freertos_mingw" -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.cpp" 
+..\main.cpp: In function 'int main()':
+..\main.cpp:24:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+     char *s = "PORT (192,168,225,12,0,20)";
+               ^
+..\main.cpp:21:10: warning: unused variable 'ip_str' [-Wunused-variable]
+     char ip_str[16];
+          ^
+g++ -o freertos_mingw.exe "FreeRTOS\\MemMang\\freertos_mem_man.o" "FreeRTOS\\croutine.o" "FreeRTOS\\event_groups.o" "FreeRTOS\\list.o" "FreeRTOS\\port.o" "FreeRTOS\\queue.o" "FreeRTOS\\tasks.o" "FreeRTOS\\timers.o" "dbc_test\\test_dbc.o" hooks.o main.o main_eventgroup.o main_queueset.o main_trace.o "network\\tcp.o" "network\\udp.o" "trace\\Run-time-stats-utils.o" "trace\\trcBase.o" "trace\\trcHardwarePort.o" "trace\\trcKernel.o" "trace\\trcKernelPort.o" "trace\\trcUser.o" "util\\scheduler_task.o" "util\\str.o" -lws2_32 -lwinmm 
+
+19:50:26 Build Finished (took 803ms)
+

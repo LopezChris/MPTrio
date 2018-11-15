@@ -1,0 +1,446 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"printf-stdarg.c"
+  15              		.section	.text.printchar,"ax",%progbits
+  16              		.align	1
+  17              		.thumb
+  18              		.thumb_func
+  20              	printchar:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23              		@ link register save eliminated.
+  24 0000 20B1     		cbz	r0, .L1
+  25 0002 0368     		ldr	r3, [r0, #0]
+  26 0004 1970     		strb	r1, [r3, #0]
+  27 0006 0168     		ldr	r1, [r0, #0]
+  28 0008 4A1C     		adds	r2, r1, #1
+  29 000a 0260     		str	r2, [r0, #0]
+  30              	.L1:
+  31 000c 7047     		bx	lr
+  33              		.section	.text.prints,"ax",%progbits
+  34              		.align	1
+  35              		.thumb
+  36              		.thumb_func
+  38              	prints:
+  39              		@ args = 0, pretend = 0, frame = 0
+  40              		@ frame_needed = 0, uses_anonymous_args = 0
+  41 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+  42 0004 141E     		subs	r4, r2, #0
+  43 0006 8046     		mov	r8, r0
+  44 0008 8946     		mov	r9, r1
+  45 000a 01DC     		bgt	.L19
+  46 000c 2027     		movs	r7, #32
+  47 000e 0FE0     		b	.L9
+  48              	.L19:
+  49 0010 0022     		movs	r2, #0
+  50              	.L8:
+  51 0012 19F80210 		ldrb	r1, [r9, r2]	@ zero_extendqisi2
+  52 0016 09B1     		cbz	r1, .L23
+  53              	.L10:
+  54 0018 0132     		adds	r2, r2, #1
+  55 001a FAE7     		b	.L8
+  56              	.L23:
+  57 001c A242     		cmp	r2, r4
+  58 001e B4BF     		ite	lt
+  59 0020 C2EB0404 		rsblt	r4, r2, r4
+  60 0024 0C46     		movge	r4, r1
+  61 0026 13F0020F 		tst	r3, #2
+  62 002a 0CBF     		ite	eq
+  63 002c 2027     		moveq	r7, #32
+  64 002e 3027     		movne	r7, #48
+  65              	.L9:
+  66 0030 DB07     		lsls	r3, r3, #31
+  67 0032 0CD4     		bmi	.L22
+  68 0034 2546     		mov	r5, r4
+  69              	.L13:
+  70 0036 002D     		cmp	r5, #0
+  71 0038 05DD     		ble	.L24
+  72              	.L14:
+  73 003a 4046     		mov	r0, r8
+  74 003c 3946     		mov	r1, r7
+  75 003e FFF7FEFF 		bl	printchar
+  76 0042 013D     		subs	r5, r5, #1
+  77 0044 F7E7     		b	.L13
+  78              	.L24:
+  79 0046 24EAE476 		bic	r6, r4, r4, asr #31
+  80 004a A41B     		subs	r4, r4, r6
+  81 004c 00E0     		b	.L12
+  82              	.L22:
+  83 004e 0026     		movs	r6, #0
+  84              	.L12:
+  85 0050 3546     		mov	r5, r6
+  86              	.L15:
+  87 0052 C6EB0903 		rsb	r3, r6, r9
+  88 0056 595D     		ldrb	r1, [r3, r5]	@ zero_extendqisi2
+  89 0058 21B1     		cbz	r1, .L25
+  90              	.L16:
+  91 005a 4046     		mov	r0, r8
+  92 005c FFF7FEFF 		bl	printchar
+  93 0060 0135     		adds	r5, r5, #1
+  94 0062 F6E7     		b	.L15
+  95              	.L25:
+  96 0064 2646     		mov	r6, r4
+  97              	.L17:
+  98 0066 002E     		cmp	r6, #0
+  99 0068 05DD     		ble	.L26
+ 100              	.L18:
+ 101 006a 4046     		mov	r0, r8
+ 102 006c 3946     		mov	r1, r7
+ 103 006e FFF7FEFF 		bl	printchar
+ 104 0072 013E     		subs	r6, r6, #1
+ 105 0074 F7E7     		b	.L17
+ 106              	.L26:
+ 107 0076 002C     		cmp	r4, #0
+ 108 0078 ACBF     		ite	ge
+ 109 007a 2819     		addge	r0, r5, r4
+ 110 007c 281C     		addlt	r0, r5, #0
+ 111 007e BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 113              		.section	.text.printi,"ax",%progbits
+ 114              		.align	1
+ 115              		.thumb
+ 116              		.thumb_func
+ 118              	printi:
+ 119              		@ args = 12, pretend = 0, frame = 16
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121 0000 2DE9FF47 		push	{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, sl, lr}
+ 122 0004 0C9E     		ldr	r6, [sp, #48]
+ 123 0006 8146     		mov	r9, r0
+ 124 0008 DDF83480 		ldr	r8, [sp, #52]
+ 125 000c 0C46     		mov	r4, r1
+ 126 000e 51B9     		cbnz	r1, .L28
+ 127 0010 3022     		movs	r2, #48
+ 128 0012 8DF80420 		strb	r2, [sp, #4]
+ 129 0016 8DF80510 		strb	r1, [sp, #5]
+ 130 001a 3246     		mov	r2, r6
+ 131 001c 01A9     		add	r1, sp, #4
+ 132 001e 4346     		mov	r3, r8
+ 133 0020 FFF7FEFF 		bl	prints
+ 134 0024 35E0     		b	.L29
+ 135              	.L28:
+ 136 0026 33B1     		cbz	r3, .L38
+ 137 0028 0A2A     		cmp	r2, #10
+ 138 002a 04D1     		bne	.L38
+ 139 002c 0029     		cmp	r1, #0
+ 140 002e 02DA     		bge	.L38
+ 141 0030 4C42     		negs	r4, r1
+ 142 0032 0127     		movs	r7, #1
+ 143 0034 00E0     		b	.L30
+ 144              	.L38:
+ 145 0036 0027     		movs	r7, #0
+ 146              	.L30:
+ 147 0038 04AD     		add	r5, sp, #16
+ 148 003a 0023     		movs	r3, #0
+ 149 003c 05F8013D 		strb	r3, [r5, #-1]!
+ 150              	.L31:
+ 151 0040 AA46     		mov	sl, r5
+ 152 0042 6CB1     		cbz	r4, .L46
+ 153              	.L33:
+ 154 0044 B4FBF2F3 		udiv	r3, r4, r2
+ 155 0048 02FB1344 		mls	r4, r2, r3, r4
+ 156 004c 092C     		cmp	r4, #9
+ 157 004e 02DD     		ble	.L32
+ 158 0050 0E99     		ldr	r1, [sp, #56]
+ 159 0052 3A39     		subs	r1, r1, #58
+ 160 0054 6418     		adds	r4, r4, r1
+ 161              	.L32:
+ 162 0056 3034     		adds	r4, r4, #48
+ 163 0058 05F8014D 		strb	r4, [r5, #-1]!
+ 164 005c 1C46     		mov	r4, r3
+ 165 005e EFE7     		b	.L31
+ 166              	.L46:
+ 167 0060 87B1     		cbz	r7, .L34
+ 168 0062 4EB1     		cbz	r6, .L35
+ 169 0064 18F0020F 		tst	r8, #2
+ 170 0068 06D0     		beq	.L35
+ 171 006a 4846     		mov	r0, r9
+ 172 006c 2D21     		movs	r1, #45
+ 173 006e FFF7FEFF 		bl	printchar
+ 174 0072 013E     		subs	r6, r6, #1
+ 175 0074 0127     		movs	r7, #1
+ 176 0076 05E0     		b	.L34
+ 177              	.L35:
+ 178 0078 2D20     		movs	r0, #45
+ 179 007a 05F1FF3A 		add	sl, r5, #-1
+ 180 007e 05F8010C 		strb	r0, [r5, #-1]
+ 181 0082 0027     		movs	r7, #0
+ 182              	.L34:
+ 183 0084 4846     		mov	r0, r9
+ 184 0086 5146     		mov	r1, sl
+ 185 0088 3246     		mov	r2, r6
+ 186 008a 4346     		mov	r3, r8
+ 187 008c FFF7FEFF 		bl	prints
+ 188 0090 3818     		adds	r0, r7, r0
+ 189              	.L29:
+ 190 0092 04B0     		add	sp, sp, #16
+ 191 0094 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+ 193              		.section	.text.print,"ax",%progbits
+ 194              		.align	1
+ 195              		.thumb
+ 196              		.thumb_func
+ 198              	print:
+ 199              		@ args = 0, pretend = 0, frame = 16
+ 200              		@ frame_needed = 0, uses_anonymous_args = 0
+ 201 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 202 0002 89B0     		sub	sp, sp, #36
+ 203 0004 0646     		mov	r6, r0
+ 204 0006 0D46     		mov	r5, r1
+ 205 0008 0592     		str	r2, [sp, #20]
+ 206 000a 0024     		movs	r4, #0
+ 207              	.L48:
+ 208 000c 2B78     		ldrb	r3, [r5, #0]	@ zero_extendqisi2
+ 209 000e 23B1     		cbz	r3, .L66
+ 210              	.L65:
+ 211 0010 252B     		cmp	r3, #37
+ 212 0012 79D1     		bne	.L49
+ 213 0014 6878     		ldrb	r0, [r5, #1]	@ zero_extendqisi2
+ 214 0016 6A1C     		adds	r2, r5, #1
+ 215 0018 28B9     		cbnz	r0, .L50
+ 216              	.L66:
+ 217 001a 002E     		cmp	r6, #0
+ 218 001c 7BD0     		beq	.L52
+ 219              	.L51:
+ 220 001e 3068     		ldr	r0, [r6, #0]
+ 221 0020 0022     		movs	r2, #0
+ 222 0022 0270     		strb	r2, [r0, #0]
+ 223 0024 77E0     		b	.L52
+ 224              	.L50:
+ 225 0026 2528     		cmp	r0, #37
+ 226 0028 6DD0     		beq	.L67
+ 227 002a 2D28     		cmp	r0, #45
+ 228 002c 02D1     		bne	.L68
+ 229 002e AA1C     		adds	r2, r5, #2
+ 230 0030 0123     		movs	r3, #1
+ 231 0032 00E0     		b	.L54
+ 232              	.L68:
+ 233 0034 0023     		movs	r3, #0
+ 234              	.L54:
+ 235 0036 1746     		mov	r7, r2
+ 236 0038 3978     		ldrb	r1, [r7, #0]	@ zero_extendqisi2
+ 237 003a 0132     		adds	r2, r2, #1
+ 238 003c 3029     		cmp	r1, #48
+ 239 003e 02D1     		bne	.L74
+ 240              	.L55:
+ 241 0040 43F00203 		orr	r3, r3, #2
+ 242 0044 F7E7     		b	.L54
+ 243              	.L74:
+ 244 0046 0022     		movs	r2, #0
+ 245              	.L56:
+ 246 0048 3978     		ldrb	r1, [r7, #0]	@ zero_extendqisi2
+ 247 004a 3D46     		mov	r5, r7
+ 248 004c A1F13000 		sub	r0, r1, #48
+ 249 0050 5FFA80FC 		uxtb	ip, r0
+ 250 0054 0137     		adds	r7, r7, #1
+ 251 0056 BCF1090F 		cmp	ip, #9
+ 252 005a 03D8     		bhi	.L75
+ 253              	.L57:
+ 254 005c 0A25     		movs	r5, #10
+ 255 005e 05FB0202 		mla	r2, r5, r2, r0
+ 256 0062 F1E7     		b	.L56
+ 257              	.L75:
+ 258 0064 7329     		cmp	r1, #115
+ 259 0066 09D1     		bne	.L58
+ 260 0068 059F     		ldr	r7, [sp, #20]
+ 261 006a 3046     		mov	r0, r6
+ 262 006c 391D     		adds	r1, r7, #4
+ 263 006e 0591     		str	r1, [sp, #20]
+ 264 0070 3968     		ldr	r1, [r7, #0]
+ 265 0072 2A4F     		ldr	r7, .L76
+ 266 0074 0029     		cmp	r1, #0
+ 267 0076 08BF     		it	eq
+ 268 0078 3946     		moveq	r1, r7
+ 269 007a 41E0     		b	.L72
+ 270              	.L58:
+ 271 007c 6429     		cmp	r1, #100
+ 272 007e 0ED1     		bne	.L61
+ 273 0080 8DE80C00 		stmia	sp, {r2, r3}
+ 274 0084 0599     		ldr	r1, [sp, #20]
+ 275 0086 6123     		movs	r3, #97
+ 276 0088 0293     		str	r3, [sp, #8]
+ 277 008a 081D     		adds	r0, r1, #4
+ 278 008c 0968     		ldr	r1, [r1, #0]
+ 279 008e 0590     		str	r0, [sp, #20]
+ 280 0090 0A22     		movs	r2, #10
+ 281 0092 3046     		mov	r0, r6
+ 282 0094 0123     		movs	r3, #1
+ 283              	.L70:
+ 284 0096 FFF7FEFF 		bl	printi
+ 285              	.L69:
+ 286 009a 2418     		adds	r4, r4, r0
+ 287 009c 39E0     		b	.L60
+ 288              	.L61:
+ 289 009e 7829     		cmp	r1, #120
+ 290 00a0 06D1     		bne	.L62
+ 291 00a2 0599     		ldr	r1, [sp, #20]
+ 292 00a4 8DE80C00 		stmia	sp, {r2, r3}
+ 293 00a8 081D     		adds	r0, r1, #4
+ 294 00aa 0590     		str	r0, [sp, #20]
+ 295 00ac 6122     		movs	r2, #97
+ 296 00ae 07E0     		b	.L73
+ 297              	.L62:
+ 298 00b0 5829     		cmp	r1, #88
+ 299 00b2 0AD1     		bne	.L63
+ 300 00b4 0599     		ldr	r1, [sp, #20]
+ 301 00b6 8DE80C00 		stmia	sp, {r2, r3}
+ 302 00ba 081D     		adds	r0, r1, #4
+ 303 00bc 0590     		str	r0, [sp, #20]
+ 304 00be 4122     		movs	r2, #65
+ 305              	.L73:
+ 306 00c0 0292     		str	r2, [sp, #8]
+ 307 00c2 3046     		mov	r0, r6
+ 308 00c4 0968     		ldr	r1, [r1, #0]
+ 309 00c6 1022     		movs	r2, #16
+ 310 00c8 0BE0     		b	.L71
+ 311              	.L63:
+ 312 00ca 7529     		cmp	r1, #117
+ 313 00cc 0BD1     		bne	.L64
+ 314 00ce 8DE80C00 		stmia	sp, {r2, r3}
+ 315 00d2 0599     		ldr	r1, [sp, #20]
+ 316 00d4 6123     		movs	r3, #97
+ 317 00d6 0293     		str	r3, [sp, #8]
+ 318 00d8 081D     		adds	r0, r1, #4
+ 319 00da 0968     		ldr	r1, [r1, #0]
+ 320 00dc 0590     		str	r0, [sp, #20]
+ 321 00de 0A22     		movs	r2, #10
+ 322 00e0 3046     		mov	r0, r6
+ 323              	.L71:
+ 324 00e2 0023     		movs	r3, #0
+ 325 00e4 D7E7     		b	.L70
+ 326              	.L64:
+ 327 00e6 6329     		cmp	r1, #99
+ 328 00e8 13D1     		bne	.L60
+ 329 00ea 0599     		ldr	r1, [sp, #20]
+ 330 00ec 081D     		adds	r0, r1, #4
+ 331 00ee 0968     		ldr	r1, [r1, #0]
+ 332 00f0 0590     		str	r0, [sp, #20]
+ 333 00f2 0020     		movs	r0, #0
+ 334 00f4 8DF81C10 		strb	r1, [sp, #28]
+ 335 00f8 8DF81D00 		strb	r0, [sp, #29]
+ 336 00fc 07A9     		add	r1, sp, #28
+ 337 00fe 3046     		mov	r0, r6
+ 338              	.L72:
+ 339 0100 FFF7FEFF 		bl	prints
+ 340 0104 C9E7     		b	.L69
+ 341              	.L67:
+ 342 0106 1546     		mov	r5, r2
+ 343              	.L49:
+ 344 0108 3046     		mov	r0, r6
+ 345 010a 2978     		ldrb	r1, [r5, #0]	@ zero_extendqisi2
+ 346 010c FFF7FEFF 		bl	printchar
+ 347 0110 0134     		adds	r4, r4, #1
+ 348              	.L60:
+ 349 0112 0135     		adds	r5, r5, #1
+ 350 0114 7AE7     		b	.L48
+ 351              	.L52:
+ 352 0116 2046     		mov	r0, r4
+ 353 0118 09B0     		add	sp, sp, #36
+ 354 011a F0BD     		pop	{r4, r5, r6, r7, pc}
+ 355              	.L77:
+ 356              		.align	2
+ 357              	.L76:
+ 358 011c 00000000 		.word	.LC0
+ 360              		.section	.text.printf,"ax",%progbits
+ 361              		.align	1
+ 362              		.global	printf
+ 363              		.thumb
+ 364              		.thumb_func
+ 366              	printf:
+ 367              		@ args = 4, pretend = 16, frame = 8
+ 368              		@ frame_needed = 0, uses_anonymous_args = 1
+ 369 0000 0FB4     		push	{r0, r1, r2, r3}
+ 370 0002 07B5     		push	{r0, r1, r2, lr}
+ 371 0004 04AA     		add	r2, sp, #16
+ 372 0006 52F8041B 		ldr	r1, [r2], #4
+ 373 000a 0020     		movs	r0, #0
+ 374 000c 0192     		str	r2, [sp, #4]
+ 375 000e FFF7FEFF 		bl	print
+ 376 0012 BDE80E40 		pop	{r1, r2, r3, lr}
+ 377 0016 04B0     		add	sp, sp, #16
+ 378 0018 7047     		bx	lr
+ 380              		.section	.text.sprintf,"ax",%progbits
+ 381              		.align	1
+ 382              		.global	sprintf
+ 383              		.thumb
+ 384              		.thumb_func
+ 386              	sprintf:
+ 387              		@ args = 4, pretend = 12, frame = 16
+ 388              		@ frame_needed = 0, uses_anonymous_args = 1
+ 389 0000 0EB4     		push	{r1, r2, r3}
+ 390 0002 0FB5     		push	{r0, r1, r2, r3, lr}
+ 391 0004 05AA     		add	r2, sp, #20
+ 392 0006 52F8041B 		ldr	r1, [r2], #4
+ 393 000a 0190     		str	r0, [sp, #4]
+ 394 000c 01A8     		add	r0, sp, #4
+ 395 000e 0392     		str	r2, [sp, #12]
+ 396 0010 FFF7FEFF 		bl	print
+ 397 0014 04B0     		add	sp, sp, #16
+ 398 0016 5DF804EB 		pop	{lr}
+ 399 001a 03B0     		add	sp, sp, #12
+ 400 001c 7047     		bx	lr
+ 402              		.section	.text.snprintf,"ax",%progbits
+ 403              		.align	1
+ 404              		.global	snprintf
+ 405              		.thumb
+ 406              		.thumb_func
+ 408              	snprintf:
+ 409              		@ args = 4, pretend = 8, frame = 16
+ 410              		@ frame_needed = 0, uses_anonymous_args = 1
+ 411 0000 0CB4     		push	{r2, r3}
+ 412 0002 1FB5     		push	{r0, r1, r2, r3, r4, lr}
+ 413 0004 06AA     		add	r2, sp, #24
+ 414 0006 52F8041B 		ldr	r1, [r2], #4
+ 415 000a 0190     		str	r0, [sp, #4]
+ 416 000c 01A8     		add	r0, sp, #4
+ 417 000e 0392     		str	r2, [sp, #12]
+ 418 0010 FFF7FEFF 		bl	print
+ 419 0014 05B0     		add	sp, sp, #20
+ 420 0016 5DF804EB 		pop	{lr}
+ 421 001a 02B0     		add	sp, sp, #8
+ 422 001c 7047     		bx	lr
+ 424              		.section	.text.write,"ax",%progbits
+ 425              		.align	1
+ 426              		.global	write
+ 427              		.thumb
+ 428              		.thumb_func
+ 430              	write:
+ 431              		@ args = 0, pretend = 0, frame = 0
+ 432              		@ frame_needed = 0, uses_anonymous_args = 0
+ 433              		@ link register save eliminated.
+ 434 0000 0020     		movs	r0, #0
+ 435 0002 7047     		bx	lr
+ 437              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 438              	.LC0:
+ 439 0000 286E756C 		.ascii	"(null)\000"
+ 439      6C2900
+ 440              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.4 20130913 (release) [ARM/embedded-4_7-br
+DEFINED SYMBOLS
+                            *ABS*:00000000 printf-stdarg.c
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:16     .text.printchar:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:20     .text.printchar:00000000 printchar
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:34     .text.prints:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:38     .text.prints:00000000 prints
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:114    .text.printi:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:118    .text.printi:00000000 printi
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:194    .text.print:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:198    .text.print:00000000 print
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:358    .text.print:0000011c $d
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:361    .text.printf:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:366    .text.printf:00000000 printf
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:381    .text.sprintf:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:386    .text.sprintf:00000000 sprintf
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:403    .text.snprintf:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:408    .text.snprintf:00000000 snprintf
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:425    .text.write:00000000 $t
+C:\Users\kang\AppData\Local\Temp\ccx9QQaX.s:430    .text.write:00000000 write
+
+NO UNDEFINED SYMBOLS

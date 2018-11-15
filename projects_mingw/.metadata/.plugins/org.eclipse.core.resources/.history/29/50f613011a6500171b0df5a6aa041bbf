@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+
+
+int main_event_group(void);
+int main_queueset(void);
+int main_trace(void);
+int main_test_dbc(void);
+
+void enableFlushAfterPrintf()
+{
+    setvbuf(stdout, 0, _IONBF, 0);
+    setvbuf(stdin, 0, _IONBF, 0);
+}
+
+int main(void)
+{
+    enableFlushAfterPrintf();
+    //main_test_dbc();
+
+    return 0;
+}

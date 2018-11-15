@@ -1,0 +1,9 @@
+connectionTypeId=org.eclipse.remote.JSch
+connections/org.eclipse.remote.JSch/egg/JSCH_ADDRESS_ATTR=egg
+connections/org.eclipse.remote.JSch/egg/JSCH_IS_PASSWORD_ATTR=true
+connections/org.eclipse.remote.JSch/egg/JSCH_LOGIN_SHELL_COMMAND_ATTR=/bin/bash -l -c '{0}'
+connections/org.eclipse.remote.JSch/egg/JSCH_PORT_ATTR=22
+connections/org.eclipse.remote.JSch/egg/JSCH_TIMEOUT_ATTR=0
+connections/org.eclipse.remote.JSch/egg/JSCH_USERNAME_ATTR=prkang
+connections/org.eclipse.remote.JSch/egg/JSCH_USE_LOGIN_SHELL_ATTR=true
+eclipse.preferences.version=1

@@ -1,0 +1,390 @@
+Archive member included because of file (symbol)
+
+d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__atexit.o)
+                              d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m/crt0.o (__register_exitproc)
+d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-exit.o)
+                              d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m/crt0.o (exit)
+d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fini.o)
+                              d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m/crt0.o (__libc_fini_array)
+d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
+                              d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__atexit.o) (_global_impure_ptr)
+d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-init.o)
+                              d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m/crt0.o (__libc_init_array)
+d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
+                              d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m/crt0.o (memset)
+d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
+                              d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-exit.o) (__call_exitprocs)
+d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-atexit.o)
+                              d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o) (atexit)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crti.o
+ .data          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crti.o
+ .bss           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crti.o
+ .init          0x00000000        0x4 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crti.o
+ .fini          0x00000000        0x4 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crti.o
+ .ARM.attributes
+                0x00000000       0x1d d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crti.o
+ .text          0x00000000       0x54 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtbegin.o
+ .data          0x00000000        0x4 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtbegin.o
+ .bss           0x00000000       0x1c d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtbegin.o
+ .init_array    0x00000000        0x4 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtbegin.o
+ .fini_array    0x00000000        0x4 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtbegin.o
+ .eh_frame      0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtbegin.o
+ .jcr           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtbegin.o
+ .ARM.attributes
+                0x00000000       0x2d d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtbegin.o
+ .text          0x00000000       0x70 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .data          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .bss           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.extab     0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.exidx     0x00000000        0x8 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.attributes
+                0x00000000       0x1b d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .text          0x00000000        0x0 ./zCpu/core_cm3.o
+ .data          0x00000000        0x0 ./zCpu/core_cm3.o
+ .bss           0x00000000        0x0 ./zCpu/core_cm3.o
+ .text.__get_PSP
+                0x00000000        0x8 ./zCpu/core_cm3.o
+ .text.__set_PSP
+                0x00000000        0x6 ./zCpu/core_cm3.o
+ .text.__get_MSP
+                0x00000000        0x8 ./zCpu/core_cm3.o
+ .text.__set_MSP
+                0x00000000        0x6 ./zCpu/core_cm3.o
+ .text.__get_BASEPRI
+                0x00000000        0x6 ./zCpu/core_cm3.o
+ .text.__set_BASEPRI
+                0x00000000        0x6 ./zCpu/core_cm3.o
+ .text.__get_PRIMASK
+                0x00000000        0x6 ./zCpu/core_cm3.o
+ .text.__set_PRIMASK
+                0x00000000        0x6 ./zCpu/core_cm3.o
+ .text.__get_FAULTMASK
+                0x00000000        0x6 ./zCpu/core_cm3.o
+ .text.__set_FAULTMASK
+                0x00000000        0x6 ./zCpu/core_cm3.o
+ .text.__get_CONTROL
+                0x00000000        0x6 ./zCpu/core_cm3.o
+ .text.__set_CONTROL
+                0x00000000        0x6 ./zCpu/core_cm3.o
+ .text.__REV    0x00000000        0x4 ./zCpu/core_cm3.o
+ .text.__REV16  0x00000000        0x4 ./zCpu/core_cm3.o
+ .text.__REVSH  0x00000000        0x4 ./zCpu/core_cm3.o
+ .text.__RBIT   0x00000000        0x6 ./zCpu/core_cm3.o
+ .text.__LDREXB
+                0x00000000        0x8 ./zCpu/core_cm3.o
+ .text.__LDREXH
+                0x00000000        0x8 ./zCpu/core_cm3.o
+ .text.__LDREXW
+                0x00000000        0x6 ./zCpu/core_cm3.o
+ .text.__STREXB
+                0x00000000        0x4 ./zCpu/core_cm3.o
+ .text.__STREXH
+                0x00000000        0x4 ./zCpu/core_cm3.o
+ .text.__STREXW
+                0x00000000        0x6 ./zCpu/core_cm3.o
+ .comment       0x00000000       0x71 ./zCpu/core_cm3.o
+ .ARM.attributes
+                0x00000000       0x33 ./zCpu/core_cm3.o
+ .text          0x00000000        0x0 ./zCpu/printf-stdarg.o
+ .data          0x00000000        0x0 ./zCpu/printf-stdarg.o
+ .bss           0x00000000        0x0 ./zCpu/printf-stdarg.o
+ .text.printchar
+                0x00000000        0xe ./zCpu/printf-stdarg.o
+ .text.prints   0x00000000       0x82 ./zCpu/printf-stdarg.o
+ .text.printi   0x00000000       0x98 ./zCpu/printf-stdarg.o
+ .text.print    0x00000000      0x120 ./zCpu/printf-stdarg.o
+ .text.printf   0x00000000       0x1a ./zCpu/printf-stdarg.o
+ .text.sprintf  0x00000000       0x1e ./zCpu/printf-stdarg.o
+ .text.snprintf
+                0x00000000       0x1e ./zCpu/printf-stdarg.o
+ .text.write    0x00000000        0x4 ./zCpu/printf-stdarg.o
+ .rodata.str1.1
+                0x00000000        0x7 ./zCpu/printf-stdarg.o
+ .comment       0x00000000       0x71 ./zCpu/printf-stdarg.o
+ .ARM.attributes
+                0x00000000       0x33 ./zCpu/printf-stdarg.o
+ .text          0x00000000        0x0 ./zCpu/system_LPC17xx.o
+ .data          0x00000000        0x0 ./zCpu/system_LPC17xx.o
+ .bss           0x00000000        0x0 ./zCpu/system_LPC17xx.o
+ .text.SystemCoreClockUpdate
+                0x00000000       0xa4 ./zCpu/system_LPC17xx.o
+ .text          0x00000000        0x0 ./startup/cr_startup_lpc175x.o
+ .data          0x00000000        0x0 ./startup/cr_startup_lpc175x.o
+ .bss           0x00000000        0x0 ./startup/cr_startup_lpc175x.o
+ .text          0x00000000        0x0 ./main.o
+ .data          0x00000000        0x0 ./main.o
+ .bss           0x00000000        0x0 ./main.o
+ .text.uart0Puts
+                0x00000000       0x12 ./main.o
+ .text          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__atexit.o)
+ .data          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__atexit.o)
+ .bss           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__atexit.o)
+ .text.__register_exitproc
+                0x00000000       0xac d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__atexit.o)
+ .ARM.attributes
+                0x00000000       0x2d d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__atexit.o)
+ .debug_frame   0x00000000       0x34 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__atexit.o)
+ .text          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-exit.o)
+ .data          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-exit.o)
+ .bss           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-exit.o)
+ .text.exit     0x00000000       0x20 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-exit.o)
+ .ARM.attributes
+                0x00000000       0x2d d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-exit.o)
+ .debug_frame   0x00000000       0x28 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-exit.o)
+ .text          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fini.o)
+ .data          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fini.o)
+ .bss           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fini.o)
+ .text.__libc_fini_array
+                0x00000000       0x50 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fini.o)
+ .ARM.attributes
+                0x00000000       0x2d d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fini.o)
+ .debug_frame   0x00000000       0x2c d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-fini.o)
+ .text          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
+ .data          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
+ .data.impure_data
+                0x00000000      0x428 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x00000000        0x4 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
+ .rodata.str1.4
+                0x00000000        0x4 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x00000000        0x4 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000000       0x2d d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-impure.o)
+ .text          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-init.o)
+ .data          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-init.o)
+ .bss           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-init.o)
+ .text.__libc_init_array
+                0x00000000       0x94 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000000       0x2d d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-init.o)
+ .debug_frame   0x00000000       0x30 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-init.o)
+ .text          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
+ .data          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
+ .text.memset   0x00000000      0x12c d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
+ .ARM.attributes
+                0x00000000       0x2d d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
+ .debug_frame   0x00000000       0x2c d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
+ .text          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
+ .data          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
+ .bss           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
+ .text.startup.register_fini
+                0x00000000       0x14 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
+ .init_array.00000
+                0x00000000        0x4 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
+ .text.__call_exitprocs
+                0x00000000      0x288 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
+ .ARM.attributes
+                0x00000000       0x2d d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00000000       0x48 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-__call_atexit.o)
+ .text          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-atexit.o)
+ .data          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-atexit.o)
+ .bss           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-atexit.o)
+ .text.atexit   0x00000000        0xc d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-atexit.o)
+ .ARM.attributes
+                0x00000000       0x2d d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-atexit.o)
+ .debug_frame   0x00000000       0x20 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-atexit.o)
+ .text          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtend.o
+ .data          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtend.o
+ .bss           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtend.o
+ .eh_frame      0x00000000        0x4 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtend.o
+ .jcr           0x00000000        0x4 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtend.o
+ .ARM.attributes
+                0x00000000       0x2d d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtend.o
+ .text          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtn.o
+ .data          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtn.o
+ .bss           0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtn.o
+ .init          0x00000000        0x8 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtn.o
+ .fini          0x00000000        0x8 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtn.o
+ .ARM.attributes
+                0x00000000       0x1d d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+MFlash512        0x00001000         0x00080000         xr
+RamLoc32         0x10000000         0x00008000         xrw
+RamAHB32         0x2007c000         0x00008000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crti.o
+LOAD d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtbegin.o
+LOAD d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+LOAD ./zCpu/core_cm3.o
+LOAD ./zCpu/printf-stdarg.o
+LOAD ./zCpu/system_LPC17xx.o
+LOAD ./startup/cr_startup_lpc175x.o
+LOAD ./main.o
+START GROUP
+LOAD d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m\libgcc.a
+LOAD d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/armv7-m\libc.a
+END GROUP
+LOAD d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtend.o
+LOAD d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtn.o
+                0x00080000                __top_MFlash512 = 0x80000
+                0x10008000                __top_RamLoc32 = 0x10008000
+                0x20084000                __top_RamAHB32 = 0x20084000
+
+.text           0x00001000      0x2d0
+ FILL mask 0xff
+ *(.isr_vector)
+ .isr_vector    0x00001000       0xcc ./startup/cr_startup_lpc175x.o
+                0x00001000                g_pfnVectors
+                0x000010cc                . = ALIGN (0x4)
+                0x000010cc                __section_table_start = .
+                0x000010cc                __data_section_table = .
+                0x000010cc        0x4 LONG 0x12d0 LOADADDR (.data)
+                0x000010d0        0x4 LONG 0x10000000 ADDR (.data)
+                0x000010d4        0x4 LONG 0x4 SIZEOF (.data)
+                0x000010d8                __data_section_table_end = .
+                0x000010d8                __bss_section_table = .
+                0x000010d8        0x4 LONG 0x10000004 ADDR (.bss)
+                0x000010dc        0x4 LONG 0x0 SIZEOF (.bss)
+                0x000010e0                __bss_section_table_end = .
+                0x000010e0                __section_table_end = .
+ *(.after_vectors*)
+ .after_vectors
+                0x000010e0       0x70 ./startup/cr_startup_lpc175x.o
+                0x000010e0                NMI_Handler
+                0x000010e2                HardFault_Handler
+                0x000010e4                MemManage_Handler
+                0x000010e6                BusFault_Handler
+                0x000010e8                UsageFault_Handler
+                0x000010ea                SVC_Handler
+                0x000010ec                DebugMon_Handler
+                0x000010ee                PendSV_Handler
+                0x000010f0                SysTick_Handler
+                0x000010f2                PWM1_IRQHandler
+                0x000010f2                I2C1_IRQHandler
+                0x000010f2                EINT2_IRQHandler
+                0x000010f2                UART1_IRQHandler
+                0x000010f2                EINT3_IRQHandler
+                0x000010f2                CANActivity_IRQHandler
+                0x000010f2                TIMER3_IRQHandler
+                0x000010f2                UART0_IRQHandler
+                0x000010f2                MCPWM_IRQHandler
+                0x000010f2                I2C0_IRQHandler
+                0x000010f2                IntDefaultHandler
+                0x000010f2                RIT_IRQHandler
+                0x000010f2                CAN_IRQHandler
+                0x000010f2                PLL1_IRQHandler
+                0x000010f2                SSP0_IRQHandler
+                0x000010f2                I2S_IRQHandler
+                0x000010f2                I2C2_IRQHandler
+                0x000010f2                RTC_IRQHandler
+                0x000010f2                TIMER0_IRQHandler
+                0x000010f2                SPI_IRQHandler
+                0x000010f2                UART3_IRQHandler
+                0x000010f2                EINT1_IRQHandler
+                0x000010f2                TIMER1_IRQHandler
+                0x000010f2                UART2_IRQHandler
+                0x000010f2                ADC_IRQHandler
+                0x000010f2                SSP1_IRQHandler
+                0x000010f2                USB_IRQHandler
+                0x000010f2                BOD_IRQHandler
+                0x000010f2                USBActivity_IRQHandler
+                0x000010f2                WDT_IRQHandler
+                0x000010f2                PLL0_IRQHandler
+                0x000010f2                QEI_IRQHandler
+                0x000010f2                EINT0_IRQHandler
+                0x000010f2                TIMER2_IRQHandler
+                0x000010f2                DMA_IRQHandler
+                0x000010f2                ENET_IRQHandler
+                0x000010f4                data_init
+                0x00001106                bss_init
+                0x00001116                ResetISR
+ *(.text*)
+ .text.SystemInit
+                0x00001150       0xd8 ./zCpu/system_LPC17xx.o
+                0x00001150                SystemInit
+ .text.delay    0x00001228       0x18 ./main.o
+                0x00001228                delay
+ .text.uartInit
+                0x00001240       0x5c ./main.o
+                0x00001240                uartInit
+ .text.uart0Putchar
+                0x0000129c       0x18 ./main.o
+                0x0000129c                uart0Putchar
+ .text.startup.main
+                0x000012b4       0x1a ./main.o
+                0x000012b4                main
+ *(.rodata .rodata.*)
+                0x000012d0                . = ALIGN (0x4)
+ *fill*         0x000012ce        0x2 ff
+
+.glue_7         0x000012d0        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x000012d0        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x000012d0        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x000012d0        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x000012d0        0x0
+ .iplt          0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtbegin.o
+
+.rel.dyn        0x000012d0        0x0
+ .rel.iplt      0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtbegin.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x000012d0                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x000012d0                __exidx_end = .
+                0x000012d0                _etext = .
+
+.uninit_RESERVED
+ *(.bss.$RESERVED*)
+
+.data           0x10000000        0x4 load address 0x000012d0
+ FILL mask 0xff
+                0x10000000                _data = .
+ *(vtable)
+ *(.data*)
+ .data.SystemCoreClock
+                0x10000000        0x4 ./zCpu/system_LPC17xx.o
+                0x10000000                SystemCoreClock
+                0x10000004                . = ALIGN (0x4)
+                0x10000004                _edata = .
+
+.igot.plt       0x10000004        0x0 load address 0x000012d4
+ .igot.plt      0x00000000        0x0 d:/sjsu_dev/toolchain/bin/../lib/gcc/arm-none-eabi/4.7.4/armv7-m/crtbegin.o
+
+.bss            0x10000004        0x0 load address 0x000012d4
+                0x10000004                _bss = .
+ *(.bss*)
+ *(COMMON)
+                0x10000004                . = ALIGN (0x4)
+                0x10000004                _ebss = .
+                0x10000004                PROVIDE (end, .)
+                0x10000004                PROVIDE (_pvHeapStart, .)
+                0x10008000                PROVIDE (_vStackTop, (__top_RamLoc32 - 0x0))
+OUTPUT(lpc1758_NoOS_HelloWorld.elf elf32-littlearm)
+
+.comment        0x00000000       0x70
+ .comment       0x00000000       0x70 ./zCpu/system_LPC17xx.o
+                                 0x71 (size before relaxing)
+ .comment       0x00000000       0x71 ./startup/cr_startup_lpc175x.o
+ .comment       0x00000000       0x71 ./main.o
+
+.ARM.attributes
+                0x00000000       0x29
+ .ARM.attributes
+                0x00000000       0x33 ./zCpu/system_LPC17xx.o
+ .ARM.attributes
+                0x00000033       0x33 ./startup/cr_startup_lpc175x.o
+ .ARM.attributes
+                0x00000066       0x33 ./main.o

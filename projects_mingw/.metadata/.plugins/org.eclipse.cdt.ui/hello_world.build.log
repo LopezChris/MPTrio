@@ -1,0 +1,7 @@
+17:46:45 **** Incremental Build of configuration Debug for project hello_world ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\hello_world.o" "..\\src\\hello_world.cpp" 
+g++ -o hello_world.exe "src\\hello_world.o" 
+
+17:46:46 Build Finished (took 364ms)
+

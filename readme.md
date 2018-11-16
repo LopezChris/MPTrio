@@ -1,6 +1,9 @@
 # 146 MP3 Project
 
-Folder structure for applications, we'll be pulling the drivers from `MPTrio/projects/lpc1758_freertos/L5_Application/`.
+Folder structure for applications, we'll be pulling the drivers from `MPTrio/projects/lpc1758_freertos/L2_Drivers/` and writing out application in L5_Application
+
+Below is the structure for our application folder, so far only
+**main.cpp**, **taks.hpp**, and **mp3_player.cpp** are relevant.
 
 ~~~bash
 projects/lpc1758_freertos/L5_Application/

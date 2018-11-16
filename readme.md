@@ -1,17 +1,32 @@
 # 146 MP3 Project
 
-Folder structure for applications, we'll be pulling the drivers from `/firmware/lib/L2_Drivers`.
-
-Application folder for project [/firmware/mp3_player](https://github.com/LopezChris/MPTrio/tree/master/firmware/mp3_player)
+Folder structure for applications, we'll be pulling the drivers from `MPTrio/projects/lpc1758_freertos/L5_Application/`.
 
 ~~~bash
-firmware/mp3_player
-├── controls
-├── decoder
-│   └── VS1053_decoder
-├── display
-│   └── nokia_5110_display
-└── file_sys
+projects/lpc1758_freertos/L5_Application/
+├── examples
+│   ├── examples.cpp
+│   ├── examples.hpp
+│   ├── rn_xv_task.cpp
+│   └── rn_xv_task.hpp
+├── handlers.hpp
+├── main.cpp
+├── periodic_scheduler
+│   ├── period_callbacks.cpp
+│   ├── periodic_callback.h
+│   └── prd_monitor.cpp
+├── shared_handles.h
+├── source
+│   ├── cmd_handlers
+│   │   ├── handlers.cpp
+│   │   ├── prog_handlers.cpp
+│   │   └── wireless_handlers.cpp
+│   ├── high_level_init.cpp
+│   ├── mainpage.h
+│   ├── mp3_player.cpp
+│   ├── remote.cpp
+│   └── terminal.cpp
+└── tasks.hpp
 ~~~
 
 ## Parts used

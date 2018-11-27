@@ -127,6 +127,13 @@ int main(void)
     #if 1
         mp3_player = new mp3PlayerTask(PRIORITY_HIGH);
         scheduler_add_task(mp3_player);
+
+        // Waits for string to be posted to shared queue
+        scheduler_add_task(new receiveMessage());
+
+        // Simple test that posts a string to shared queue
+        // unconment below for simple test to ensure everything is OKAY dont remove until we shure
+       // scheduler_add_task(new postMessage());
     #endif
 
     scheduler_start(); ///< This shouldn't return

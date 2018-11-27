@@ -1,35 +1,36 @@
 #ifndef NOKIA5110_HPP_
 #define NOKIA5110_HPP_
 
-
-#include "printf_lib.h"
-//Communicate with LCD Display over SPI0
+#include "tasks.hpp"
+#include "LPC17xx.h"
 #include "L4_IO/gpio.hpp"
 #include "L2_Drivers/ssp1.h"
 #include "L2_Drivers/lpc_pwm.hpp"
 
 
-class LCDDisplayNokia5110 {
+class NOKIA5110{
 private:
+    GPIO *m_sce, *m_dc, *m_reset;
+
+    PWM *m_backlight;
 
     enum CMD_DATA{
         LCD_COMMAND = 0,
         LCD_DATA = 1
     };
 
-
-    const char *m_displayName = "Nokia5110";
-
-    GPIO *m_sce, *m_dc, *m_reset;
-    PWM *m_backlight;
-
     uint8_t m_no_op_cmd = 0x00; // command to inform display to do no operation
     uint8_t m_basic_instr_cmd = 0x20; //set function to use basic instruction set
     uint8_t m_extended_instr_cmd = 0x21; //set function to use extended instruction set
 
-    //Data Member (LCD_WIDTH/LCD_HEIGHT) of the class shared by all objects
     static constexpr uint8_t LCD_WIDTH = 84; // X-coordinates go wide (column)
     static constexpr uint8_t LCD_HEIGHT = 48; //Y-coordinates go high (row)
+
+
+    // Each char is 5 pixels wide and 8 pixels in height
+    // In this case the characters are inverted
+    // Found this example for arduino but it works here, no need to re-invent the wheel
+    // Font used is monospace
 
     static constexpr uint8_t ascii[][5] = {
             // The first 32 characters are ignored [0x00 - 0x19]
@@ -132,8 +133,11 @@ private:
             {0x78, 0x46, 0x41, 0x46, 0x78} // 0x7f DEL
     };
 
-    uint8_t displayMap[LCD_WIDTH * LCD_HEIGHT / 8] = {
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // (0,0)->(11,7) ~ These 12 bytes cover an 8x12 block in the left corner of the display
+    // Becuase of the screen RAM we must first write the pixels we wish to print to memory before displaying
+    // Note the comment next to each row, these are the (x,y) positions from first pixel to last on that row
+
+    uint8_t display_map[LCD_WIDTH * LCD_HEIGHT / 8] = {
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // (0,0)->(11,7)
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // (12,0)->(23,7)
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, // (24,0)->(35,7)
             0xF0, 0xF8, 0xFC, 0xFC, 0xFE, 0xFE, 0xFE, 0xFE, 0x1E, 0x0E, 0x02, 0x00, // (36,0)->(47,7)
@@ -174,142 +178,148 @@ private:
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // (36,40)->(47,47)
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // (48,40)->(59,47)
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // (60,40)->(71,47)
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // (72,40)->(83,47) !!! The bottom right pixel!
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     };
 
 
 public:
-
     //Constants that specifies how the display will be cleared
     enum CLEAR_DISPLAY{
-        WHITE = 0, //draw pixels white
-        BLACK = 1 //or invert and draw pixels black
+        WHITE = 1,
+        BLACK = 0
     };
 
-     /**
-     * Default Constructor
-     */
-    LCDDisplayNokia5110();
+    // Default constructor
+    NOKIA5110();
 
-    LCDDisplayNokia5110(GPIO *sce_pin, GPIO *dc_pin, GPIO *res_pin, PWM *backlight_pin);
-    virtual ~LCDDisplayNokia5110();
+    // Constructor with initialized objects
+    NOKIA5110(GPIO *sce, GPIO *dc, GPIO *reset, PWM *pwm_pin);
 
-    void initPinPeripherals();
+    // Initializes all of the peripherals passed on by the constructor
+    // SCE -> Output
+    // DC  -> Output
+    // RST -> Output
+    void init_peripherals();
 
-    void activateLEDBackLight();
+    // Sets PWM
+    void turn_on_backlight();
 
-    void deactivateLEDBackLight();
+    void turn_off_backlight();
 
-    void hardReset();
+    // Hard reset of the LCD screen
+    // PCD8544 Datasheet Figure 13
+    void reset();
 
-    void setContrast(uint8_t contrast);
+    // Function that transfers the information stored on the display_map and
+    // writes it to LCD screen by clearing or setting bits specified
+    void update_display();
 
-    void updateDisplay();
+    // Clears all of pixels
+    void clear_display(bool white_background);
 
-    void clearDisplay(bool black_white);
-
-    bool initDisplay();
-
-    /*
-     * Interface that prints ascii character (defined in multi-dimensional
-     * array ASCII table) at a specific X and Y coordinate onto the display
-     *
-     * @param x The X coordinate for the desired character to be printed
-     * @param y The Y coordinate for the desired character to be printed
-     * @param character The ascii character that will be sent to the display
-     * @param black_white The color that the ascii character will appear as
-     * black = 1 or white = 0 on the display
-     */
-    void printCharacter(uint8_t x, uint8_t y, char character, bool black_white);
+    // Init peripherals
+    // Reset Screen
+    // Set Contrast
+    // Set Temperature
+    // Set screen to Display Mode
+    // Clear all pixels
+    bool init_display();
 
     /**
-     * Interface that prints a string onto the display at a specific X and Y
-     * coordinate
-     *
-     * @param x The X coordinate for the desired c_string to be printed
-     * @param y The Y coordinate for the desired c_string to be printed
-     * @param *c_string The pointer to const char data types that points to
-     * usually an array of characters that make up a string
-     * @param black_white The color that the c_string will appear as
-     * black = 1 or white = 0 on the display
+     * Takes data stored on the display_map
+     * array and sets pixel by pixel by checking if the bit is set
      */
-    void printString(uint8_t x, uint8_t y, const char *c_string, bool black_white);
+    void print_char(uint8_t x, uint8_t y, char character, bool black_character);
+
+    /**
+     * Simply leverages print_char function until all of the chars in the string are accounted for
+     * Note: As of now looking for '\0' for exiting character
+     */
+    void print_string(uint8_t x, uint8_t y, const char *string, bool black_character);
+
+    /**
+     * Contrast dependent on operating voltage
+     * do not change unless needed
+     */
+    void set_contrast(uint8_t contrast);
 
     private:
 
     /**
-     * Select or de-select display using SCE chip select pin
+     * Sets SCE low
+     * LCD device is active low
      */
+    void select_display();
 
     /**
-     * The SCE_ (active LOW) Chip Enable pin allows data to be clocked in
-     * This input pin on LCD Display is sent an active LOW signal
+     * Sets 0SCE high
+     * LCD Device is active low
      */
-    void selectDisplay();
-    void deselectDisplay();
-
-/**
-     * Sets the D/C_ pin HIGH to select data transmission mode
-     */
-    void selectDataMode();
+    void deselect_display();
 
     /**
-     * Sets the D/C_ pin LOW to select command transmission mode
+     * DC set to high
      */
-    void selectCommandMode();
-
-
-    //Ref Pg 12
-    void sendCommand(uint8_t *cmd);
-
-    void sendCommands(uint8_t *cmd, uint8_t size);
-
-
-    void sendData(uint8_t *data);
-
-    void sendDataBytes(uint8_t *data, uint8_t size);
-
-
-  /**
-     * Performs no operation
-     *
-     * DC pin set LOW, Command Byte = 0b00000000 = 0x00
-     */
-    void nop();
-
+    void select_data_mode();
 
     /**
-     * Performs power down control, entry mode and can extend instruction set (H)
-     *
-     * @param specify_function The specific functions or instructions you want
-     * to access, either basic instructions when H bit = 0
-     * or extended instructions when H bit = 1
-     *
-     * @note: command byte sequence, 0 0 1 0 0 PD V H, is sent to the display and
-     * we are just concerned with setting or clearing the H bit
+     * DC set to low
      */
-    void setFunction(uint8_t specify_function);
-
-    void controlDisplay(uint8_t configure_display);
-
+    void select_command_mode();
 
     /**
-     * Sets X vector address of DDRAM, must fall between 0 <= X <= 83
-     * Reference: PCD8544 Datasheet "7.7 Addressing", pg 9
+     * Leverages ssp1_exchange_byte
+     * to write commands, this is determined by DC
      */
-    void setYAddressDDRAM(uint8_t y_address);
+    void send_command(uint8_t *command);
 
-    void setXAddressDDRAM(uint8_t x_address);
+    /**
+     * Leverages send_command function multiple times
+     */
+    void send_commands(uint8_t *command, uint8_t size);
 
-    void controlTemperature(uint8_t set_temp_coeff);
+     /**
+     * Leverages ssp1_exchange_byte
+     * to write data, this is determined by DC
+     */
+    void send_data(uint8_t *data);
 
-    void setBiasSystem(uint8_t bias_number);
+    /**
+     * Leverages send_data function multiple times
+     */
+    void send_data_bytes(uint8_t *data, uint8_t size);
 
-    void setVop(uint8_t vop_value);
+    void no_op();
 
-    void jumpToXY(uint8_t x, uint8_t y);
+    /**
+     * Leverages ssp1_exchange_byte
+     * to wset a function
+     */
+    void set_function(uint8_t function);
 
-    void setPixel(uint8_t x, uint8_t y, bool black_white);
+    void control_display(uint8_t configuration);
+
+    void set_address_y(uint8_t y_address);
+
+    void set_address_x(uint8_t x_address);
+
+    void set_temperature(uint8_t temp_coefficient);
+
+    void set_bias(uint8_t bias);
+
+    /**
+     * dont mess with this after setting it inittially
+     */
+    void set_Vop(uint8_t Vop);
+
+    void set_xy_location(uint8_t x, uint8_t y);
+
+    /**
+     * Most funcdamental and imporatnt function, everthing builds off this
+     * sets individual bit based on x and y position
+     */
+    void set_pixel(uint8_t x, uint8_t y, bool black_character);
 
 };
-#endif
+
+#endif //NOKIA5110_HPP_

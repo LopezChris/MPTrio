@@ -16,6 +16,9 @@ projects/lpc1758_freertos/L5_Application/
 │   └── rn_xv_task.hpp
 ├── handlers.hpp
 ├── main.cpp
+├── mp3_devices
+│   ├── NOKIA5110.cpp
+│   └── NOKIA5110.hpp
 ├── periodic_scheduler
 │   ├── period_callbacks.cpp
 │   ├── periodic_callback.h
@@ -36,7 +39,8 @@ projects/lpc1758_freertos/L5_Application/
 
 ## Parts used
 
-1. [LCD Screen](https://www.sparkfun.com/products/10168)
+1. [LCD Screen Model](https://www.sparkfun.com/products/10168)
     - [Data sheet](https://www.sparkfun.com/datasheets/LCD/Monochrome/Nokia5110.pdf)
-2. [Decoder](https://www.adafruit.com/product/1381)
+    - [Shortcut to Directory in Project](https://github.com/LopezChris/MPTrio/tree/master/projects/lpc1758_freertos/L5_Application/mp3_devices)
+2. [Decoder Model](https://www.adafruit.com/product/1381)
     - [Library for application](https://github.com/LopezChris/Adafruit_VS1053_Library)

@@ -1,24 +1,27 @@
 # 146 MP3 Project
 
+## Device drivers go [here](https://github.com/LopezChris/MPTrio/tree/master/projects/lpc1758_freertos/L5_Application/mp3_devices)
+
 Folder structure for applications, we'll be pulling the drivers from `MPTrio/projects/lpc1758_freertos/L2_Drivers/` and writing out application in L5_Application
 
 [**lpc1758_freertos shortcut**](https://github.com/LopezChris/MPTrio/tree/master/projects/lpc1758_freertos)
 
 Below is the structure for our application folder, so far only
-**main.cpp**, **taks.hpp**, and **mp3_player.cpp** are relevant.
+**main.cpp**, **taks.hpp**, **mp3_player.cpp**, **NOKIA5110.hpp**, **NOKIA5110.cpp**, **runLCD.hpp**, and **runLCD.hpp** are relevant.
 
 ~~~bash
 projects/lpc1758_freertos/L5_Application/
-├── examples
-│   ├── examples.cpp
-│   ├── examples.hpp
-│   ├── rn_xv_task.cpp
-│   └── rn_xv_task.hpp
 ├── handlers.hpp
 ├── main.cpp
 ├── mp3_devices
 │   ├── NOKIA5110.cpp
-│   └── NOKIA5110.hpp
+│   ├── NOKIA5110.hpp
+│   └── application
+│       └── LCDapp
+│           ├── runLCD.cpp
+│           ├── runLCD.hpp
+│           ├── testLCD.cpp
+│           └── testLCD.hpp
 ├── periodic_scheduler
 │   ├── period_callbacks.cpp
 │   ├── periodic_callback.h

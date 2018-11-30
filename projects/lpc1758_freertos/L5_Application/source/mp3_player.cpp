@@ -13,6 +13,7 @@
 #include <stdio.h>
 
 #include "tasks.hpp"
+#include "Decoder.hpp"
 
 void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
     // This code is based on the "ls" terminal command implementation

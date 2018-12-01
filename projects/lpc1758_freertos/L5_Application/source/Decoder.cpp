@@ -72,9 +72,9 @@ void Decoder::hardReset()
     delay_ms(5);
 } 
 
-void Decoder::transferData(char buffer[])
+void Decoder::transferData(char *buffer, size_t length)
 {
-    for(int i = 0; i < 512; i++)
+    for(int i = 0; i < length; i++)
     {
         xCSPin.setHigh(); 
         xDCSPin.setLow();

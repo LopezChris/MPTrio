@@ -89,10 +89,13 @@ class mp3PlayerTask : public scheduler_task
         // Set the current MP3 file being fed to the codec to the file with the name passed
         // Get a list of filenames to pass to this method by calling listMp3Files()
         // Command semantics
+    public:
         mp3Command playFile(const std::string &name);
 
         //// MP3 codec interface
         void initCodec();
+        void sineTest();
+    private:
         void prepCodecForNewSong();
         // Sends a buffer to the codec and then waits with vTaskDelay until the codec needs more data
         void sendToCodec(void *buffer, uint32_t length);

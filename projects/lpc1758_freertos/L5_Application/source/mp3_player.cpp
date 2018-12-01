@@ -169,7 +169,15 @@ bool mp3PlayerTask::run(void *p) {
     return true;
 }
 
+void mp3PlayerTask::sineTest() {
+    Decoder dec;
+    dec.setVolume(100, 100);
+    dec.sineTest();
+}
+
 void mp3PlayerTask::initCodec() {
+    Decoder dec;
+    dec.decoderInit();
     // TODO: Write me!
     // TODO: Do anything you need to initialize the communication channel to the codec and the codec itself.
 }
@@ -182,6 +190,9 @@ void mp3PlayerTask::prepCodecForNewSong() {
 void mp3PlayerTask::sendToCodec(void *buffer, uint32_t length) {
     // TODO: Write me!
 
-    uart0_puts("TODO: Send MP3 chunk to MP3 codec and wait for it to need more");
+    Decoder dec;
+    dec.transferData((char *)buffer, length);
+    vTaskDelay(100);
+    //uart0_puts("TODO: Send MP3 chunk to MP3 codec and wait for it to need more");
     // TODO: Send to codec device and poll with vTaskDelay until it is ready for another, then return.
 }

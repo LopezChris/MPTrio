@@ -1,4 +1,6 @@
 
+#include <stdlib.h>
+
 #ifndef DECODER_H
 #define DECODER_H
 
@@ -62,7 +64,7 @@ class Decoder
          * Check DREQ every 32 bytes
          * @param {char} buffer[] - array with 512 MP3 bytes to decode
          */
-        void transferData(char buffer[]);
+        void transferData(char *buffer, size_t length);
 
         /* *
          * Check DREQ pin

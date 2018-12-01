@@ -121,6 +121,11 @@ bool terminalTask::taskEntry()
                                              "Write buffer to file: commit <filename> <file offset> <num bytes from buffer>");
     cp.addHandler(flashProgHandler, "flash", "'flash <filename>' Will flash CPU with this new binary file");
 
+
+    CMD_HANDLER_FUNC(mp3PlayerHandler);
+    cp.addHandler(mp3PlayerHandler, "play", "'play <filename>' Will play the corresponding mp3 file");
+
+
     #if (SYS_CFG_ENABLE_TLM)
     cp.addHandler(telemetryHandler, "telemetry", "Outputs registered telemetry: "
                                                  "'telemetry save' : Saves disk tel\n"

@@ -1,45 +1,52 @@
-#include <mp3Test/runLCD.hpp>
+#ifndef RUNLCD_HPP_
+#define RUNLCD_HPP_
 
-receiveMessage::receiveMessage() :
-    scheduler_task("LCDMessagePrint", 2048, PRIORITY_LOW)
-{
+#include "tasks.hpp"
+#include "utilities.h"
+#include "io.hpp" //LD
+#include "math.h"//floor
+#include "L4_IO/gpio.hpp"//buttons
+#include <mp3_devices/NOKIA5110.hpp>
+#include "L2_Drivers/lpc_pwm.hpp"
+#include "uart0_min.h"
+#include "printf_lib.h"
 
-}
 
 /**
- * Simple function to initialize 
- * the LCD object and wait to hear from queue.
+ * This is a simple test for writing to
+ * LCD screen. To successfully test just have the SD
+ * card pass a string as needed and the
+ * simple app will just take the string convert to pixels
+ * and set the appropriate pixels.
+ *
+ * TODO: Create roll-over functionality to
+ * LCD driver so that if playlist > 6 items
+ * the contents being read will return to the top
  * 
- * TODO: Write separate function for 'run' task. this will do for now until we are able to read SD
+ * TODO: Limit the size of strings to 14 chars long; otherwise, the
+ * letters are overwritten.
  */
 
 
-bool receiveMessage::run(void *pvParameters){
+class receiveMessage : public scheduler_task{
+    public:
 
-    QueueHandle_t qid = getSharedObject(sharedLCDQueueID);
+        enum{
+            BLACK=1,
+            WHITE=0
+        };
 
-    //Initialization objects for LCD Screen over SPI1
-    PWM back_light(PWM::pwm1, 1000);
-    back_light.set(50);
-    GPIO sce(P2_1);
-    GPIO dc(P2_3);
-    GPIO rst(P2_2);
-    //Constructor takes objects as params
-    NOKIA5110 lcd_device(&sce, &dc, &rst, &back_light);
-    lcd_device.init_display();
+        typedef enum{
+            sharedLCDQueueID
+        }sharedHandleId_t;
 
-    int yOffset = 0;
-    int xOffset = 0;
-    int horizontalIncrement = 8;
-    char *message;
+        receiveMessage();
+        bool run(void *p);
 
-    while(1){
-        if(xQueueReceive(qid, &message, 1000)){
-            lcd_device.print_string(xOffset, yOffset, message, BLACK);
-            yOffset = yOffset + horizontalIncrement;
-            u0_dbg_printf("Position x:%i, y:%i\n", xOffset, yOffset);
-        }
-    }
+    private:
+        // Nothing for now
+};
 
-    return true;
-}
+
+
+#endif

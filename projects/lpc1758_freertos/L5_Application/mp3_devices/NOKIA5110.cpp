@@ -1,4 +1,4 @@
-#include <mp3Test/NOKIA5110.hpp>
+#include <mp3_devices/NOKIA5110.hpp>
 
 constexpr uint8_t NOKIA5110::ascii[][5];
 

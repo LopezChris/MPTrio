@@ -6,7 +6,7 @@
 #include "io.hpp" //LD
 #include "math.h"//floor
 #include "L4_IO/gpio.hpp"//buttons
-#include <mp3Test/NOKIA5110.hpp>
+#include <mp3_devices/NOKIA5110.hpp>
 #include "L2_Drivers/lpc_pwm.hpp"
 #include "uart0_min.h"
 #include "printf_lib.h"

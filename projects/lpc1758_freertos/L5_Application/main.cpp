@@ -25,6 +25,8 @@
  */
 #include "tasks.hpp"
 #include "examples/examples.hpp"
+#include <mp3_devices/application/LCDapp/runLCD.hpp>
+#include <mp3_devices/application/LCDapp/testLCD.hpp>
 
 /**
  * The main() creates tasks or "threads".  See the documentation of scheduler_task class at scheduler_task.hpp
@@ -133,9 +135,12 @@ int main(void)
         // Waits for string to be posted to shared queue
         //scheduler_add_task(new receiveMessage());
 
+
+        //scheduler_add_task(new postMessage());
+
         // Simple test that posts a string to shared queue
         // unconment below for simple test to ensure everything is OKAY dont remove until we shure
-       // scheduler_add_task(new postMessage());
+        scheduler_add_task(new postMessage());
     #endif
 
     scheduler_start(); ///< This shouldn't return

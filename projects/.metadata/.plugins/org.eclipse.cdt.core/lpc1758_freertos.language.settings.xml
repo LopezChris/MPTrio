@@ -4,13 +4,13 @@
 		<extension point="org.eclipse.cdt.core.LanguageSettingsProvider">
 			<provider id="ilg.gnuarmeclipse.managedbuild.cross.GCCBuiltinSpecsDetector">
 				<language id="org.eclipse.cdt.core.gcc">
-					<entry kind="includePath" name="C:/SJSU_Dev/toolchain/lib/gcc/arm-none-eabi/5.4.1/include">
+					<entry kind="includePath" name="C:/Users/cfarnes/Documents/MPTrio/toolchain/lib/gcc/arm-none-eabi/5.4.1/include">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/SJSU_Dev/toolchain/lib/gcc/arm-none-eabi/5.4.1/include-fixed">
+					<entry kind="includePath" name="C:/Users/cfarnes/Documents/MPTrio/toolchain/lib/gcc/arm-none-eabi/5.4.1/include-fixed">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/SJSU_Dev/toolchain/arm-none-eabi/include">
+					<entry kind="includePath" name="C:/Users/cfarnes/Documents/MPTrio/toolchain/arm-none-eabi/include">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__ACCUM_EPSILON__" value="0x1P-15K">
@@ -1089,22 +1089,22 @@
 					</entry>
 				</language>
 				<language id="org.eclipse.cdt.core.g++">
-					<entry kind="includePath" name="C:/SJSU_Dev/toolchain/arm-none-eabi/include/c++/5.4.1">
+					<entry kind="includePath" name="C:/Users/cfarnes/Documents/MPTrio/toolchain/arm-none-eabi/include/c++/5.4.1">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/SJSU_Dev/toolchain/arm-none-eabi/include/c++/5.4.1/arm-none-eabi/armv7-m">
+					<entry kind="includePath" name="C:/Users/cfarnes/Documents/MPTrio/toolchain/arm-none-eabi/include/c++/5.4.1/arm-none-eabi/armv7-m">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/SJSU_Dev/toolchain/arm-none-eabi/include/c++/5.4.1/backward">
+					<entry kind="includePath" name="C:/Users/cfarnes/Documents/MPTrio/toolchain/arm-none-eabi/include/c++/5.4.1/backward">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/SJSU_Dev/toolchain/lib/gcc/arm-none-eabi/5.4.1/include">
+					<entry kind="includePath" name="C:/Users/cfarnes/Documents/MPTrio/toolchain/lib/gcc/arm-none-eabi/5.4.1/include">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/SJSU_Dev/toolchain/lib/gcc/arm-none-eabi/5.4.1/include-fixed">
+					<entry kind="includePath" name="C:/Users/cfarnes/Documents/MPTrio/toolchain/lib/gcc/arm-none-eabi/5.4.1/include-fixed">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/SJSU_Dev/toolchain/arm-none-eabi/include">
+					<entry kind="includePath" name="C:/Users/cfarnes/Documents/MPTrio/toolchain/arm-none-eabi/include">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__ACCUM_EPSILON__" value="0x1P-15K">

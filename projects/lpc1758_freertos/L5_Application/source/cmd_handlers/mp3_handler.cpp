@@ -6,9 +6,9 @@ bool mp3PlayerHandler(str& cmdParams, CharDev& output, void* pDataParam) {
 
     mp3PlayerTask mp3(3);
     mp3.initCodec();
-    while (true) {
-    mp3.sineTest();
-    }
-    //mp3.playFile(std::string(filename));
+    //while (true) {
+    //mp3.sineTest();
+    //}
+    mp3.playFile(std::string(filename));
     return true;
 }

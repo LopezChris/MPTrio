@@ -83,6 +83,8 @@ class mp3PlayerTask : public scheduler_task
         //// Infrastructure stuff
         mp3Command getNextCommand();
 
+        bool isSongDone();
+
         //// File stuff
         // Gets a list of MP3 files and puts them in the vector (passed by reference)
         static void listMp3Files(std::vector<std::string> &files);
@@ -96,6 +98,7 @@ class mp3PlayerTask : public scheduler_task
         void initCodec();
         void sineTest();
     private:
+        void sendStringToDisplay(const char *str);
         void prepCodecForNewSong();
         // Sends a buffer to the codec and then waits with vTaskDelay until the codec needs more data
         void sendToCodec(void *buffer, uint32_t length);

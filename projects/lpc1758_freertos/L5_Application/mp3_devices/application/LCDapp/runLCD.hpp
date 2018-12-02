@@ -36,10 +36,6 @@ class receiveMessage : public scheduler_task{
             WHITE=0
         };
 
-        typedef enum{
-            sharedLCDQueueID
-        }sharedHandleId_t;
-
         receiveMessage();
         bool run(void *p);
 

@@ -69,6 +69,36 @@ void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
     return;
 }
 
+void mp3PlayerTask::sendStringToDisplay(const char *str) {
+
+    QueueHandle_t lcd_str_queue = NULL;
+
+    if ((lcd_str_queue = scheduler_task::getSharedObject("lcd_str_queue")) == NULL) {
+
+        uart0_puts("Making queue");
+        lcd_str_queue = xQueueCreate(6, sizeof(char *));
+        scheduler_task::addSharedObject("lcd_str_queue", lcd_str_queue);
+    }
+    // This would be vulnerable code if we cared about security!
+    // Copy string so that we don't have to care when the STL frees the source string
+    size_t str_len = strlen(str);
+    char *cpy = (char *)calloc(sizeof(char), str_len+1);
+    memcpy(cpy, str, str_len);
+    cpy[str_len] = '\0'; // Explicit null termination, just in case
+
+    if (xQueueSend(lcd_str_queue, &cpy, 0) != pdPASS) {
+        // We couldn't add it to the queue! Avoid a memory leak
+        free(cpy);
+    }
+    vTaskDelay(100);
+}
+
+bool mp3PlayerTask::isSongDone() {
+    uart0_puts("FIXME: Ask codec when song is done");
+    vTaskDelay(1000 * 60 * 3); // Sleep for 3 minutes
+    return true;
+}
+
 mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
     FIL mp3_file;
     FRESULT open_rslt;
@@ -82,6 +112,7 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
         // if Preet set everything up correctly
         uart0_puts("File opened");
         prepCodecForNewSong();
+        sendStringToDisplay(f_name.c_str());
 
         UINT bytes_read = 0;
         FRESULT read_rslt;
@@ -120,14 +151,18 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
             // bytes read != file size -- looks like the end!
             sendToCodec(mp3_buffer, bytes_read);
             f_close(&mp3_file);
+
             return getNextCommand();
         }
 
         free(mp3_buffer);
+
+
     } else {
         // UI TODO: Display error message (maybe use the code from in open_rslt "OPEN ERR: <CODE>")
         uart0_puts("Error opening mp3 file");
     }
+    return mp3Command::NONE;
 }
 
 mp3Command mp3PlayerTask::getNextCommand() {
@@ -164,19 +199,22 @@ bool mp3PlayerTask::run(void *p) {
             }
             // Pause and play are handled inside playFile(), and no other commands exist for now
         }
-        vTaskDelay(100);
     }
     return true;
 }
 
 void mp3PlayerTask::sineTest() {
     Decoder dec;
-    dec.setVolume(100, 100);
+
+    dec.hardReset();
+    dec.decoderInit();
+    dec.setVolume(50, 50);
     dec.sineTest();
 }
 
 void mp3PlayerTask::initCodec() {
     Decoder dec;
+
     dec.decoderInit();
     // TODO: Write me!
     // TODO: Do anything you need to initialize the communication channel to the codec and the codec itself.
@@ -191,8 +229,5 @@ void mp3PlayerTask::sendToCodec(void *buffer, uint32_t length) {
     // TODO: Write me!
 
     Decoder dec;
-    dec.transferData((char *)buffer, length);
-    vTaskDelay(100);
-    //uart0_puts("TODO: Send MP3 chunk to MP3 codec and wait for it to need more");
-    // TODO: Send to codec device and poll with vTaskDelay until it is ready for another, then return.
+    //dec.transferData((char *)buffer, length);
 }

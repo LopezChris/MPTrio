@@ -1,4 +1,6 @@
 #include <mp3_devices/application/LCDapp/runLCD.hpp>
+#include <string.h>
+#include <stdio.h>
 
 receiveMessage::receiveMessage() :
     scheduler_task("LCDMessagePrint", 2048, PRIORITY_LOW)
@@ -16,7 +18,17 @@ receiveMessage::receiveMessage() :
 
 bool receiveMessage::run(void *pvParameters){
 
-    QueueHandle_t qid = getSharedObject(sharedLCDQueueID);
+    QueueHandle_t qid = NULL;
+
+
+    uart0_puts("Acquiring queue...");
+    while ((qid = scheduler_task::getSharedObject("lcd_str_queue")) == NULL) {
+        vTaskDelay(100);
+
+        uart0_puts("Still acquiring queue...");
+    }
+    uart0_puts("Queue acquired");
+
 
     //Initialization objects for LCD Screen over SPI1
     PWM back_light(PWM::pwm1, 1000);
@@ -33,8 +45,11 @@ bool receiveMessage::run(void *pvParameters){
     int horizontalIncrement = 8;
     char *message;
 
+    uart0_puts("Screen initialized");
     while(1){
         if(xQueueReceive(qid, &message, 1000)){
+
+            uart0_puts(message);
             lcd_device.print_string(xOffset, yOffset, message, BLACK);
             yOffset = yOffset + horizontalIncrement;
             u0_dbg_printf("Position x:%i, y:%i\n", xOffset, yOffset);

@@ -29,6 +29,13 @@ class Decoder
 
     public:
 
+        enum PlayerStates {
+          psPlayback = 0,
+          psUserRequestedCancel,
+          psUserCancelSent,
+          psStopped
+        } playerState;
+
         /* *
          * Empty Constructor
          */
@@ -53,6 +60,9 @@ class Decoder
          */
         void setVolume(char left, char right); 
 
+        uint16_t ReadMem(uint16_t addr);
+        void sciWrite(uint8_t reg_addr, uint16_t value);
+        uint16_t sciRead(uint8_t reg_addr);
         /* *
          * Hardware reset -> Set xRST low then high
          */
@@ -64,7 +74,8 @@ class Decoder
          * Check DREQ every 32 bytes
          * @param {char} buffer[] - array with 512 MP3 bytes to decode
          */
-        void transferData(char *buffer, size_t length);
+        void transferData(uint8_t *buffer, uint32_t length)
+        void playAndDecode(FILE *readfp);
 
         /* *
          * Check DREQ pin

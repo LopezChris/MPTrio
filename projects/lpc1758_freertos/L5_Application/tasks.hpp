@@ -54,8 +54,8 @@ enum class mp3Command : uint32_t {
  * Contains basic logic for playing MP3 files, receiving control commands
  * on a queue. TODO: Couple with mp3ControllerTask.
  */
-// Define an 8K paginator for feeding the codec (yep, I'm being lazy and using a macro)
-#define BUFFER_PAGINATION_SIZE 8192
+// Define an 512B paginator for feeding the codec (yep, I'm being lazy and using a macro)
+#define BUFFER_PAGINATION_SIZE 512
 class mp3PlayerTask : public scheduler_task
 {
     public:
@@ -98,7 +98,9 @@ class mp3PlayerTask : public scheduler_task
         void initCodec();
         void sineTest();
     private:
-        void sendStringToDisplay(const char *str);
+        void endSong();
+        void stopSong(FIL *file);
+        void sendStringToDisplay(const char *str, size_t len);
         void prepCodecForNewSong();
         // Sends a buffer to the codec and then waits with vTaskDelay until the codec needs more data
         void sendToCodec(void *buffer, uint32_t length);

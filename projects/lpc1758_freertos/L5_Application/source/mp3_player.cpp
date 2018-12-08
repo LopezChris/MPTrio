@@ -69,7 +69,7 @@ void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
     return;
 }
 
-void mp3PlayerTask::sendStringToDisplay(const char *str) {
+void mp3PlayerTask::sendStringToDisplay(const char *str, size_t len) {
 
     QueueHandle_t lcd_str_queue = NULL;
 
@@ -81,13 +81,16 @@ void mp3PlayerTask::sendStringToDisplay(const char *str) {
     }
     // This would be vulnerable code if we cared about security!
     // Copy string so that we don't have to care when the STL frees the source string
-    size_t str_len = strlen(str);
-    char *cpy = (char *)calloc(sizeof(char), str_len+1);
-    memcpy(cpy, str, str_len);
-    cpy[str_len] = '\0'; // Explicit null termination, just in case
+    char *cpy = (char *)calloc(sizeof(char), len+1);
+    if (cpy == NULL) {
+        uart0_puts("Not enough memory!");
+    }
+    memcpy(cpy, str, len);
+    cpy[len] = '\0'; // Explicit null termination, just in case
 
     if (xQueueSend(lcd_str_queue, &cpy, 0) != pdPASS) {
         // We couldn't add it to the queue! Avoid a memory leak
+        uart0_puts("Freeing memory");
         free(cpy);
     }
     vTaskDelay(100);
@@ -112,12 +115,14 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
         // if Preet set everything up correctly
         uart0_puts("File opened");
         prepCodecForNewSong();
-        sendStringToDisplay(f_name.c_str());
+        sendStringToDisplay(f_name.c_str(), f_name.length());
 
         UINT bytes_read = 0;
+        bool has_read = false;
         FRESULT read_rslt;
         while ((FR_OK == (read_rslt = f_read(&mp3_file, mp3_buffer, BUFFER_PAGINATION_SIZE, &bytes_read))) &&
                 bytes_read == BUFFER_PAGINATION_SIZE) {
+            has_read = true;
             // Woo! Everything was read into mp3_buffer
             sendToCodec(mp3_buffer, BUFFER_PAGINATION_SIZE);
 
@@ -134,6 +139,8 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
                     // All other commands are large-scale control operations that would
                     // involve leaving the song (true for now -- if we ever implement scan forward and
                     // scan backward, we can add that functionality as a case above)
+
+                    stopSong(&mp3_file); // Forcibly stop song
                     f_close(&mp3_file);
                     return cmd;
                 }
@@ -143,19 +150,24 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
                 }
             } while (paused);
         }
+
         if (read_rslt != FR_OK) {
+            // TODO: Do we need to do some
             // Uh-oh, something went bad with the read
             // UI TODO: Display error message (maybe use the code from in read_rslt "READ ERR: <CODE>")
             uart0_puts("Error reading from file: error code returned from f_read");
+
+            if (has_read) {
+                endSong(); // Attempt to gracefully end song as if we reached the end
+            }
         } else {
             // bytes read != file size -- looks like the end!
             sendToCodec(mp3_buffer, bytes_read);
             f_close(&mp3_file);
+            endSong(); // Gracefully end song
 
             return getNextCommand();
         }
-
-        free(mp3_buffer);
 
 
     } else {
@@ -195,7 +207,7 @@ bool mp3PlayerTask::run(void *p) {
                 // Do nothing -- this just means we returned early from the song
             } else if (cmd == mp3Command::PREV) {
                 // Go to previous song, wrap around with modulus operator
-                i = (i - 2) % mp3_files.size();
+                i = (i - 3) % mp3_files.size();
             }
             // Pause and play are handled inside playFile(), and no other commands exist for now
         }
@@ -220,8 +232,26 @@ void mp3PlayerTask::initCodec() {
     // TODO: Do anything you need to initialize the communication channel to the codec and the codec itself.
 }
 
+void mp3PlayerTask::endSong() {
+    Decoder dec;
+
+    dec.endSong();
+    // TODO: Write me!
+    // TODO: Do anything you need to initialize the communication channel to the codec and the codec itself.
+}
+
+void mp3PlayerTask::stopSong(FIL *file) {
+    Decoder dec;
+
+    dec.stopSong(file);
+    // TODO: Write me!
+    // TODO: Do anything you need to initialize the communication channel to the codec and the codec itself.
+}
+
 void mp3PlayerTask::prepCodecForNewSong() {
     // TODO: Write me!
+    Decoder dec;
+    dec.initSong();
     // TODO: Reset the codec's state as necessary. After this returns, sendToCodec will send the first chunk of the song.
 }
 
@@ -229,5 +259,5 @@ void mp3PlayerTask::sendToCodec(void *buffer, uint32_t length) {
     // TODO: Write me!
 
     Decoder dec;
-    //dec.transferData((char *)buffer, length);
+    dec.transferData((char *)buffer, length);
 }

@@ -126,6 +126,18 @@ bool terminalTask::taskEntry()
     cp.addHandler(mp3PlayerHandler, "play", "'play <filename>' Will play the corresponding mp3 file");
 
 
+    CMD_HANDLER_FUNC(mp3PlayerNextHandler);
+    cp.addHandler(mp3PlayerNextHandler, "next", "'next' Will play the next mp3 file");
+    CMD_HANDLER_FUNC(mp3PlayerPrevHandler);
+    cp.addHandler(mp3PlayerPrevHandler, "prev", "'prev' Will play the previous mp3 file");
+    CMD_HANDLER_FUNC(mp3PlayerPauseHandler);
+    cp.addHandler(mp3PlayerPauseHandler, "pause", "'pause' Will pause the mp3 player");
+    //CMD_HANDLER_FUNC(mp3PlayerStopHandler);
+    //cp.addHandler(mp3PlayerStopHandler, "stop", "'stop' Will stop the mp3 player");
+    CMD_HANDLER_FUNC(mp3PlayerResumeHandler);
+    cp.addHandler(mp3PlayerResumeHandler, "resume", "'resume' Will resume the mp3 player");
+
+
     #if (SYS_CFG_ENABLE_TLM)
     cp.addHandler(telemetryHandler, "telemetry", "Outputs registered telemetry: "
                                                  "'telemetry save' : Saves disk tel\n"

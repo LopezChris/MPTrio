@@ -58,7 +58,7 @@ bool receiveMessage::run(void *pvParameters){
 
     int yOffset = 0;
     int xOffset = 0;
-    int horizontalIncrement = 8;
+    int verticalIncrement = 8;
     char *message;
     while(1){
         if(xSemaphoreTake(bus_lock, 1000) == pdTRUE){
@@ -66,7 +66,7 @@ bool receiveMessage::run(void *pvParameters){
 
                 uart0_puts(message);
                 lcd_device.print_string(xOffset, yOffset, message, BLACK);
-                yOffset = yOffset + horizontalIncrement;
+                yOffset = yOffset + verticalIncrement;
                 u0_dbg_printf("Position x:%i, y:%i\n", xOffset, yOffset);
             }
             xSemaphoreGive(bus_lock);

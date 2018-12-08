@@ -50,9 +50,11 @@ bool receiveMessage::run(void *pvParameters){
         if(xQueueReceive(qid, &message, 1000)){
 
             uart0_puts(message);
-            lcd_device.print_string(xOffset, yOffset, message, BLACK);
-            yOffset = yOffset + horizontalIncrement;
-            u0_dbg_printf("Position x:%i, y:%i\n", xOffset, yOffset);
+            // Christian, something in here is crashing!!!
+            //lcd_device.print_string(xOffset, yOffset, message, BLACK);
+            //yOffset = yOffset + horizontalIncrement;
+            //u0_dbg_printf("Position x:%i, y:%i\n", xOffset, yOffset);
+            free(message);
         }
     }
 

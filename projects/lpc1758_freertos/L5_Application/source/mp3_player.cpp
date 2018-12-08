@@ -126,6 +126,9 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
             // Woo! Everything was read into mp3_buffer
             sendToCodec(mp3_buffer, BUFFER_PAGINATION_SIZE);
 
+            // Actually calculated to be 64 for 64kbps songs
+            vTaskDelay(30);
+
             // Check for and react to commands while playing the song
             do {
                 mp3Command cmd = getNextCommand();

@@ -19,6 +19,7 @@ receiveMessage::receiveMessage() :
 bool receiveMessage::run(void *pvParameters){
 
     QueueHandle_t qid = NULL;
+    SemaphoreHandle_t bus_lock = NULL;
 
 
     uart0_puts("Acquiring queue...");
@@ -30,29 +31,45 @@ bool receiveMessage::run(void *pvParameters){
     uart0_puts("Queue acquired");
 
 
+    uart0_puts("Aquiring Semaphore...");
+    while ((bus_lock = scheduler_task::getSharedObject("spi_bus_lock")) == NULL) {
+        vTaskDelay(100);
+
+        uart0_puts("Still acquiring semaphore...");
+    }
+    uart0_puts("Semaphore aquired\n");
+
     //Initialization objects for LCD Screen over SPI1
     PWM back_light(PWM::pwm1, 1000);
     back_light.set(50);
     GPIO sce(P2_1);
     GPIO dc(P2_3);
     GPIO rst(P2_2);
-    //Constructor takes objects as params
     NOKIA5110 lcd_device(&sce, &dc, &rst, &back_light);
-    lcd_device.init_display();
+
+    if(xSemaphoreTake(bus_lock, 1000) == pdTRUE){
+        //Constructor takes objects as params
+
+        lcd_device.init_display();
+        xSemaphoreGive(bus_lock);
+        uart0_puts("Screen initialized\n");
+    }
+
 
     int yOffset = 0;
     int xOffset = 0;
     int horizontalIncrement = 8;
     char *message;
-
-    uart0_puts("Screen initialized");
     while(1){
-        if(xQueueReceive(qid, &message, 1000)){
+        if(xSemaphoreTake(bus_lock, 1000) == pdTRUE){
+            if(xQueueReceive(qid, &message, 1000)){
 
-            uart0_puts(message);
-            lcd_device.print_string(xOffset, yOffset, message, BLACK);
-            yOffset = yOffset + horizontalIncrement;
-            u0_dbg_printf("Position x:%i, y:%i\n", xOffset, yOffset);
+                uart0_puts(message);
+                lcd_device.print_string(xOffset, yOffset, message, BLACK);
+                yOffset = yOffset + horizontalIncrement;
+                u0_dbg_printf("Position x:%i, y:%i\n", xOffset, yOffset);
+            }
+            xSemaphoreGive(bus_lock);
         }
     }
 

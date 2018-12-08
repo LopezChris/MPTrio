@@ -72,6 +72,7 @@ void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
 void mp3PlayerTask::sendStringToDisplay(const char *str) {
 
     QueueHandle_t lcd_str_queue = NULL;
+    SemaphoreHandle_t spi_bus_lock = NULL;
 
     if ((lcd_str_queue = scheduler_task::getSharedObject("lcd_str_queue")) == NULL) {
 
@@ -79,6 +80,16 @@ void mp3PlayerTask::sendStringToDisplay(const char *str) {
         lcd_str_queue = xQueueCreate(6, sizeof(char *));
         scheduler_task::addSharedObject("lcd_str_queue", lcd_str_queue);
     }
+
+    // Mutext to prevent fried LCD screens
+    if((spi_bus_lock = scheduler_task::getSharedObject("spi_bus_lock")) == NULL) {
+
+        uart0_puts("Making SPI bus lock\n");
+        spi_bus_lock = xSemaphoreCreateMutex();
+        scheduler_task::addSharedObject("spi_bus_lock", spi_bus_lock);
+    }
+
+
     // This would be vulnerable code if we cared about security!
     // Copy string so that we don't have to care when the STL frees the source string
     size_t str_len = strlen(str);
@@ -86,11 +97,16 @@ void mp3PlayerTask::sendStringToDisplay(const char *str) {
     memcpy(cpy, str, str_len);
     cpy[str_len] = '\0'; // Explicit null termination, just in case
 
-    if (xQueueSend(lcd_str_queue, &cpy, 0) != pdPASS) {
-        // We couldn't add it to the queue! Avoid a memory leak
-        free(cpy);
+    if(xSemaphoreTake(spi_bus_lock, 1000) == pdTRUE){
+        uart0_puts("Acquired spi_bus_lock\n");
+        if (xQueueSend(lcd_str_queue, &cpy, 0) != pdPASS) {
+            // We couldn't add it to the queue! Avoid a memory leak
+            free(cpy);
+        }
+        vTaskDelay(100);
+
+        xSemaphoreGive(spi_bus_lock);
     }
-    vTaskDelay(100);
 }
 
 bool mp3PlayerTask::isSongDone() {

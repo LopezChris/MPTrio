@@ -66,6 +66,7 @@ void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
         }
         // Note: Finfo.fsize
     }
+
     return;
 }
 
@@ -78,6 +79,7 @@ void mp3PlayerTask::sendStringToDisplay(const char *str, size_t len) {
         uart0_puts("Making queue");
         lcd_str_queue = xQueueCreate(6, sizeof(char *));
         scheduler_task::addSharedObject("lcd_str_queue", lcd_str_queue);
+        uart0_puts("Made queue");
     }
     // This would be vulnerable code if we cared about security!
     // Copy string so that we don't have to care when the STL frees the source string
@@ -105,9 +107,12 @@ bool mp3PlayerTask::isSongDone() {
 mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
     FIL mp3_file;
     FRESULT open_rslt;
+
     bool paused = false;
     uart0_puts("About to open MP3");
     uart0_puts(f_name.c_str());
+
+
     if (FR_OK == (open_rslt = f_open(&mp3_file, (TCHAR *)f_name.c_str(), FA_READ))) {
         // Assuming for now that we have the space, let's just read the entire thing
         // into RAM
@@ -198,6 +203,19 @@ bool mp3PlayerTask::run(void *p) {
     mp3PlayerTask::listMp3Files(mp3_files);
     char scratch[100];
 
+    // Adding mutex around this whole thing as I am not sure where spi1 is called
+    SemaphoreHandle_t spi_bus_lock = NULL;
+
+    if((spi_bus_lock = scheduler_task::getSharedObject("spi_bus_lock")) == NULL){
+
+            spi_bus_lock = xSemaphoreCreateMutex();
+            uart0_puts("Made SPI bus lock\n");
+            scheduler_task::addSharedObject("spi_bus_lock", spi_bus_lock);
+            uart0_puts("Added SPI bus lock as shared object\n");
+        }
+
+
+
     initCodec();
     while (true) {
 
@@ -205,14 +223,24 @@ bool mp3PlayerTask::run(void *p) {
             uart0_puts(mp3_files[i].c_str());
             sprintf(scratch, "1:%s", mp3_files[i].c_str());
             std::string full_path(scratch);
-            mp3Command cmd = playFile(full_path);
-            if (cmd == mp3Command::SKIP) {
-                // Do nothing -- this just means we returned early from the song
-            } else if (cmd == mp3Command::PREV) {
-                // Go to previous song, wrap around with modulus operator
-                i = (i - 3) % mp3_files.size();
+
+            // This funtion heavily uses the spi1 bus needs lock.
+            // There should be no skipping because of this since this task
+            // has critical priority and runLCD task has low priority
+            if(xSemaphoreTake(spi_bus_lock, 1000) == pdTRUE){
+                mp3Command cmd = playFile(full_path);
+
+                if (cmd == mp3Command::SKIP) {
+                    // Do nothing -- this just means we returned early from the song
+                } else if (cmd == mp3Command::PREV) {
+                    // Go to previous song, wrap around with modulus operator
+                    i = (i - 3) % mp3_files.size();
+                }
+                // Pause and play are handled inside playFile(), and no other commands exist for now
+
+                xSemaphoreGive(spi_bus_lock);
+                vTaskDelay(1);
             }
-            // Pause and play are handled inside playFile(), and no other commands exist for now
         }
     }
     return true;
@@ -223,7 +251,7 @@ void mp3PlayerTask::sineTest() {
 
     dec.hardReset();
     dec.decoderInit();
-    dec.setVolume(50, 50);
+    dec.setVolume(30, 30);
     dec.sineTest();
 }
 

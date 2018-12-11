@@ -20,6 +20,16 @@ void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
     DIR Dir;
     FILINFO Finfo;
     FRESULT returnCode = FR_OK;
+    //SemaphoreHandle_t spi_bus_lock = scheduler_task::getSharedObject("spi_bus_lock");
+    // Adding mutex to prevent contention
+    SemaphoreHandle_t spi_bus_lock = NULL;
+
+    if((spi_bus_lock = scheduler_task::getSharedObject("spi_bus_lock")) == NULL){
+         spi_bus_lock = xSemaphoreCreateMutex();
+         uart0_puts("Made SPI bus lock\n");
+         scheduler_task::addSharedObject("spi_bus_lock", spi_bus_lock);
+         uart0_puts("Added SPI bus lock as shared object\n");
+    }
 
     unsigned int fileBytesTotal = 0, numFiles = 0, numDirs = 0;
     #if _USE_LFN
@@ -27,10 +37,16 @@ void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
     #endif
 
     const char *dirPath = "1:";
+
+    xSemaphoreTake(spi_bus_lock, 1000);
+
     if (FR_OK != (returnCode = f_opendir(&Dir, dirPath))) {
         // Error: return empty vector
         return;
     }
+
+    xSemaphoreGive(spi_bus_lock);
+
 
     // Enumerate files
     for (;;)
@@ -40,11 +56,14 @@ void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
             Finfo.lfsize = sizeof(Lfname);
         #endif
 
+        xSemaphoreTake(spi_bus_lock, 1000);
         returnCode = f_readdir(&Dir, &Finfo);
         if ( (FR_OK != returnCode) || !Finfo.fname[0]) {
             uart0_puts("done with files...");
             break;
         }
+        xSemaphoreGive(spi_bus_lock);
+
 
         if (Finfo.fattrib & AM_DIR){
             numDirs++;
@@ -81,6 +100,7 @@ void mp3PlayerTask::sendStringToDisplay(const char *str, size_t len) {
         scheduler_task::addSharedObject("lcd_str_queue", lcd_str_queue);
         uart0_puts("Made queue");
     }
+
     // This would be vulnerable code if we cared about security!
     // Copy string so that we don't have to care when the STL frees the source string
     char *cpy = (char *)calloc(sizeof(char), len+1);
@@ -107,13 +127,17 @@ bool mp3PlayerTask::isSongDone() {
 mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
     FIL mp3_file;
     FRESULT open_rslt;
+    SemaphoreHandle_t spi_bus_lock = scheduler_task::getSharedObject("spi_bus_lock");
 
     bool paused = false;
     uart0_puts("About to open MP3");
     uart0_puts(f_name.c_str());
 
-
+    if(xSemaphoreTake(spi_bus_lock, 10000) == pdFALSE){
+        uart0_puts("Failed to take spi_lock at playFile line 139");
+    }
     if (FR_OK == (open_rslt = f_open(&mp3_file, (TCHAR *)f_name.c_str(), FA_READ))) {
+        xSemaphoreGive(spi_bus_lock);
         // Assuming for now that we have the space, let's just read the entire thing
         // into RAM
         // Using FreeRTOS heap 3, so compiler-provided malloc() and free() should work
@@ -124,11 +148,16 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
 
         UINT bytes_read = 0;
         bool has_read = false;
+
         FRESULT read_rslt;
+        if(xSemaphoreTake(spi_bus_lock, 1000) == pdFALSE){
+            uart0_puts("Failed to take spi_lock at playFile line 156");
+        }
         while ((FR_OK == (read_rslt = f_read(&mp3_file, mp3_buffer, BUFFER_PAGINATION_SIZE, &bytes_read))) &&
                 bytes_read == BUFFER_PAGINATION_SIZE) {
             has_read = true;
             // Woo! Everything was read into mp3_buffer
+            xSemaphoreGive(spi_bus_lock);
             sendToCodec(mp3_buffer, BUFFER_PAGINATION_SIZE);
 
             // Actually calculated to be 64 for 64kbps songs
@@ -149,7 +178,13 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
                     // scan backward, we can add that functionality as a case above)
 
                     stopSong(&mp3_file); // Forcibly stop song
+
+                    if(xSemaphoreTake(spi_bus_lock, 1000) == pdFALSE){
+                        uart0_puts("Failed to take spi_lock at playFile line 184");
+                    }
                     f_close(&mp3_file);
+                    xSemaphoreGive(spi_bus_lock);
+
                     return cmd;
                 }
                 if (paused) {
@@ -171,7 +206,11 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
         } else {
             // bytes read != file size -- looks like the end!
             sendToCodec(mp3_buffer, bytes_read);
+            if(xSemaphoreTake(spi_bus_lock, 1000) == pdFALSE){
+                uart0_puts("Failed to take spi_lock at playFile line 210");
+            }
             f_close(&mp3_file);
+            xSemaphoreGive(spi_bus_lock);
             endSong(); // Gracefully end song
 
             return getNextCommand();
@@ -203,18 +242,6 @@ bool mp3PlayerTask::run(void *p) {
     mp3PlayerTask::listMp3Files(mp3_files);
     char scratch[100];
 
-    // Adding mutex around this whole thing as I am not sure where spi1 is called
-    SemaphoreHandle_t spi_bus_lock = NULL;
-
-    if((spi_bus_lock = scheduler_task::getSharedObject("spi_bus_lock")) == NULL){
-
-            spi_bus_lock = xSemaphoreCreateMutex();
-            uart0_puts("Made SPI bus lock\n");
-            scheduler_task::addSharedObject("spi_bus_lock", spi_bus_lock);
-            uart0_puts("Added SPI bus lock as shared object\n");
-        }
-
-
 
     initCodec();
     while (true) {
@@ -227,7 +254,7 @@ bool mp3PlayerTask::run(void *p) {
             // This funtion heavily uses the spi1 bus needs lock.
             // There should be no skipping because of this since this task
             // has critical priority and runLCD task has low priority
-            if(xSemaphoreTake(spi_bus_lock, 1000) == pdTRUE){
+
                 mp3Command cmd = playFile(full_path);
 
                 if (cmd == mp3Command::SKIP) {
@@ -238,9 +265,7 @@ bool mp3PlayerTask::run(void *p) {
                 }
                 // Pause and play are handled inside playFile(), and no other commands exist for now
 
-                xSemaphoreGive(spi_bus_lock);
                 vTaskDelay(1);
-            }
         }
     }
     return true;

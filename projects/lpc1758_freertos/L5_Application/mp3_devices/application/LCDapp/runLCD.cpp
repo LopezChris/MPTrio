@@ -36,7 +36,7 @@ bool receiveMessage::run(void *pvParameters){
 
         uart0_puts("Still acquiring SPI lock MP3 TASK...\n");
     }
-    uart0_puts("Acquired SPI lock\n");
+    uart0_puts("runLCD acquired SPI lock\n");
 
     //Initialization objects for LCD Screen over SPI1
     PWM back_light(PWM::pwm1, 1000);
@@ -49,14 +49,9 @@ bool receiveMessage::run(void *pvParameters){
 
     if(xSemaphoreTake(spi_bus_lock, 1000) == pdTRUE){
         uart0_puts("runLCD task took spi_bus_lock Sem\n");
-        uart0_puts("Initializing Display...\n");
-        if(lcd_device.init_display() == true){
-            uart0_puts("Display properly initialized\n");
-        }else{
-            uart0_puts("Failed to init display\n");
-        }
-        xSemaphoreGive(spi_bus_lock);
+        lcd_device.init_display();
     }
+    xSemaphoreGive(spi_bus_lock);
 
 
     int yOffset = 0;
@@ -68,19 +63,20 @@ bool receiveMessage::run(void *pvParameters){
 
         if(xQueueReceive(qid, &message, 1000)){
 
-            uart0_puts(message);
-
             // Christian, something in here is crashing!!!
             // TODO: look into why this is crashing
-            if(xSemaphoreTake(spi_bus_lock, 1000) == pdTRUE){
-                u0_dbg_printf("Aquired SPI Bus lock LCD task\n");
-                lcd_device.print_string(xOffset, yOffset, message, BLACK);
-
-                yOffset = yOffset + verticalIncrement;
-                u0_dbg_printf("Position x:%i, y:%i\n", xOffset, yOffset);
-
-                xSemaphoreGive(spi_bus_lock);
+            if(xSemaphoreTake(spi_bus_lock, 1000) == pdFALSE){
+                u0_dbg_printf("Failed to take spi_bus runLCD line 70");
             }
+            u0_dbg_printf("Aquired SPI Bus lock LCD task\n");
+            u0_dbg_printf("Position x:%i, y:%i\n", xOffset, yOffset);
+            lcd_device.print_string(xOffset, yOffset, message, BLACK);
+            xSemaphoreGive(spi_bus_lock);
+
+            yOffset = yOffset + verticalIncrement;
+
+
+
 
             free(message);
         }

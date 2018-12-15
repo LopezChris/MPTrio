@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 receiveMessage::receiveMessage() :
-    scheduler_task("LCDMessagePrint", 2048, PRIORITY_LOW)
+    scheduler_task("LCDMessagePrint", 3072, PRIORITY_LOW)
 {
 
 }

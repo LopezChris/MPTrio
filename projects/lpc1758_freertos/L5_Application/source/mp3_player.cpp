@@ -133,7 +133,7 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
     uart0_puts("About to open MP3");
     uart0_puts(f_name.c_str());
 
-    if(xSemaphoreTake(spi_bus_lock, 10000) == pdFALSE){
+    if(xSemaphoreTake(spi_bus_lock, 20000) == pdFALSE){
         uart0_puts("Failed to take spi_lock at playFile line 139");
     }
     if (FR_OK == (open_rslt = f_open(&mp3_file, (TCHAR *)f_name.c_str(), FA_READ))) {

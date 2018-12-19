@@ -17,6 +17,7 @@
 #include "Decoder.hpp"
 #include "gpio.hpp"
 #include "source/LabGPIOInterrupts.hpp"
+bool paused = false;
 
 void create_q()
 {
@@ -24,7 +25,7 @@ void create_q()
     if (task_queue == NULL) {
          task_queue = xQueueCreate(16, sizeof(mp3Command));
          scheduler_task::addSharedObject("mp3_cmd_queue", task_queue);
-         uart0_puts("Initialized queue tes testtestsetestset");
+         uart0_puts("Initialized queue");
      }
 }
 
@@ -66,11 +67,30 @@ bool mp3PlayerResumeHandler(str& cmdParams, CharDev& output, void* pDataParam) {
     return true;
 }
 
-void pause_isr()
+void next_isr()
 {
     send_mp3_cmd(mp3Command::SKIP);
     u0_dbg_printf("test");
 
+}
+
+void prev_isr()
+{
+    send_mp3_cmd(mp3Command::PREV);
+    u0_dbg_printf("test");
+
+}
+
+void play_pause_isr()
+{
+    if(paused)
+    {
+        send_mp3_cmd(mp3Command::PLAY);
+        paused = false;
+    }else{
+        send_mp3_cmd(mp3Command::PAUSE);
+        paused = true;
+    }
 }
 
 void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
@@ -175,13 +195,18 @@ bool mp3PlayerTask::isSongDone() {
 
 mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
 
-        GPIO Pause(P0_29);
-        Pause.setAsInput();
+        GPIO next(P0_29);
+        GPIO prev(P2_5);
+        GPIO play_pause(P2_4);
 
+        prev.setAsInput();
+        next.setAsInput();
+        play_pause.setAsInput();
         gpio_interrupt.Initialize();
+        gpio_interrupt.AttachInterruptHandler(0,29,&next_isr, kRisingEdge);
+        gpio_interrupt.AttachInterruptHandler(2,5, &prev_isr, kRisingEdge);
+        gpio_interrupt.AttachInterruptHandler(2,4, &play_pause_isr, kRisingEdge);
 
-
-        gpio_interrupt.AttachInterruptHandler(0,29,&pause_isr, kRisingEdge);
 
 
        FIL mp3_file;

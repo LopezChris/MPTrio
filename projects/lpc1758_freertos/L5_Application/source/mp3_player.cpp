@@ -11,16 +11,73 @@
 #include <string>
 #include <utility>
 #include <stdio.h>
+#include "printf_lib.h"
 
 #include "tasks.hpp"
 #include "Decoder.hpp"
+#include "gpio.hpp"
+#include "source/LabGPIOInterrupts.hpp"
+
+void create_q()
+{
+    QueueHandle_t task_queue = scheduler_task::getSharedObject("mp3_cmd_queue");
+    if (task_queue == NULL) {
+         task_queue = xQueueCreate(16, sizeof(mp3Command));
+         scheduler_task::addSharedObject("mp3_cmd_queue", task_queue);
+         uart0_puts("Initialized queue tes testtestsetestset");
+     }
+}
+
+void send_mp3_cmd(mp3Command toSend) {
+    QueueHandle_t task_queue = scheduler_task::getSharedObject("mp3_cmd_queue");
+   if (task_queue != NULL) {
+       xQueueSendFromISR(task_queue, &toSend, NULL);
+   } else {
+       u0_dbg_printf("ERROR: button pushed but no queue created");
+   }
+}
+
+
+
+bool mp3PlayerNextHandler(str& cmdParams, CharDev& output, void* pDataParam) {
+
+    send_mp3_cmd(mp3Command::SKIP);
+    return true;
+}
+
+bool mp3PlayerPrevHandler(str& cmdParams, CharDev& output, void* pDataParam) {
+
+
+    send_mp3_cmd(mp3Command::PREV);
+    return true;
+}
+
+bool mp3PlayerPauseHandler(str& cmdParams, CharDev& output, void* pDataParam) {
+
+    send_mp3_cmd(mp3Command::PAUSE);
+
+    return true;
+}
+
+bool mp3PlayerResumeHandler(str& cmdParams, CharDev& output, void* pDataParam) {
+
+    send_mp3_cmd(mp3Command::PLAY);
+
+    return true;
+}
+
+void pause_isr()
+{
+    send_mp3_cmd(mp3Command::SKIP);
+    u0_dbg_printf("test");
+
+}
 
 void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
     // This code is based on the "ls" terminal command implementation
     DIR Dir;
     FILINFO Finfo;
     FRESULT returnCode = FR_OK;
-    //SemaphoreHandle_t spi_bus_lock = scheduler_task::getSharedObject("spi_bus_lock");
     // Adding mutex to prevent contention
     SemaphoreHandle_t spi_bus_lock = NULL;
 
@@ -37,16 +94,12 @@ void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
     #endif
 
     const char *dirPath = "1:";
-
     xSemaphoreTake(spi_bus_lock, 1000);
-
     if (FR_OK != (returnCode = f_opendir(&Dir, dirPath))) {
-        // Error: return empty vector
-        return;
+       // Error: return empty vector
+       return;
     }
-
-    xSemaphoreGive(spi_bus_lock);
-
+   xSemaphoreGive(spi_bus_lock);
 
     // Enumerate files
     for (;;)
@@ -63,7 +116,6 @@ void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
             break;
         }
         xSemaphoreGive(spi_bus_lock);
-
 
         if (Finfo.fattrib & AM_DIR){
             numDirs++;
@@ -85,7 +137,6 @@ void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
         }
         // Note: Finfo.fsize
     }
-
     return;
 }
 
@@ -98,9 +149,7 @@ void mp3PlayerTask::sendStringToDisplay(const char *str, size_t len) {
         uart0_puts("Making queue");
         lcd_str_queue = xQueueCreate(6, sizeof(char *));
         scheduler_task::addSharedObject("lcd_str_queue", lcd_str_queue);
-        uart0_puts("Made queue");
     }
-
     // This would be vulnerable code if we cared about security!
     // Copy string so that we don't have to care when the STL frees the source string
     char *cpy = (char *)calloc(sizeof(char), len+1);
@@ -125,19 +174,27 @@ bool mp3PlayerTask::isSongDone() {
 }
 
 mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
-    FIL mp3_file;
-    FRESULT open_rslt;
-    SemaphoreHandle_t spi_bus_lock = scheduler_task::getSharedObject("spi_bus_lock");
 
+        GPIO Pause(P0_29);
+        Pause.setAsInput();
+
+        gpio_interrupt.Initialize();
+
+
+        gpio_interrupt.AttachInterruptHandler(0,29,&pause_isr, kRisingEdge);
+
+
+       FIL mp3_file;
+    FRESULT open_rslt;
     bool paused = false;
+    SemaphoreHandle_t spi_bus_lock = scheduler_task::getSharedObject("spi_bus_lock");
     uart0_puts("About to open MP3");
     uart0_puts(f_name.c_str());
-
     if(xSemaphoreTake(spi_bus_lock, 20000) == pdFALSE){
-        uart0_puts("Failed to take spi_lock at playFile line 139");
+        uart0_puts("Failed to take spi_lock at playFile line 193");
     }
     if (FR_OK == (open_rslt = f_open(&mp3_file, (TCHAR *)f_name.c_str(), FA_READ))) {
-        xSemaphoreGive(spi_bus_lock);
+       xSemaphoreGive(spi_bus_lock);
         // Assuming for now that we have the space, let's just read the entire thing
         // into RAM
         // Using FreeRTOS heap 3, so compiler-provided malloc() and free() should work
@@ -146,12 +203,12 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
         prepCodecForNewSong();
         sendStringToDisplay(f_name.c_str(), f_name.length());
 
+
         UINT bytes_read = 0;
         bool has_read = false;
-
         FRESULT read_rslt;
-        if(xSemaphoreTake(spi_bus_lock, 1000) == pdFALSE){
-            uart0_puts("Failed to take spi_lock at playFile line 156");
+        if(xSemaphoreTake(spi_bus_lock, 20000) == pdFALSE){
+            uart0_puts("Failed to take spi_lock at playFile line 211");
         }
         while ((FR_OK == (read_rslt = f_read(&mp3_file, mp3_buffer, BUFFER_PAGINATION_SIZE, &bytes_read))) &&
                 bytes_read == BUFFER_PAGINATION_SIZE) {
@@ -165,7 +222,9 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
 
             // Check for and react to commands while playing the song
             do {
+
                 mp3Command cmd = getNextCommand();
+
                 if (cmd == mp3Command::PAUSE) {
                     paused = true;
                     // While paused, if we change songs the intention is obviously
@@ -177,14 +236,12 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
                     // involve leaving the song (true for now -- if we ever implement scan forward and
                     // scan backward, we can add that functionality as a case above)
 
-                    stopSong(&mp3_file); // Forcibly stop song
-
                     if(xSemaphoreTake(spi_bus_lock, 1000) == pdFALSE){
-                        uart0_puts("Failed to take spi_lock at playFile line 184");
+                        uart0_puts("Failed to take spi_lock at playFile line 240");
                     }
+                    stopSong(&mp3_file); // Forcibly stop song
                     f_close(&mp3_file);
                     xSemaphoreGive(spi_bus_lock);
-
                     return cmd;
                 }
                 if (paused) {
@@ -207,7 +264,7 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
             // bytes read != file size -- looks like the end!
             sendToCodec(mp3_buffer, bytes_read);
             if(xSemaphoreTake(spi_bus_lock, 1000) == pdFALSE){
-                uart0_puts("Failed to take spi_lock at playFile line 210");
+                uart0_puts("Failed to take spi_lock at playFile line 267");
             }
             f_close(&mp3_file);
             xSemaphoreGive(spi_bus_lock);
@@ -242,30 +299,22 @@ bool mp3PlayerTask::run(void *p) {
     mp3PlayerTask::listMp3Files(mp3_files);
     char scratch[100];
 
-
     initCodec();
+    create_q();
     while (true) {
 
         for (uint32_t i = 0; i < mp3_files.size(); ++i) {
             uart0_puts(mp3_files[i].c_str());
             sprintf(scratch, "1:%s", mp3_files[i].c_str());
             std::string full_path(scratch);
-
-            // This funtion heavily uses the spi1 bus needs lock.
-            // There should be no skipping because of this since this task
-            // has critical priority and runLCD task has low priority
-
-                mp3Command cmd = playFile(full_path);
-
-                if (cmd == mp3Command::SKIP) {
-                    // Do nothing -- this just means we returned early from the song
-                } else if (cmd == mp3Command::PREV) {
-                    // Go to previous song, wrap around with modulus operator
-                    i = (i - 3) % mp3_files.size();
-                }
-                // Pause and play are handled inside playFile(), and no other commands exist for now
-
-                vTaskDelay(1);
+            mp3Command cmd = playFile(full_path);
+            if (cmd == mp3Command::SKIP) {
+                // Do nothing -- this just means we returned early from the song
+            } else if (cmd == mp3Command::PREV) {
+                // Go to previous song, wrap around with modulus operator
+                i = (i - 3) % mp3_files.size();
+            }
+            // Pause and play are handled inside playFile(), and no other commands exist for now
         }
     }
     return true;
@@ -276,7 +325,7 @@ void mp3PlayerTask::sineTest() {
 
     dec.hardReset();
     dec.decoderInit();
-    dec.setVolume(30, 30);
+    dec.setVolume(50, 50);
     dec.sineTest();
 }
 

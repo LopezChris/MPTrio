@@ -60,7 +60,7 @@ class mp3PlayerTask : public scheduler_task
 {
     public:
         mp3PlayerTask(uint8_t priority) :
-            scheduler_task("MP3 Player", 2048, priority)
+            scheduler_task("MP3 Player", 3072, priority)
         {
             mp3_buffer = malloc(sizeof(char) * BUFFER_PAGINATION_SIZE);
         }

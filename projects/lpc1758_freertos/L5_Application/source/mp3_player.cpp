@@ -18,6 +18,7 @@
 #include "gpio.hpp"
 #include "source/LabGPIOInterrupts.hpp"
 bool paused = false;
+char current_volume = 50;
 
 void create_q()
 {
@@ -91,6 +92,41 @@ void play_pause_isr()
         send_mp3_cmd(mp3Command::PAUSE);
         paused = true;
     }
+}
+
+void decrease_volume()
+{
+    Decoder vol;
+
+    if(current_volume  < 120 )
+    {
+        current_volume += 5;
+        u0_dbg_printf("Current volume %i\n", current_volume);
+        vol.setVolume(current_volume, current_volume);
+    }
+
+}
+
+void increase_volume()
+{
+    Decoder vol;
+
+       if(current_volume > 0)
+    {
+        current_volume -= 5;
+        u0_dbg_printf("Current volume %i\n", current_volume);
+        vol.setVolume(current_volume, current_volume);
+    }
+}
+
+void volumeDown_isr()
+{
+    decrease_volume();
+}
+
+void volumeUp_isr()
+{
+    increase_volume();
 }
 
 void mp3PlayerTask::listMp3Files(std::vector<std::string> &files) {
@@ -198,20 +234,23 @@ mp3Command mp3PlayerTask::playFile(const std::string &f_name) {
         GPIO next(P0_29);
         GPIO prev(P2_5);
         GPIO play_pause(P2_4);
+        //GPIO volume_up
+        //GPIO volume_down
 
         prev.setAsInput();
         next.setAsInput();
         play_pause.setAsInput();
         gpio_interrupt.Initialize();
-        gpio_interrupt.AttachInterruptHandler(0,29,&next_isr, kRisingEdge);
-        gpio_interrupt.AttachInterruptHandler(2,5, &prev_isr, kRisingEdge);
+        gpio_interrupt.AttachInterruptHandler(0,29,&prev_isr, kRisingEdge);
+        gpio_interrupt.AttachInterruptHandler(2,5, &next_isr, kRisingEdge);
         gpio_interrupt.AttachInterruptHandler(2,4, &play_pause_isr, kRisingEdge);
-
-
+//        gpio_interrupt.AttachInterruptHandler(0,29,&volumeUp_isr, kRisingEdge);
+//        gpio_interrupt.AttachInterruptHandler(2,5, &volumeDown_isr, kRisingEdge);
+//change me to correct pins
 
        FIL mp3_file;
     FRESULT open_rslt;
-    bool paused = false;
+    //bool paused = false;
     SemaphoreHandle_t spi_bus_lock = scheduler_task::getSharedObject("spi_bus_lock");
     uart0_puts("About to open MP3");
     uart0_puts(f_name.c_str());

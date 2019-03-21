@@ -1,5 +1,7 @@
 # 146 MP3 Project
 
+![img](img.png)
+
 ## Device drivers go [here](https://github.com/LopezChris/MPTrio/tree/master/projects/lpc1758_freertos/L5_Application/mp3_devices)
 
 Folder structure for applications, we'll be pulling the drivers from `MPTrio/projects/lpc1758_freertos/L2_Drivers/` and writing out application in L5_Application

@@ -6,7 +6,7 @@
 
 Folder structure for applications, we'll be pulling the drivers from `MPTrio/projects/lpc1758_freertos/L2_Drivers/` and writing out application in L5_Application
 
-[**lpc1758_freertos shortcut**](https://github.com/LopezChris/MPTrio/tree/master/projects/lpc1758_freertos)
+[**lpc1758_freertos shortcut**](https://github.com/LopezChris/MPTrio/tree/master/projects/lpc1758_freertos/L5_Application)
 
 Below is the structure for our application folder, so far only
 **main.cpp**, **taks.hpp**, **mp3_player.cpp**, **NOKIA5110.hpp**, **NOKIA5110.cpp**, **runLCD.hpp**, and **runLCD.hpp** are relevant.
